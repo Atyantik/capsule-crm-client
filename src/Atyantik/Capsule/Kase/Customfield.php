@@ -1,4 +1,4 @@
-<?php
+<?php namespace Atyantik\Capsule\Kase;
 /**
  * +-----------------------------------------------------------------------+
  * | Copyright (c) 2010, David Coallier & echolibre ltd                    |
@@ -45,6 +45,7 @@
  *
  * @version   GIT: $Id$
  */
+use Atyantik\Capsule\Common;
 
 /**
  * Atyantik\Capsule.
@@ -60,7 +61,7 @@
  *
  * @version  Release: @package_version@
  */
-class Atyantik\Capsule\Kase_Customfield extends Atyantik\Capsule\Common
+class Customfield extends Common
 {
     /**
      * Get a list of custom fields.

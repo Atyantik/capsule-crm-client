@@ -1,4 +1,5 @@
-<?php
+<?php namespace Atyantik\Capsule;
+
 /**
  * Created by PhpStorm.
  * User: chiragpatel@atyantik.com
@@ -8,6 +9,7 @@
 namespace Atyantik\Capsule;
 
 use UnexpectedValueException as BaseUnexpectedValueException;
+
 class UnexpectedValueException extends BaseUnexpectedValueException implements ExceptionInterface
 {
 }

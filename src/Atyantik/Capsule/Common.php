@@ -1,4 +1,4 @@
-<?php
+<?php namespace Atyantik\Capsule;
 /**
  * +-----------------------------------------------------------------------+
  * | Copyright (c) 2010, David Coallier & echolibre ltd                    |
@@ -58,7 +58,7 @@
  *
  * @version  Release: @package_version@
  */
-abstract class Atyantik\Capsule\Common
+abstract class Common
 {
     /**
      * Sub section. History of an Opportunity for example
@@ -133,7 +133,7 @@ abstract class Atyantik\Capsule\Common
             $currentModule = ucfirst(strtolower($this->moduleName));
 
             if (!isset($this->subSections[$section])) {
-                $classname = 'Atyantik\Capsule\'.$currentModule.'\'.$section;
+                $classname = "Atyantik\\Capsule\\".$currentModule."\\".$section;
 
                 if (!class_exists($classname)) {
                     $filename = str_replace('_', '/', $classname).'.php';

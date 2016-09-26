@@ -2,6 +2,7 @@
 namespace Atyantik\Capsule;
 
 use RuntimeException as BaseRuntimeException;
+
 /**
  * +-----------------------------------------------------------------------+
  * | Copyright (c) 2010, David Coallier                                    |
@@ -48,6 +49,6 @@ use RuntimeException as BaseRuntimeException;
  *
  * @version   GIT: $Id$
  */
-class RuntimeException extends BaseRuntimeException implements ExceptionInterface
+class Exception extends BaseRuntimeException implements ExceptionInterface
 {
 }

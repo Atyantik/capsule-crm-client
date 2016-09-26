@@ -1,4 +1,4 @@
-<?php
+<?php namespace Atyantik\Capsule;
 /**
  * +-----------------------------------------------------------------------+
  * | Copyright (c) 2010, David Coallier & echolibre ltd                    |
@@ -91,7 +91,7 @@ class Atyantik\Capsule\Party_Task extends Atyantik\Capsule\Common
      *
      * Example of input:
      *
-     * <?php
+     * <?php namespace Atyantik\Capsule;
      *     $fields = array(
      *         'description' => 'descrition of task',
      *         'dueDateTime'    => '2010-04-21T15:00:00Z', 

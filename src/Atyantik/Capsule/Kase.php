@@ -1,4 +1,4 @@
-<?php
+<?php namespace Atyantik\Capsule;
 /**
  * +-----------------------------------------------------------------------+
  * | Copyright (c) 2010, David Coallier & echolibre ltd                    |
@@ -132,7 +132,7 @@ class Atyantik\Capsule\Kase extends Atyantik\Capsule\Common
      * or more explicitly YYYYMMDDTHHMMSS
      * 
      * Example:
-     * <?php
+     * <?php namespace Atyantik\Capsule;
      *      try {
      *          $capsule = new Atyantik\Capsule($appName, $token);
      *          $results = $capsule->case->getAny(array(

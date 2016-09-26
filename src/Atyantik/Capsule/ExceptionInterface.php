@@ -1,4 +1,5 @@
-<?php
+<?php namespace Atyantik\Capsule;
+
 /**
  * Created by PhpStorm.
  * User: chiragpatel@atyantik.com
@@ -9,5 +10,4 @@ namespace Atyantik\Capsule;
 
 interface ExceptionInterface
 {
-
 }

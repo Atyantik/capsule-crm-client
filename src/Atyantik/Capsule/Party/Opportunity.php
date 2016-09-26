@@ -1,4 +1,4 @@
-<?php
+<?php namespace Atyantik\Capsule;
 /**
  * +-----------------------------------------------------------------------+
  * | Copyright (c) 2010, David Coallier & echolibre ltd                    |
@@ -94,7 +94,7 @@ class Atyantik\Capsule\Party_Opportunity extends Atyantik\Capsule\Common
      *
      * Example of input:
      *
-     * <?php
+     * <?php namespace Atyantik\Capsule;
      *     $fields = array(
      *         'name' => 'Testing adding opportunity',
      *         'description' => 'descrition of opptu',
@@ -131,7 +131,7 @@ class Atyantik\Capsule\Party_Opportunity extends Atyantik\Capsule\Common
      * Update said opportunity for a party.
      *
      * Example of input:
-     * <?php
+     * <?php namespace Atyantik\Capsule;
      *     $fields = array(
      *         'milestone' => 'Won',
      *     );
