@@ -1,0 +1,24 @@
+{
+  "name": "Atyantik/capsule-crm-client",
+  "description": "Capsule Client for Capsule CRM",
+  "license":"MIT",
+  "version":"dev-development",
+  "authors": [
+    {
+      "name": "Atyantik Technologies",
+      "email": "admin@atyantik.com"
+    }
+  ],
+  "require": {
+    "pear/http_request2":"~2.0"
+  },
+  "require-dev": {
+  },
+  "autoload": {
+    "psr-4": {
+      "Atyantik\\": "src"
+    }
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
+}
