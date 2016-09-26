@@ -62,7 +62,7 @@
  *
  * @version  Release: @package_version@
  */
-class Atyantik\Capsule\Task extends Atyantik\Capsule\Common
+class Task extends Atyantik\Capsule\Common
 {
     /**
      * Get a Task.

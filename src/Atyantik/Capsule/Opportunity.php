@@ -59,7 +59,7 @@
  *
  * @version  Release: @package_version@
  */
-class Atyantik\Capsule\Opportunity extends Atyantik\Capsule\Common
+class Opportunity extends Atyantik\Capsule\Common
 {
     /**
      * Get an opportunity.

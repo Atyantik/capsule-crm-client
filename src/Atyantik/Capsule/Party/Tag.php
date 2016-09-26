@@ -1,4 +1,5 @@
-<?php namespace Atyantik\Capsule;
+<?php
+namespace Atyantik\Capsule\Party;
 /**
  * +-----------------------------------------------------------------------+
  * | Copyright (c) 2010, David Coallier & echolibre ltd                    |
@@ -59,7 +60,7 @@
  *
  * @version  Release: @package_version@
  */
-class Atyantik\Capsule\Party_Tag extends Atyantik\Capsule\Common
+class Tag extends Atyantik\Capsule\Common
 {
     /**
      * Get party tags.

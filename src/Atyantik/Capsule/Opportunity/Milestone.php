@@ -1,4 +1,5 @@
-<?php namespace Atyantik\Capsule;
+<?php
+namespace Atyantik\Capsule\Opportunity;
 /**
  * +-----------------------------------------------------------------------+
  * | Copyright (c) 2010, David Coallier & echolibre ltd                    |
@@ -59,7 +60,7 @@
  *
  * @version  Release: @package_version@
  */
-class Atyantik\Capsule\Opportunity_Milestone extends Atyantik\Capsule\Common
+class Milestone extends Atyantik\Capsule\Common
 {
     /**
      * Get a list of opportunity milestones.

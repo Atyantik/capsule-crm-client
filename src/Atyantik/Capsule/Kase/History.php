@@ -1,4 +1,5 @@
-<?php namespace Atyantik\Capsule;
+<?php
+namespace Atyantik\Capsule\Kase;
 /**
  * +-----------------------------------------------------------------------+
  * | Copyright (c) 2010, David Coallier & echolibre ltd                    |
@@ -59,7 +60,7 @@
  *
  * @version  Release: @package_version@
  */
-class Atyantik\Capsule\Kase_History extends Atyantik\Capsule\Common
+class History extends Atyantik\Capsule\Common
 {
     /**
      * Get case history.

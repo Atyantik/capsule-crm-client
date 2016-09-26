@@ -1,4 +1,5 @@
-<?php namespace Atyantik\Capsule;
+<?php
+namespace Atyantik\Capsule\Party;
 /**
  * +-----------------------------------------------------------------------+
  * | Copyright (c) 2010, David Coallier & echolibre ltd                    |
@@ -63,7 +64,7 @@
  *
  * @version  Release: @package_version@
  */
-class Atyantik\Capsule\Party_Cases extends Atyantik\Capsule\Common
+class Cases extends Atyantik\Capsule\Common
 {
     /**
      * Get a list of party cases.

@@ -1,4 +1,5 @@
-<?php namespace Atyantik\Capsule\Kase;
+<?php
+namespace Atyantik\Capsule\Kase;
 /**
  * +-----------------------------------------------------------------------+
  * | Copyright (c) 2010, David Coallier & echolibre ltd                    |

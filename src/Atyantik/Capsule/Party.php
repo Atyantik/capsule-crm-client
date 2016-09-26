@@ -59,7 +59,7 @@
  *
  * @version  Release: @package_version@
  */
-class Atyantik\Capsule\Party extends Atyantik\Capsule\Common
+class Party extends Atyantik\Capsule\Common
 {
     /**
      * Get a party.

@@ -59,7 +59,7 @@
  *
  * @version  Release: @package_version@
  */
-class Atyantik\Capsule\Organization extends Atyantik\Capsule\Common
+class Organization extends Atyantik\Capsule\Common
 {
     /**
      * Add a new Organization.

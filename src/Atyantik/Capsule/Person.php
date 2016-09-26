@@ -59,7 +59,7 @@
  *
  * @version  Release: @package_version@
  */
-class Atyantik\Capsule\Person extends Atyantik\Capsule\Common
+class Person extends Atyantik\Capsule\Common
 {
     /**
      * Add a new Person to an organization.

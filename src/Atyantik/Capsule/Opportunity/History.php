@@ -1,4 +1,5 @@
-<?php namespace Atyantik\Capsule;
+<?php
+namespace Atyantik\Capsule\Opportunity;
 /**
  * +-----------------------------------------------------------------------+
  * | Copyright (c) 2010, David Coallier & echolibre ltd                    |
@@ -59,7 +60,7 @@
  *
  * @version  Release: @package_version@
  */
-class Atyantik\Capsule\Opportunity_History extends Atyantik\Capsule\Common
+class History extends Atyantik\Capsule\Common
 {
     /**
      * Get opportunity history.

@@ -61,7 +61,7 @@
  *
  * @version  Release: @package_version@
  */
-class Atyantik\Capsule\Resource extends Atyantik\Capsule\Common
+class Resource extends Atyantik\Capsule\Common
 {
     /**
      * Get a list of resource countries.

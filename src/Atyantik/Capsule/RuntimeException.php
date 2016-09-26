@@ -49,6 +49,6 @@ use RuntimeException as BaseRuntimeException;
  *
  * @version   GIT: $Id$
  */
-class Exception extends BaseRuntimeException implements ExceptionInterface
+class RuntimeException extends BaseRuntimeException implements ExceptionInterface
 {
 }
