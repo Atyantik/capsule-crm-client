@@ -1,8 +1,8 @@
 {
-  "name": "Atyantik/capsule-crm-client",
+  "name": "atyantik/capsule-crm-client",
   "description": "Capsule Client for Capsule CRM",
   "license":"MIT",
-  "version":"dev-development",
+  "version":"dev-master",
   "authors": [
     {
       "name": "Atyantik Technologies",
