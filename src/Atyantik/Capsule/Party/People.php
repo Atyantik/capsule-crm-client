@@ -59,7 +59,7 @@
  *
  * @version  Release: @package_version@
  */
-class Services_Capsule_Party_People extends Services_Capsule_Common
+class AtyantikCapsulePartyPeople extends AtyantikCapsuleCommon
 {
     /**
      * Get a list of people in party.
@@ -69,7 +69,7 @@ class Services_Capsule_Party_People extends Services_Capsule_Common
      *
      * @link    /api/party/{id}/people
      *
-     * @throws Services_Capsule_RuntimeException
+     * @throws AtyantikCapsuleRuntimeException
      *
      * @param float $partyId The party to retrieve the people from.
      *

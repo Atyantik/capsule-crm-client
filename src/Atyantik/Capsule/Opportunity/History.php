@@ -59,7 +59,7 @@
  *
  * @version  Release: @package_version@
  */
-class Services_Capsule_Opportunity_History extends Services_Capsule_Common
+class AtyantikCapsuleOpportunityHistory extends AtyantikCapsuleCommon
 {
     /**
      * Get opportunity history.
@@ -68,7 +68,7 @@ class Services_Capsule_Opportunity_History extends Services_Capsule_Common
      *
      * @link    /api/opportunity/{id}/history
      *
-     * @throws Services_Capsule_RuntimeException
+     * @throws AtyantikCapsuleRuntimeException
      *
      * @param float $opportunityId The opportunity to retrieve the history from.
      *
@@ -91,7 +91,7 @@ class Services_Capsule_Opportunity_History extends Services_Capsule_Common
      *
      * @link /api/opportunity/{opportunity-id}/history
      *
-     * @throws Services_Capsule_RuntimeException
+     * @throws AtyantikCapsuleRuntimeException
      *
      * @param float  $opportunityId The opportunity to create the note on.
      * @param string $note          The note to add to history.
@@ -124,7 +124,7 @@ class Services_Capsule_Opportunity_History extends Services_Capsule_Common
      *
      * @link /api/opportunity/{opportunity-id}/history/{history-id}
      *
-     * @throws Services_Capsule_RuntimeException
+     * @throws AtyantikCapsuleRuntimeException
      *
      * @param float  $opportunityId The opportunity to create the tags on.
      * @param float  $historyId     The note id to update.
@@ -156,7 +156,7 @@ class Services_Capsule_Opportunity_History extends Services_Capsule_Common
      *
      * @link /api/opportunity/{opportunity-id}/history/{history-id}
      *
-     * @throws Services_Capsule_RuntimeException
+     * @throws AtyantikCapsuleRuntimeException
      *
      * @param float $opportunityId The opportunity to delete the note from.
      * @param float $historyId     The note id to delete.

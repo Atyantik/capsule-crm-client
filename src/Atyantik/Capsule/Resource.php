@@ -61,7 +61,7 @@
  *
  * @version  Release: @package_version@
  */
-class Services_Capsule_Resource extends Services_Capsule_Common
+class AtyantikCapsuleResource extends AtyantikCapsuleCommon
 {
     /**
      * Get a list of resource countries.
@@ -72,7 +72,7 @@ class Services_Capsule_Resource extends Services_Capsule_Common
      *
      * @link   /api/resource/country
      *
-     * @throws Services_Capsule_RuntimeException
+     * @throws AtyantikCapsuleRuntimeException
      *
      * @return stdClass A stdClass object containing the information from
      *                  the json-decoded response from the server.
@@ -92,7 +92,7 @@ class Services_Capsule_Resource extends Services_Capsule_Common
      *
      * @link   /api/resource/currency
      *
-     * @throws Services_Capsule_RuntimeException
+     * @throws AtyantikCapsuleRuntimeException
      *
      * @return stdClass A stdClass object containing the information from
      *                  the json-decoded response from the server.

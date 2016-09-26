@@ -62,7 +62,7 @@
 /**
  * "Kase is not a typo. This is how the modules are invoked in the API /api/kase".
  */
-class Services_Capsule_Kase extends Services_Capsule_Common
+class AtyantikCapsuleKase extends AtyantikCapsuleCommon
 {
     /**
      * Get an case.
@@ -72,7 +72,7 @@ class Services_Capsule_Kase extends Services_Capsule_Common
      *
      * @link   /api/kase/{id}
      *
-     * @throws Services_Capsule_RuntimeException
+     * @throws AtyantikCapsuleRuntimeException
      *
      * @param float $id The case ID to retrieve from the service.
      *
@@ -94,7 +94,7 @@ class Services_Capsule_Kase extends Services_Capsule_Common
      *
      * @link  /api/kase[?start={start}][&limit={limit}] 
      *
-     * @throws Services_Capsule_RuntimeException
+     * @throws AtyantikCapsuleRuntimeException
      *
      * @param int $start The start page (Optional).
      * @param int $limit The limit per page (Optional).
@@ -140,7 +140,7 @@ class Services_Capsule_Kase extends Services_Capsule_Common
      *              'start'        => '100',
      *              'limit'        => '25'
      *          ));
-     *      } catch (Services_Capsule_RuntimeException $re) {
+     *      } catch (AtyantikCapsuleRuntimeException $re) {
      *          print_r($re); die();
      *      }
      *
@@ -150,7 +150,7 @@ class Services_Capsule_Kase extends Services_Capsule_Common
      * @link   /api/kase?lastmodified={YYYYMMDDTHHMMSS}[&start={start}][&limit={limit}]
      * @link   /api/kase?tag={tag}[&start={start}][&limit={limit}]
      *
-     * @throws Services_Capsule_RuntimeException
+     * @throws AtyantikCapsuleRuntimeException
      *
      * @param array $params An array of parameters to search for.
      *
@@ -172,7 +172,7 @@ class Services_Capsule_Kase extends Services_Capsule_Common
      *
      * @link   /api/kase/{kase-id}
      *
-     * @throws Services_Capsule_RuntimeException
+     * @throws AtyantikCapsuleRuntimeException
      *
      * @param float $caseId The case id to delete.
      *

@@ -59,7 +59,7 @@
  *
  * @version  Release: @package_version@
  */
-class Services_Capsule_Party extends Services_Capsule_Common
+class AtyantikCapsuleParty extends AtyantikCapsuleCommon
 {
     /**
      * Get a party.
@@ -69,7 +69,7 @@ class Services_Capsule_Party extends Services_Capsule_Common
      *
      * @link   /api/party/{id}
      *
-     * @throws Services_Capsule_RuntimeException
+     * @throws AtyantikCapsuleRuntimeException
      *
      * @param float $id The party ID to retrieve from the service.
      *
@@ -92,7 +92,7 @@ class Services_Capsule_Party extends Services_Capsule_Common
      *
      * @link  /api/party[?start={start}][&limit={limit}] 
      *
-     * @throws Services_Capsule_RuntimeException
+     * @throws AtyantikCapsuleRuntimeException
      *
      * @param int $start The start page (Optional).
      * @param int $limit The limit per page (Optional).
@@ -128,7 +128,7 @@ class Services_Capsule_Party extends Services_Capsule_Common
      *
      * @link  /api/party?q={term}[&start={start}][&limit={limit}] 
      *
-     * @throws Services_Capsule_RuntimeException
+     * @throws AtyantikCapsuleRuntimeException
      *
      * @param string $term  The term to search for in the parties/orgs.
      * @param int    $start The start page (Optional).
@@ -176,7 +176,7 @@ class Services_Capsule_Party extends Services_Capsule_Common
      *              'start'        => '100',
      *              'limit'        => '25'
      *          ));
-     *      } catch (Services_Capsule_RuntimeException $re) {
+     *      } catch (AtyantikCapsuleRuntimeException $re) {
      *          print_r($re); die();
      *      }
      *
@@ -187,7 +187,7 @@ class Services_Capsule_Party extends Services_Capsule_Common
      * @link   /api/party?email={email address}[&start={start}][&limit={limit}]
      * @link   /api/party?tag={tag}[&start={start}][&limit={limit}]
      *
-     * @throws Services_Capsule_RuntimeException
+     * @throws AtyantikCapsuleRuntimeException
      *
      * @param array $params An array of parameters to search for.
      *
@@ -209,7 +209,7 @@ class Services_Capsule_Party extends Services_Capsule_Common
       *
       * @link /api/party/{party-id}
       *
-      * @throws Services_Capsule_RuntimeException
+      * @throws AtyantikCapsuleRuntimeException
       *
       * @param  float       $partyId       The party to delete.
       *

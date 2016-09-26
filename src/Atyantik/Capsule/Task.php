@@ -62,7 +62,7 @@
  *
  * @version  Release: @package_version@
  */
-class Services_Capsule_Task extends Services_Capsule_Common
+class AtyantikCapsuleTask extends AtyantikCapsuleCommon
 {
     /**
      * Get a Task.
@@ -72,7 +72,7 @@ class Services_Capsule_Task extends Services_Capsule_Common
      *
      * @link   /api/task/{task-id}
      *
-     * @throws Services_Capsule_RuntimeException
+     * @throws AtyantikCapsuleRuntimeException
      *
      * @param float $id The task ID to retrieve from the service.
      *
@@ -96,7 +96,7 @@ class Services_Capsule_Task extends Services_Capsule_Common
      *
      * @link  /api/tasks[?start={start}][&limit={limit}][&category={category}][&user={user}]
      *
-     * @throws Services_Capsule_RuntimeException
+     * @throws AtyantikCapsuleRuntimeException
      *
      * @param int $start    The start page (Optional).
      * @param int $limit    The limit per page (Optional).
@@ -140,7 +140,7 @@ class Services_Capsule_Task extends Services_Capsule_Common
      *
      * @link   /api/task/{task-id}/complete
      *
-     * @throws Services_Capsule_RuntimeException
+     * @throws AtyantikCapsuleRuntimeException
      *
      * @param float $taskId The task to be marked complete
      *
@@ -163,7 +163,7 @@ class Services_Capsule_Task extends Services_Capsule_Common
      *
      * @link   /api/task/{task-id}/reopen
      *
-     * @throws Services_Capsule_RuntimeException
+     * @throws AtyantikCapsuleRuntimeException
      *
      * @param float $taskId The task to be re-opened
      *
@@ -195,7 +195,7 @@ class Services_Capsule_Task extends Services_Capsule_Common
      *
      * @link   /api/task
      *
-     * @throws Services_Capsule_RuntimeException
+     * @throws AtyantikCapsuleRuntimeException
      *
      * @param array $fields An array of fields to create the task with.
      *
@@ -227,7 +227,7 @@ class Services_Capsule_Task extends Services_Capsule_Common
      * @link http://capsulecrm.com/help/page/api_task
      * @link /api/task/{task-id}
      *
-     * @throws Services_Capsule_RuntimeException
+     * @throws AtyantikCapsuleRuntimeException
      *
      * @param float $taskId The id of the task to update.
      * @param array $fields An assoc array of fields to add in the task
@@ -254,7 +254,7 @@ class Services_Capsule_Task extends Services_Capsule_Common
       *
       * @link /api/task/{task-id}
       *
-      * @throws Services_Capsule_RuntimeException
+      * @throws AtyantikCapsuleRuntimeException
       *
       * @param  float       $taskId        The task to delete.
       *

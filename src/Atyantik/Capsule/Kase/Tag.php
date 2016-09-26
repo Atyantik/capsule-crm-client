@@ -60,7 +60,7 @@
  *
  * @version  Release: @package_version@
  */
-class Services_Capsule_Kase_Tag extends Services_Capsule_Common
+class AtyantikCapsuleKaseTag extends AtyantikCapsuleCommon
 {
     /**
      * Get case tags.
@@ -69,7 +69,7 @@ class Services_Capsule_Kase_Tag extends Services_Capsule_Common
      *
      * @link    /api/kase/{id}/tagName
      *
-     * @throws Services_Capsule_RuntimeException
+     * @throws AtyantikCapsuleRuntimeException
      *
      * @param float $caseId The case to retrieve the tags from.
      *
@@ -93,7 +93,7 @@ class Services_Capsule_Kase_Tag extends Services_Capsule_Common
      *
      * @link /api/kase/{kase-id}/tag/{tag-name}
      *
-     * @throws Services_Capsule_RuntimeException
+     * @throws AtyantikCapsuleRuntimeException
      *
      * @param float  $caseId  The case to create the tags on.
      * @param string $tagName The name of the new tag to create.
@@ -116,7 +116,7 @@ class Services_Capsule_Kase_Tag extends Services_Capsule_Common
      *
      * @link /api/kase/{kase-id}/tag/{tag-name}
      *
-     * @throws Services_Capsule_RuntimeException
+     * @throws AtyantikCapsuleRuntimeException
      *
      * @param float  $caseId  The case to delete the tags from.
      * @param string $tagName The name of the new tag to delete.

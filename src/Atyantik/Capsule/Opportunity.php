@@ -59,7 +59,7 @@
  *
  * @version  Release: @package_version@
  */
-class Services_Capsule_Opportunity extends Services_Capsule_Common
+class AtyantikCapsuleOpportunity extends AtyantikCapsuleCommon
 {
     /**
      * Get an opportunity.
@@ -69,7 +69,7 @@ class Services_Capsule_Opportunity extends Services_Capsule_Common
      *
      * @link   /api/opportunity/{id}
      *
-     * @throws Services_Capsule_RuntimeException
+     * @throws AtyantikCapsuleRuntimeException
      *
      * @param float $id The opportunity ID to retrieve from the service.
      *
@@ -91,7 +91,7 @@ class Services_Capsule_Opportunity extends Services_Capsule_Common
      *
      * @link  /api/opportunity[?start={start}][&limit={limit}] 
      *
-     * @throws Services_Capsule_RuntimeException
+     * @throws AtyantikCapsuleRuntimeException
      *
      * @param int $start The start page (Optional).
      * @param int $limit The limit per page (Optional).
@@ -137,7 +137,7 @@ class Services_Capsule_Opportunity extends Services_Capsule_Common
      *              'start'        => '100',
      *              'limit'        => '25'
      *          ));
-     *      } catch (Services_Capsule_RuntimeException $re) {
+     *      } catch (AtyantikCapsuleRuntimeException $re) {
      *          print_r($re); die();
      *      }
      *
@@ -147,7 +147,7 @@ class Services_Capsule_Opportunity extends Services_Capsule_Common
      * @link   /api/opportunity?lastmodified={YYYYMMDDTHHMMSS}[&start={start}][&limit={limit}]
      * @link   /api/opportunity?tag={tag}[&start={start}][&limit={limit}]
      *
-     * @throws Services_Capsule_RuntimeException
+     * @throws AtyantikCapsuleRuntimeException
      *
      * @param array $params An array of parameters to search for.
      *
@@ -169,7 +169,7 @@ class Services_Capsule_Opportunity extends Services_Capsule_Common
       *
       * @link /api/opportunity/{opportunity-id}
       *
-      * @throws Services_Capsule_RuntimeException
+      * @throws AtyantikCapsuleRuntimeException
       *
       * @param  float       $opportunityId The opportunity to delete.
       *

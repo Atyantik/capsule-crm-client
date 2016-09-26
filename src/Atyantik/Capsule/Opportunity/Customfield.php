@@ -59,7 +59,7 @@
  *
  * @version  Release: @package_version@
  */
-class Services_Capsule_Opportunity_Customfield extends Services_Capsule_Common
+class AtyantikCapsuleOpportunityCustomfield extends AtyantikCapsuleCommon
 {
     /**
      * Get a list of custom fields.
@@ -69,7 +69,7 @@ class Services_Capsule_Opportunity_Customfield extends Services_Capsule_Common
      *
      * @link    /api/opportunity/{id}/customfield
      *
-     * @throws Services_Capsule_RuntimeException
+     * @throws AtyantikCapsuleRuntimeException
      *
      * @param float $opportunityId The opportunity to retrieve 
      *                             the custom field from.
@@ -92,7 +92,7 @@ class Services_Capsule_Opportunity_Customfield extends Services_Capsule_Common
      *
      * @link    /api/opportunity/customfield/definitions
      *
-     * @throws Services_Capsule_RuntimeException
+     * @throws AtyantikCapsuleRuntimeException
      * 
      * @return stdClass A stdClass object containing the information from
      *                  the json-decoded response from the server.
@@ -112,7 +112,7 @@ class Services_Capsule_Opportunity_Customfield extends Services_Capsule_Common
      *
      * @link /api/opportunity/{kase-id}/customfield
      *
-     * @throws Services_Capsule_RuntimeException
+     * @throws AtyantikCapsuleRuntimeException
      *
      * @param float $caseId The case id to create the new field on.
      * @param array $fields An assoc array of fields to add in the new
@@ -124,7 +124,7 @@ class Services_Capsule_Opportunity_Customfield extends Services_Capsule_Common
     public function add($caseId, array $fields)
     {
         if (!isset($fields['boolean'])) {
-            throw new Services_Capsule_RuntimeException(
+            throw new AtyantikCapsuleRuntimeException(
                 '"boolean" parameter of second parameter required '.
                 'Ex: ("boolean" => "true")'
             );
@@ -152,7 +152,7 @@ class Services_Capsule_Opportunity_Customfield extends Services_Capsule_Common
      *
      * @link   /api/opportunity/{kase-id}/customfield/{customfield-id} 
      *
-     * @throws Services_Capsule_RuntimeException
+     * @throws AtyantikCapsuleRuntimeException
      *
      * @param float $caseId  The case id to create the new field on.
      * @param float $fieldId
@@ -186,7 +186,7 @@ class Services_Capsule_Opportunity_Customfield extends Services_Capsule_Common
      *
      * @link   /api/opportunity/{kase-id}/customfield/{customfield-id} 
      *
-     * @throws Services_Capsule_RuntimeException
+     * @throws AtyantikCapsuleRuntimeException
      *
      * @param float $caseId  The case id to create the new field on.
      * @param float $fieldId

@@ -59,7 +59,7 @@
  *
  * @version  Release: @package_version@
  */
-class Services_Capsule_Party_History extends Services_Capsule_Common
+class AtyantikCapsulePartyHistory extends AtyantikCapsuleCommon
 {
     /**
      * Get party history.
@@ -68,7 +68,7 @@ class Services_Capsule_Party_History extends Services_Capsule_Common
      *
      * @link    /api/party/{id}/history
      *
-     * @throws Services_Capsule_RuntimeException
+     * @throws AtyantikCapsuleRuntimeException
      *
      * @param float $partyId The party to retrieve the history from.
      *
@@ -90,7 +90,7 @@ class Services_Capsule_Party_History extends Services_Capsule_Common
      *
      * @link /api/party/{party-id}/history
      *
-     * @throws Services_Capsule_RuntimeException
+     * @throws AtyantikCapsuleRuntimeException
      *
      * @param float  $partyId The party to create the note on.
      * @param string $note    The note to add to history.
@@ -120,7 +120,7 @@ class Services_Capsule_Party_History extends Services_Capsule_Common
      *
      * @link /api/party/{party-id}/history/{history-id}
      *
-     * @throws Services_Capsule_RuntimeException
+     * @throws AtyantikCapsuleRuntimeException
      *
      * @param float  $partyId   The party to create the tags on.
      * @param float  $historyId The note id to update.
@@ -151,7 +151,7 @@ class Services_Capsule_Party_History extends Services_Capsule_Common
      *
      * @link /api/party/{party-id}/history/{history-id}
      *
-     * @throws Services_Capsule_RuntimeException
+     * @throws AtyantikCapsuleRuntimeException
      *
      * @param float $partyId   The party to delete the note from.
      * @param float $historyId The note id to delete.

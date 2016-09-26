@@ -59,7 +59,7 @@
  *
  * @version  Release: @package_version@
  */
-class Services_Capsule_Kase_Party extends Services_Capsule_Common
+class AtyantikCapsuleKaseParty extends AtyantikCapsuleCommon
 {
     /**
      * Get a list of additional parties.
@@ -68,7 +68,7 @@ class Services_Capsule_Kase_Party extends Services_Capsule_Common
      *
      * @link    /api/case/{id}/party
      *
-     * @throws Services_Capsule_RuntimeException
+     * @throws AtyantikCapsuleRuntimeException
      *
      * @param float $caseId The case to retrieve the parties from.
      *
@@ -91,7 +91,7 @@ class Services_Capsule_Kase_Party extends Services_Capsule_Common
      *
      * @link   /api/case/{id}/party/{party-id}
      *
-     * @throws Services_Capsule_RuntimeException
+     * @throws AtyantikCapsuleRuntimeException
      *
      * @param float  $caseId  The case to add the party on.
      * @param string $partyId The party/org to add to the case.
@@ -114,7 +114,7 @@ class Services_Capsule_Kase_Party extends Services_Capsule_Common
      *
      * @link   /api/case/{id}/party/{party-id}
      *
-     * @throws Services_Capsule_RuntimeException
+     * @throws AtyantikCapsuleRuntimeException
      *
      * @param float  $caseId  The case to delete the party from.
      * @param string $partyId The party/org to delete from the case.

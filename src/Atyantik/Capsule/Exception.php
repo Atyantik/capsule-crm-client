@@ -45,15 +45,15 @@
  *
  * @version   GIT: $Id$
  */
-interface Services_Capsule_Exception
+interface AtyantikCapsuleException
 {
 }
 
-class Services_Capsule_RuntimeException extends RuntimeException implements Services_Capsule_Exception
+class AtyantikCapsuleRuntimeException extends RuntimeException implements AtyantikCapsuleException
 {
 }
 
-class Services_Capsule_UnexpectedValueException extends UnexpectedValueException
-    implements Services_Capsule_Exception
+class AtyantikCapsuleUnexpectedValueException extends UnexpectedValueException
+    implements AtyantikCapsuleException
 {
 }

@@ -59,7 +59,7 @@
  *
  * @version  Release: @package_version@
  */
-class Services_Capsule_Opportunity_Task extends Services_Capsule_Common
+class AtyantikCapsuleOpportunityTask extends AtyantikCapsuleCommon
 {
     /**
      * Get opportunity Tasks.
@@ -68,7 +68,7 @@ class Services_Capsule_Opportunity_Task extends Services_Capsule_Common
      *
      * @link    /api/opportunity/{id}/tasks
      *
-     * @throws Services_Capsule_RuntimeException
+     * @throws AtyantikCapsuleRuntimeException
      *
      * @param float $opportunityId The opportunity to retrieve the tasks from.
      *
@@ -100,7 +100,7 @@ class Services_Capsule_Opportunity_Task extends Services_Capsule_Common
      *
      * @link   /api/opportunity/{opportunity-id}/task
      *
-     * @throws Services_Capsule_RuntimeException
+     * @throws AtyantikCapsuleRuntimeException
      *
      * @param float $opportunityId The oppID to add the task to.
      * @param array $fields        An array of fields to create the task with.

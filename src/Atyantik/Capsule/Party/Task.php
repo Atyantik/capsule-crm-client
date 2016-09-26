@@ -59,7 +59,7 @@
  *
  * @version  Release: @package_version@
  */
-class Services_Capsule_Party_Task extends Services_Capsule_Common
+class AtyantikCapsulePartyTask extends AtyantikCapsuleCommon
 {
     /**
      * Get a list of party tasks.
@@ -69,7 +69,7 @@ class Services_Capsule_Party_Task extends Services_Capsule_Common
      *
      * @link    /api/party/{party-id}/tasks
      *
-     * @throws Services_Capsule_RuntimeException
+     * @throws AtyantikCapsuleRuntimeException
      *
      * @param float $partyId The party to retrieve the tasks from.
      *
@@ -101,7 +101,7 @@ class Services_Capsule_Party_Task extends Services_Capsule_Common
      *
      * @link   /api/party/{party-id}/task
      *
-     * @throws Services_Capsule_RuntimeException
+     * @throws AtyantikCapsuleRuntimeException
      *
      * @param float $partyId The party/org to add the task to.
      * @param array $fields  An array of fields to create the opp with.

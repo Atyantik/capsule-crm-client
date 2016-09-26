@@ -59,7 +59,7 @@
  *
  * @version  Release: @package_version@
  */
-class Services_Capsule_Kase_Task extends Services_Capsule_Common
+class AtyantikCapsuleKaseTask extends AtyantikCapsuleCommon
 {
     /**
      * Get case Tasks.
@@ -68,7 +68,7 @@ class Services_Capsule_Kase_Task extends Services_Capsule_Common
      *
      * @link    /api/kase/{id}/tasks
      *
-     * @throws Services_Capsule_RuntimeException
+     * @throws AtyantikCapsuleRuntimeException
      *
      * @param float $kaseId The kase to retrieve the tasks from.
      *
@@ -100,7 +100,7 @@ class Services_Capsule_Kase_Task extends Services_Capsule_Common
      *
      * @link   /api/kase/{kase-id}/task
      *
-     * @throws Services_Capsule_RuntimeException
+     * @throws AtyantikCapsuleRuntimeException
      *
      * @param float $kaseId The case to add the task to.
      * @param array $fields An array of fields to create the task with.

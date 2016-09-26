@@ -59,7 +59,7 @@
  *
  * @version  Release: @package_version@
  */
-class Services_Capsule_Opportunity_Milestone extends Services_Capsule_Common
+class AtyantikCapsuleOpportunityMilestone extends AtyantikCapsuleCommon
 {
     /**
      * Get a list of opportunity milestones.
@@ -69,7 +69,7 @@ class Services_Capsule_Opportunity_Milestone extends Services_Capsule_Common
      *
      * @link    /api/opportunity/milestones
      *
-     * @throws Services_Capsule_RuntimeException
+     * @throws AtyantikCapsuleRuntimeException
      *
      * @param float $partyId The party to retrieve the people from.
      *

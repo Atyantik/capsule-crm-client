@@ -59,7 +59,7 @@
  *
  * @version  Release: @package_version@
  */
-class Services_Capsule_Person extends Services_Capsule_Common
+class AtyantikCapsulePerson extends AtyantikCapsuleCommon
 {
     /**
      * Add a new Person to an organization.
@@ -79,7 +79,7 @@ class Services_Capsule_Person extends Services_Capsule_Common
      * @link http://capsulecrm.com/help/page/javelin_api_party
      * @link /api/person
      *
-     * @throws Services_Capsule_RuntimeException
+     * @throws AtyantikCapsuleRuntimeException
      *
      * @param array $fields An assoc array of fields to add in the new
      *                      person
@@ -116,7 +116,7 @@ class Services_Capsule_Person extends Services_Capsule_Common
      * @link http://capsulecrm.com/help/page/javelin_api_party
      * @link /api/organization
      *
-     * @throws Services_Capsule_RuntimeException
+     * @throws AtyantikCapsuleRuntimeException
      *
      * @param float $personId The id of the person to update.
      * @param array $fields   An assoc array of fields to add in the new

@@ -59,7 +59,7 @@
  *
  * @version  Release: @package_version@
  */
-class Services_Capsule_Opportunity_Tag extends Services_Capsule_Common
+class AtyantikCapsuleOpportunityTag extends AtyantikCapsuleCommon
 {
     /**
      * Get opportunity tags.
@@ -68,7 +68,7 @@ class Services_Capsule_Opportunity_Tag extends Services_Capsule_Common
      *
      * @link    /api/opportunity/{id}/tag
      *
-     * @throws Services_Capsule_RuntimeException
+     * @throws AtyantikCapsuleRuntimeException
      *
      * @param float $opportunityId The opportunity to retrieve the tags from.
      *
@@ -92,7 +92,7 @@ class Services_Capsule_Opportunity_Tag extends Services_Capsule_Common
      *
      * @link /api/opportunity/{opportunity-id}/tag/{tag-name}
      *
-     * @throws Services_Capsule_RuntimeException
+     * @throws AtyantikCapsuleRuntimeException
      *
      * @param float  $opportunityId The opportunity to create the tags on.
      * @param string $tagName       The name of the new tag to create.
@@ -115,7 +115,7 @@ class Services_Capsule_Opportunity_Tag extends Services_Capsule_Common
      *
      * @link /api/opportunity/{opportunity-id}/tag/{tag-name}
      *
-     * @throws Services_Capsule_RuntimeException
+     * @throws AtyantikCapsuleRuntimeException
      *
      * @param float  $opportunityId The opportunity to delete the tags from.
      * @param string $tagName       The name of the new tag to delete.

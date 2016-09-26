@@ -59,7 +59,7 @@
  *
  * @version  Release: @package_version@
  */
-class Services_Capsule_Party_Opportunity extends Services_Capsule_Common
+class AtyantikCapsulePartyOpportunity extends AtyantikCapsuleCommon
 {
     /**
      * Get a list of party opportunities.
@@ -69,7 +69,7 @@ class Services_Capsule_Party_Opportunity extends Services_Capsule_Common
      *
      * @link    /api/party/{id}/opportunity
      *
-     * @throws Services_Capsule_RuntimeException
+     * @throws AtyantikCapsuleRuntimeException
      *
      * @param float $partyId The party to retrieve the opportunities from.
      *
@@ -105,7 +105,7 @@ class Services_Capsule_Party_Opportunity extends Services_Capsule_Common
      *
      * @link   /api/party/{party-id}/opportunity
      *
-     * @throws Services_Capsule_RuntimeException
+     * @throws AtyantikCapsuleRuntimeException
      *
      * @param float $partyId The party/org to add to the opportunity.
      * @param array $fields  An array of fields to create the opp with.
@@ -139,7 +139,7 @@ class Services_Capsule_Party_Opportunity extends Services_Capsule_Common
      *
      * @link   /api/party/{party-id}/opportunity
      *
-     * @throws Services_Capsule_RuntimeException
+     * @throws AtyantikCapsuleRuntimeException
      *
      * @param float $partyId The party/org to update the opportunity.
      * @param array $fields  An array of fields to update the opp with.

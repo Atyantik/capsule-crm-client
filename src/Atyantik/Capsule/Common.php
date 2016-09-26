@@ -58,11 +58,11 @@
  *
  * @version  Release: @package_version@
  */
-abstract class Services_Capsule_Common
+abstract class AtyantikCapsuleCommon
 {
     /**
      * Sub section. History of an Opportunity for example
-     * is Services_Capsule_Opportunity_History.
+     * is AtyantikCapsuleOpportunity_History.
      *
      * @var string The sub section mame
      */
@@ -110,11 +110,11 @@ abstract class Services_Capsule_Common
     /**
      * Magical Getter.
      *
-     * @throws Services_Capsule_RuntimeException
+     * @throws AtyantikCapsuleRuntimeException
      *
      * @param string $sub Items, Meetings, Notes, Projects or User.
      *
-     * @return mixed Services_Capsule_*
+     * @return mixed AtyantikCapsule*
      */
     public function __get($section)
     {
@@ -133,13 +133,13 @@ abstract class Services_Capsule_Common
             $currentModule = ucfirst(strtolower($this->moduleName));
 
             if (!isset($this->subSections[$section])) {
-                $classname = 'Services_Capsule_'.$currentModule.'_'.$section;
+                $classname = 'AtyantikCapsule'.$currentModule.'_'.$section;
 
                 if (!class_exists($classname)) {
                     $filename = str_replace('_', '/', $classname).'.php';
 
                     if (!(include $filename)) {
-                        throw new Services_Capsule_RuntimeException(
+                        throw new AtyantikCapsuleRuntimeException(
                             'File '.$filename.' does not exist.'
                         );
                     }
@@ -157,7 +157,7 @@ abstract class Services_Capsule_Common
             break;
 
         default:
-            throw new Services_Capsule_RuntimeException(
+            throw new AtyantikCapsuleRuntimeException(
                 'Section '.$section.' is not a valid API call. If you believe this '.
                 'is wrong please report a bug on http://pear.php.net/Services_Capsule'
             );
@@ -222,8 +222,8 @@ abstract class Services_Capsule_Common
      *
      * This method is used to send all the requests to the capsule web service.
      *
-     * @throws Services_Capsule_UnexpectedValueException
-     * @throws Services_Capsule_RuntimeException
+     * @throws AtyantikCapsuleUnexpectedValueException
+     * @throws AtyantikCapsuleRuntimeException
      *
      * @uses   HTTP_Request2
      * 
@@ -235,7 +235,7 @@ abstract class Services_Capsule_Common
     protected function sendRequest($url, $method = HTTP_Request2::METHOD_GET, $data = null)
     {
         if (!isset($this->appName)) {
-            throw new Services_Capsule_UnexpectedValueException(
+            throw new AtyantikCapsuleUnexpectedValueException(
                 'Please set an app name.'
             );
         }
@@ -268,7 +268,7 @@ abstract class Services_Capsule_Common
         try {
             $response = $this->client->send();
         } catch (HTTP_Request2_Exception $e) {
-            throw new Services_Capsule_RuntimeException($e);
+            throw new AtyantikCapsuleRuntimeException($e);
         }
 
         return $response;
@@ -280,7 +280,7 @@ abstract class Services_Capsule_Common
      * This method is used to parse the response that is returned from
      * the request that was made in $this->sendRequest().
      *
-     * @throws Services_Capsule_RuntimeException
+     * @throws AtyantikCapsuleRuntimeException
      *
      * @param HTTP_Request2_Response $response The response from the webservice.
      *
@@ -298,7 +298,7 @@ abstract class Services_Capsule_Common
                 return true;
             }
 
-            throw new Services_Capsule_RuntimeException(
+            throw new AtyantikCapsuleRuntimeException(
                 'Invalid response with no valid json body'
             );
         }

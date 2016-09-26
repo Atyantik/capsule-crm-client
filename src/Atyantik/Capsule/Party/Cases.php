@@ -63,7 +63,7 @@
  *
  * @version  Release: @package_version@
  */
-class Services_Capsule_Party_Cases extends Services_Capsule_Common
+class AtyantikCapsulePartyCases extends AtyantikCapsuleCommon
 {
     /**
      * Get a list of party cases.
@@ -73,7 +73,7 @@ class Services_Capsule_Party_Cases extends Services_Capsule_Common
      *
      * @link    /api/party/{id}/kase
      *
-     * @throws Services_Capsule_RuntimeException
+     * @throws AtyantikCapsuleRuntimeException
      *
      * @param float $partyId The party to retrieve the opportunities from.
      *
@@ -95,7 +95,7 @@ class Services_Capsule_Party_Cases extends Services_Capsule_Common
      *
      * @link /api/party/{party-id}/kase
      *
-     * @throws Services_Capsule_RuntimeException
+     * @throws AtyantikCapsuleRuntimeException
      *
      * @param float $partyId  The party id to create the new case in.
      * @param array $fields   An assoc array of fields to add in the new case
@@ -133,7 +133,7 @@ class Services_Capsule_Party_Cases extends Services_Capsule_Common
      *
      * @link   /api/party/{party-id}/kase/{id}
      *
-     * @throws Services_Capsule_RuntimeException
+     * @throws AtyantikCapsuleRuntimeException
      *
      * @param float $partyId The party id to create the update the case.
      * @param float $caseId  The case id to update.

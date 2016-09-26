@@ -1,7 +1,7 @@
 <?php
 /**
  * +-----------------------------------------------------------------------+
- * | Copyright (c) 2010, David Coallier                                    |
+ * | Copyright (c) 2010, Atyantik Technologies                             |
  * | All rights reserved.                                                  |
  * |                                                                       |
  * | Redistribution and use in source and binary forms, with or without    |
@@ -30,14 +30,14 @@
  * | OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.  |
  * |                                                                       |
  * +-----------------------------------------------------------------------+
- * | Author: David Coallier <david@echolibre.com>                          |
+ * | Author: Atyantik Technologies <admin@atyantik.com>                    |
  * +-----------------------------------------------------------------------+.
  *
  * PHP version 5
  *
  * @category  Services
  *
- * @author    David Coallier <david@echolibre.com>
+ * @author    Atyantik Technologies <admin@atyantik.com>
  * @copyright echolibre ltd. 2009-2010
  * @license   http://www.opensource.org/licenses/bsd-license.php The BSD License
  *
@@ -45,24 +45,19 @@
  *
  * @version   GIT: $Id$
  */
-require_once 'HTTP/Request2.php';
-
-require_once 'Services/Capsule/Exception.php';
-require_once 'Services/Capsule/Common.php';
-
 /**
  * Services_Capsule.
  *
  * @category Services
  *
- * @author   David Coallier <david@echolibre.com>
+ * @author   Atyantik Technologies <admin@atyantik.com>
  * @license  http://www.opensource.org/licenses/bsd-license.php The BSD License
  *
- * @link     http://github.com/davidcoallier/Services_Capsule
+ * @link     https://github.com/Atyantik/capsule-crm-client
  *
  * @version  Release: @package_version@
  */
-class CapsuleClient extends Services_Capsule_Common
+class CapsuleClient extends AtyantikCapsuleCommon
 {
     /**
      * Sections available to the API.
@@ -91,7 +86,7 @@ class CapsuleClient extends Services_Capsule_Common
      *
      * @param string $sub Items, Meetings, Notes, Projects or User.
      *
-     * @return mixed Services_Capsule_*
+     * @return mixed AtyantikCapsule*
      */
     public function __get($section)
     {
@@ -106,13 +101,13 @@ class CapsuleClient extends Services_Capsule_Common
             case 'Task':
 
             if (!isset($this->sections[$section])) {
-                $classname = 'Services_Capsule_'.$section;
+                $classname = 'AtyantikCapsule'.$section;
 
                 if (!class_exists($classname)) {
                     $filename = str_replace('_', '/', $classname).'.php';
 
                     if (!(include $filename)) {
-                        throw new Services_Capsule_RuntimeException(
+                        throw new AtyantikCapsuleRuntimeException(
                             'File '.$filename.' does not exist.'
                         );
                     }
@@ -130,7 +125,7 @@ class CapsuleClient extends Services_Capsule_Common
             break;
 
         default:
-            throw new Services_Capsule_RuntimeException(
+            throw new AtyantikCapsuleRuntimeException(
                 'Section '.$section.' is not a valid API call. If you believe this '.
                 'is wrong please report a bug on http://pear.php.net/Services_Capsule'
             );

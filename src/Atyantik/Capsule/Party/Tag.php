@@ -59,7 +59,7 @@
  *
  * @version  Release: @package_version@
  */
-class Services_Capsule_Party_Tag extends Services_Capsule_Common
+class AtyantikCapsulePartyTag extends AtyantikCapsuleCommon
 {
     /**
      * Get party tags.
@@ -68,7 +68,7 @@ class Services_Capsule_Party_Tag extends Services_Capsule_Common
      *
      * @link    /api/party/{id}/tag
      *
-     * @throws Services_Capsule_RuntimeException
+     * @throws AtyantikCapsuleRuntimeException
      *
      * @param float $partyId The party to retrieve the tags from.
      *
@@ -92,7 +92,7 @@ class Services_Capsule_Party_Tag extends Services_Capsule_Common
      *
      * @link /api/party/{party-id}/tag/{tag-name}
      *
-     * @throws Services_Capsule_RuntimeException
+     * @throws AtyantikCapsuleRuntimeException
      *
      * @param float  $partyId The party to create the tags on.
      * @param string $tagName The name of the new tag to create.
@@ -115,7 +115,7 @@ class Services_Capsule_Party_Tag extends Services_Capsule_Common
      *
      * @link /api/party/{party-id}/tag/{tag-name}
      *
-     * @throws Services_Capsule_RuntimeException
+     * @throws AtyantikCapsuleRuntimeException
      *
      * @param float  $partyId The party to delete the tags from.
      * @param string $tagName The name of the new tag to delete.

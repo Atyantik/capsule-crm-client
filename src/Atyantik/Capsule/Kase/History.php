@@ -59,7 +59,7 @@
  *
  * @version  Release: @package_version@
  */
-class Services_Capsule_Kase_History extends Services_Capsule_Common
+class AtyantikCapsuleKaseHistory extends AtyantikCapsuleCommon
 {
     /**
      * Get case history.
@@ -68,7 +68,7 @@ class Services_Capsule_Kase_History extends Services_Capsule_Common
      *
      * @link    /api/case/{id}/history
      *
-     * @throws Services_Capsule_RuntimeException
+     * @throws AtyantikCapsuleRuntimeException
      *
      * @param float $caseId The case to retrieve the history from.
      *
@@ -91,7 +91,7 @@ class Services_Capsule_Kase_History extends Services_Capsule_Common
      *
      * @link /api/case/{kase-id}/history
      *
-     * @throws Services_Capsule_RuntimeException
+     * @throws AtyantikCapsuleRuntimeException
      *
      * @param float  $caseId The case to create the note on.
      * @param string $note   The note to add to history.
@@ -122,7 +122,7 @@ class Services_Capsule_Kase_History extends Services_Capsule_Common
      *
      * @link /api/case/{kase-id}/history/{history-id}
      *
-     * @throws Services_Capsule_RuntimeException
+     * @throws AtyantikCapsuleRuntimeException
      *
      * @param float  $caseId    The case to create the tags on.
      * @param float  $historyId The note id to update.
@@ -156,7 +156,7 @@ class Services_Capsule_Kase_History extends Services_Capsule_Common
      *
      * @link /api/case/{kase-id}/history/{history-id}
      *
-     * @throws Services_Capsule_RuntimeException
+     * @throws AtyantikCapsuleRuntimeException
      *
      * @param float $caseId    The case to delete the note from.
      * @param float $historyId The note id to delete.
