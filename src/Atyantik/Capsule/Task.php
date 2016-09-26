@@ -32,140 +32,154 @@
  * +-----------------------------------------------------------------------+
  * | Author: David Coallier <david@echolibre.com>                          |
  * | Contributor: J. Nolan <jeff@nolaninteractive.com>                     |
- * +-----------------------------------------------------------------------+
+ * +-----------------------------------------------------------------------+.
  *
  * PHP version 5
  *
  * @category  	Services
- * @package   	Services_Capsule
+ *
  * @author    	David Coallier <david@echolibre.com>
  * @contributor	Jeff Nolan <jeff@nolaninteractive.com>
+ *
  * @copyright 	echolibre ltd. 2009-2010
  * @license   	http://www.opensource.org/licenses/bsd-license.php The BSD License
+ *
  * @link      	http://github.com/davidcoallier/Services_Capsule
+ *
  * @version   	GIT: $Id$
  */
 
 /**
- * Services_Capsule
+ * Services_Capsule.
  *
  * @category Services
- * @package  Services_Capsule
+ *
  * @author   David Coallier <david@echolibre.com>
  * @license  http://www.opensource.org/licenses/bsd-license.php The BSD License
+ *
  * @link     http://github.com/davidcoallier/Services_Capsule
  * @link     http://capsulecrm.com/help/page/javelin_api_party
+ *
  * @version  Release: @package_version@
  */
 class Services_Capsule_Task extends Services_Capsule_Common
 {
-     /**
-     * Get a Task
+    /**
+     * Get a Task.
      *
      * This method is used to fetch a particular Task by
      * it's identification id.
      *
      * @link   /api/task/{task-id}
+     *
      * @throws Services_Capsule_RuntimeException
      *
-     * @param  double       $id The task ID to retrieve from the service.
-     * @return stdClass     A stdClass object containing the information from
-     *                      the json-decoded response from the server.
+     * @param float $id The task ID to retrieve from the service.
+     *
+     * @return stdClass A stdClass object containing the information from
+     *                  the json-decoded response from the server.
      */
-    public function get($id) 
-    {        
-        $response = $this->sendRequest('/' . (double)$id);
+    public function get($id)
+    {
+        $response = $this->sendRequest('/'.(double) $id);
+
         return $this->parseResponse($response);
     }
-    
+
     /**
-     * List all the task information
+     * List all the task information.
      *
      * Retrieve a list of Tasks. Optionally the results can be 
      * limited or paged using the parameters $start and $limit
-	 * {user} - filter the tasks by assigned user name
-	 * {category} - filter tasks by assigned category
+     * {user} - filter the tasks by assigned user name
+     * {category} - filter tasks by assigned category
      *
      * @link  /api/tasks[?start={start}][&limit={limit}][&category={category}][&user={user}]
+     *
      * @throws Services_Capsule_RuntimeException
      *
-     * @param  int $start  		The start page (Optional).
-     * @param  int $limit  		The limit per page (Optional).
-	 * @param  int $category 	The category to filter tasks by (Optional).
-	 * @param  int $user		The user to filter tasks by (Optional).
+     * @param int $start    The start page (Optional).
+     * @param int $limit    The limit per page (Optional).
+     * @param int $category The category to filter tasks by (Optional).
+     * @param int $user     The user to filter tasks by (Optional).
      *
-     * @return stdClass     A stdClass object containing the information from
-     *                      the json-decoded response from the server.
+     * @return stdClass A stdClass object containing the information from
+     *                  the json-decoded response from the server.
      */
     public function getList($start = null, $limit = null, $category = null, $user = null)
     {
         $request = array();
-        
+
         if (!is_null($start)) {
             $request['start'] = $start;
         }
-        
+
         if (!is_null($limit)) {
             $request['limit'] = $limit;
         }
-		
-		if (!is_null($category)) {
-			$request['category'] = $category;
-		}
-		
-		if (!is_null($user)) {
-			$request['user'] = $user;
-		}
-        
+
+        if (!is_null($category)) {
+            $request['category'] = $category;
+        }
+
+        if (!is_null($user)) {
+            $request['user'] = $user;
+        }
+
         $qs = http_build_query($request);
-        $response = $this->sendRequest('s?' . $qs);
+        $response = $this->sendRequest('s?'.$qs);
+
         return $this->parseResponse($response);
     }
-    
+
     /**
-     * Complete a Task
+     * Complete a Task.
      *
      * Mark a task as complete
      * POST /api/task/{task-id}/complete
      *
      * @link   /api/task/{task-id}/complete
+     *
      * @throws Services_Capsule_RuntimeException
      *
-     * @param  double       $taskId       The task to be marked complete
+     * @param float $taskId The task to be marked complete
      *
      * @return mixed bool|stdClass         A stdClass object containing the information from
-     *                                     the json-decoded response from the server.
+     *               the json-decoded response from the server.
      */
     public function complete($taskId)
     {
-        $url = '/' . (double)$taskId . '/complete';
+        $url = '/'.(double) $taskId.'/complete';
         $response = $this->sendRequest($url, HTTP_Request2::METHOD_POST);
+
         return $this->parseResponse($response);
     }
-    
+
     /**
-     * Re-open a Task
+     * Re-open a Task.
      *
      * Re-open a previously completed task
      * POST /api/task/{task-id}/reopen
      *
      * @link   /api/task/{task-id}/reopen
+     *
      * @throws Services_Capsule_RuntimeException
      *
-     * @param  double       $taskId       The task to be re-opened
+     * @param float $taskId The task to be re-opened
      *
      * @return mixed bool|stdClass         A stdClass object containing the information from
-     *                                     the json-decoded response from the server.
+     *               the json-decoded response from the server.
      */
     public function reopen($taskId)
     {
-        $url = '/' . (double)$taskId . '/repoen';
+        $url = '/'.(double) $taskId.'/repoen';
         $response = $this->sendRequest($url, HTTP_Request2::METHOD_POST);
+
         return $this->parseResponse($response);
     }
-	
+
     /**
-     * Add a task (unnattached)
+     * Add a task (unnattached).
      *
      * Create a new task not attached to a party, opp or case
      *
@@ -180,27 +194,28 @@ class Services_Capsule_Task extends Services_Capsule_Common
      * ?>
      *
      * @link   /api/task
+     *
      * @throws Services_Capsule_RuntimeException
      *
-     * @param  array        $fields        An array of fields to create the task with.
+     * @param array $fields An array of fields to create the task with.
      *
      * @return mixed bool|stdClass         A stdClass object containing the information from
-     *                                     the json-decoded response from the server.
+     *               the json-decoded response from the server.
      */
     public function add($fields)
     {
-        $url         = '';
+        $url = '';
         $task = array('task' => $fields);
-        
+
         $response = $this->sendRequest(
             $url, HTTP_Request2::METHOD_POST, json_encode($task)
         );
-        
+
         return $this->parseResponse($response);
     }
-    
+
     /**
-     * Update a task
+     * Update a task.
      *
      * Update an existing task record, only attributes that 
      * are to be changed need to be supplied in the XML document. 
@@ -211,45 +226,46 @@ class Services_Capsule_Task extends Services_Capsule_Common
      *
      * @link http://capsulecrm.com/help/page/api_task
      * @link /api/task/{task-id}
+     *
      * @throws Services_Capsule_RuntimeException
      *
-     * @param  double       $taskId			 The id of the task to update.
-     * @param  array        $fields         An assoc array of fields to add in the task
+     * @param float $taskId The id of the task to update.
+     * @param array $fields An assoc array of fields to add in the task
      *
      * @return mixed bool|stdClass          A stdClass object containing the information from
-     *                                      the json-decoded response from the server.
+     *               the json-decoded response from the server.
      */
     public function update($taskId, array $fields)
     {
-        $url          = '/' . (double)$taskId;
+        $url = '/'.(double) $taskId;
         $task = array('task' => $fields);
 
         $response = $this->sendRequest(
             $url, HTTP_Request2::METHOD_PUT, json_encode($task)
         );
-        
+
         return $this->parseResponse($response);
     }
 
-    /**
-     * Delete a task
-     *
-     * Delete the task according to its id.
-     *
-     * @link /api/task/{task-id}
-     * @throws Services_Capsule_RuntimeException
-     *
-     * @param  double       $taskId        The task to delete.
-     *
-     * @return mixed bool|stdClass         A stdClass object containing the information from
-     *                                     the json-decoded response from the server.
-     */
+     /**
+      * Delete a task.
+      *
+      * Delete the task according to its id.
+      *
+      * @link /api/task/{task-id}
+      *
+      * @throws Services_Capsule_RuntimeException
+      *
+      * @param  float       $taskId        The task to delete.
+      *
+      * @return mixed bool|stdClass         A stdClass object containing the information from
+      *                                     the json-decoded response from the server.
+      */
      public function delete($taskId)
      {
-         $url = '/' . (double)$taskId;
+         $url = '/'.(double) $taskId;
          $response = $this->sendRequest($url, HTTP_Request2::METHOD_DELETE);
 
          return $this->parseResponse($response);
      }
-
 }

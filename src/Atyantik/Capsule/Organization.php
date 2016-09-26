@@ -31,62 +31,67 @@
  * |                                                                       |
  * +-----------------------------------------------------------------------+
  * | Author: David Coallier <david@echolibre.com>                          |
- * +-----------------------------------------------------------------------+
+ * +-----------------------------------------------------------------------+.
  *
  * PHP version 5
  *
  * @category  Services
- * @package   Services_Capsule
+ *
  * @author    David Coallier <david@echolibre.com>
  * @copyright echolibre ltd. 2009-2010
  * @license   http://www.opensource.org/licenses/bsd-license.php The BSD License
+ *
  * @link      http://github.com/davidcoallier/Services_Capsule
+ *
  * @version   GIT: $Id$
  */
 
 /**
- * Services_Capsule
+ * Services_Capsule.
  *
  * @category Services
- * @package  Services_Capsule
+ *
  * @author   David Coallier <david@echolibre.com>
  * @license  http://www.opensource.org/licenses/bsd-license.php The BSD License
+ *
  * @link     http://github.com/davidcoallier/Services_Capsule
  * @link     http://capsulecrm.com/help/page/javelin_api_party
+ *
  * @version  Release: @package_version@
  */
 class Services_Capsule_Organization extends Services_Capsule_Common
 {
     /**
-     * Add a new Organization 
+     * Add a new Organization.
      *
      * If adding this organization will exceed the accounts contact limit 
      * a 507 Insufficient Storage response will be returned.
      * 
      * @link http://capsulecrm.com/help/page/javelin_api_party
      * @link /api/person
+     *
      * @throws Services_Capsule_RuntimeException
      *
-     * @param  array        $fields        An assoc array of fields to add in the new
-     *                                     person
+     * @param array $fields An assoc array of fields to add in the new
+     *                      person
      *
      * @return mixed bool|stdClass         A stdClass object containing the information from
-     *                                     the json-decoded response from the server.
+     *               the json-decoded response from the server.
      */
     public function add(array $fields)
-    {        
-        $url         = '';
+    {
+        $url = '';
         $org = array('organization' => $fields);
 
         $response = $this->sendRequest(
             $url, HTTP_Request2::METHOD_POST, json_encode($org)
         );
-        
+
         return $this->parseResponse($response);
     }
-    
+
     /**
-     * Update an organization
+     * Update an organization.
      *
      * Update an existing organisation record, only attributes that 
      * are to be changed need to be supplied in the XML document. 
@@ -101,24 +106,25 @@ class Services_Capsule_Organization extends Services_Capsule_Common
      *
      * @link http://capsulecrm.com/help/page/javelin_api_party
      * @link /api/organization
+     *
      * @throws Services_Capsule_RuntimeException
      *
-     * @param  double       $organizationId The id of the person to update.
-     * @param  array        $fields         An assoc array of fields to add in the new
-     *                                      person
+     * @param float $organizationId The id of the person to update.
+     * @param array $fields         An assoc array of fields to add in the new
+     *                              person
      *
      * @return mixed bool|stdClass          A stdClass object containing the information from
-     *                                      the json-decoded response from the server.
+     *               the json-decoded response from the server.
      */
     public function update($organizationId, array $fields)
     {
-        $url          = '/' . (double)$organizationId;
+        $url = '/'.(double) $organizationId;
         $organization = array('organization' => $fields);
 
         $response = $this->sendRequest(
             $url, HTTP_Request2::METHOD_PUT, json_encode($organization)
         );
-        
+
         return $this->parseResponse($response);
     }
 }

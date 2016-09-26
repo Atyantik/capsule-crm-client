@@ -31,58 +31,61 @@
  * |                                                                       |
  * +-----------------------------------------------------------------------+
  * | Author: David Coallier <david@echolibre.com>                          |
- * +-----------------------------------------------------------------------+
+ * +-----------------------------------------------------------------------+.
  *
  * PHP version 5
  *
  * @category  Services
- * @package   Services_Capsule
+ *
  * @author    David Coallier <david@echolibre.com>
  * @copyright echolibre ltd. 2009-2010
  * @license   http://www.opensource.org/licenses/bsd-license.php The BSD License
+ *
  * @link      http://github.com/davidcoallier/Services_Capsule
+ *
  * @version   GIT: $Id$
  */
-
 require_once 'HTTP/Request2.php';
 
 require_once 'Services/Capsule/Exception.php';
 require_once 'Services/Capsule/Common.php';
 
 /**
- * Services_Capsule
+ * Services_Capsule.
  *
  * @category Services
- * @package  Services_Capsule
+ *
  * @author   David Coallier <david@echolibre.com>
  * @license  http://www.opensource.org/licenses/bsd-license.php The BSD License
+ *
  * @link     http://github.com/davidcoallier/Services_Capsule
+ *
  * @version  Release: @package_version@
  */
 class CapsuleClient extends Services_Capsule_Common
 {
     /**
-     * Sections available to the API
+     * Sections available to the API.
      *
      * @var array An array of sections available to the API
      */
     protected $sections = array();
-    
+
     /**
-     * Constructor
+     * Constructor.
      *
      * Initialize the class with the API token.
      *
-     * @param string $token  The API Token you use for your API Calls
+     * @param string $token The API Token you use for your API Calls
      */
     public function __construct($appName, $token)
     {
-        $this->token   = $token;
+        $this->token = $token;
         $this->appName = $appName;
     }
 
     /**
-     * Magical Getter
+     * Magical Getter.
      *
      * @throws Services_Capsule_RuntimeException
      *
@@ -99,37 +102,36 @@ class CapsuleClient extends Services_Capsule_Common
             case 'Kase':
             case 'Resource':
             case 'Person':
-			case 'Organization':
-			case 'Task':
+            case 'Organization':
+            case 'Task':
 
             if (!isset($this->sections[$section])) {
-                $classname = 'Services_Capsule_' .$section;
+                $classname = 'Services_Capsule_'.$section;
 
                 if (!class_exists($classname)) {
-                    $filename  = str_replace('_', '/', $classname) . '.php';
-                    
+                    $filename = str_replace('_', '/', $classname).'.php';
+
                     if (!(include $filename)) {
                         throw new Services_Capsule_RuntimeException(
-                            'File ' . $filename . ' does not exist.'
+                            'File '.$filename.' does not exist.'
                         );
                     }
-                    
                 }
 
-                $this->sections[$section] = new $classname;
-                
+                $this->sections[$section] = new $classname();
+
                 $this->sections[$section]
                     ->setToken($this->token)
                     ->setAppName($this->appName)
                     ->setModuleName(strtolower($section));
             }
-            
+
             return $this->sections[$section];
             break;
 
         default:
             throw new Services_Capsule_RuntimeException(
-                'Section '. $section .' is not a valid API call. If you believe this ' . 
+                'Section '.$section.' is not a valid API call. If you believe this '.
                 'is wrong please report a bug on http://pear.php.net/Services_Capsule'
             );
         }

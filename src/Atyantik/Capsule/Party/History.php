@@ -31,128 +31,140 @@
  * |                                                                       |
  * +-----------------------------------------------------------------------+
  * | Author: David Coallier <david@echolibre.com>                          |
- * +-----------------------------------------------------------------------+
+ * +-----------------------------------------------------------------------+.
  *
  * PHP version 5
  *
  * @category  Services
- * @package   Services_Capsule
+ *
  * @author    David Coallier <david@echolibre.com>
  * @copyright echolibre ltd. 2009-2010
  * @license   http://www.opensource.org/licenses/bsd-license.php The BSD License
+ *
  * @link      http://github.com/davidcoallier/Services_Capsule
+ *
  * @version   GIT: $Id$
  */
 
 /**
- * Services_Capsule
+ * Services_Capsule.
  *
  * @category Services
- * @package  Services_Capsule
+ *
  * @author   David Coallier <david@echolibre.com>
  * @license  http://www.opensource.org/licenses/bsd-license.php The BSD License
+ *
  * @link     http://github.com/davidcoallier/Services_Capsule
  * @link     http://capsulecrm.com/help/page/javelin_api_party
+ *
  * @version  Release: @package_version@
  */
 class Services_Capsule_Party_History extends Services_Capsule_Common
 {
     /**
-     * Get party history
+     * Get party history.
      *
      * History of notes and emails for party records. 
      *
      * @link    /api/party/{id}/history
+     *
      * @throws Services_Capsule_RuntimeException
      *
-     * @param  double       $partyId The party to retrieve the history from.
-     * @return stdClass     A stdClass object containing the information from
-     *                      the json-decoded response from the server.
+     * @param float $partyId The party to retrieve the history from.
+     *
+     * @return stdClass A stdClass object containing the information from
+     *                  the json-decoded response from the server.
      */
     public function getAll($partyId)
     {
-        $url      = '/' . (double)$partyId . '/history';
+        $url = '/'.(double) $partyId.'/history';
         $response = $this->sendRequest($url);
-        
+
         return $this->parseResponse($response);
     }
-    
+
     /**
-     * Add an history note to a party
+     * Add an history note to a party.
      *
      * This method is used to add an history note to a party.
      *
      * @link /api/party/{party-id}/history
+     *
      * @throws Services_Capsule_RuntimeException
      *
-     * @param  double       $partyId       The party to create the note on.
-     * @param  string       $note          The note to add to history.
+     * @param float  $partyId The party to create the note on.
+     * @param string $note    The note to add to history.
      *
      * @return mixed bool|stdClass         A stdClass object containing the information from
-     *                                     the json-decoded response from the server.
+     *               the json-decoded response from the server.
      */
     public function addNote($partyId, $note)
     {
-        $url = '/' . (double)$partyId . '/history';
+        $url = '/'.(double) $partyId.'/history';
 
         $note = array(
             'historyItem' => array(
-                'note' => $note
+                'note' => $note,
             ),
         );
 
         $response = $this->sendRequest($url, HTTP_Request2::METHOD_POST, json_encode($note));
+
         return $this->parseResponse($response);
     }
-    
+
     /**
-     * Add an history note of a party
+     * Add an history note of a party.
      *
      * This method is used to update an history note to a party.
      *
      * @link /api/party/{party-id}/history/{history-id}
+     *
      * @throws Services_Capsule_RuntimeException
      *
-     * @param  double       $partyId The party to create the tags on.
-     * @param  double       $historyId     The note id to update.
-     * @param  string       $note          The note to add to history.
+     * @param float  $partyId   The party to create the tags on.
+     * @param float  $historyId The note id to update.
+     * @param string $note      The note to add to history.
      *
      * @return mixed bool|stdClass         A stdClass object containing the information from
-     *                                     the json-decoded response from the server.
+     *               the json-decoded response from the server.
      */
     public function updateNote($partyId, $historyId, $note)
     {
-        $url = '/' . (double)$partyId . '/history/' . (double)$historyId;
+        $url = '/'.(double) $partyId.'/history/'.(double) $historyId;
 
         $note = array(
             'historyItem' => array(
-                'note' => $note
+                'note' => $note,
             ),
         );
-        
+
         $response = $this->sendRequest($url, HTTP_Request2::METHOD_PUT, json_encode($note));
+
         return $this->parseResponse($response);
     }
-    
+
     /**
-     * Delete an history note from a party
+     * Delete an history note from a party.
      *
      * This method is used to delete an history note from a party.
      *
      * @link /api/party/{party-id}/history/{history-id}
+     *
      * @throws Services_Capsule_RuntimeException
      *
-     * @param  double       $partyId       The party to delete the note from.
-     * @param  double       $historyId     The note id to delete.
+     * @param float $partyId   The party to delete the note from.
+     * @param float $historyId The note id to delete.
      *
      * @return mixed bool|stdClass         A stdClass object containing the information from
-     *                                     the json-decoded response from the server.
+     *               the json-decoded response from the server.
      */
     public function deleteNote($partyId, $historyId)
     {
-        $url = '/' . (double)$partyId . '/history/' . (double)$historyId;
-        
+        $url = '/'.(double) $partyId.'/history/'.(double) $historyId;
+
         $response = $this->sendRequest($url, HTTP_Request2::METHOD_DELETE);
+
         return $this->parseResponse($response);
     }
 }

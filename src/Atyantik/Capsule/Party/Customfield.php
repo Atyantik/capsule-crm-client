@@ -31,111 +31,118 @@
  * |                                                                       |
  * +-----------------------------------------------------------------------+
  * | Author: David Coallier <david@echolibre.com>                          |
- * +-----------------------------------------------------------------------+
+ * +-----------------------------------------------------------------------+.
  *
  * PHP version 5
  *
  * @category  Services
- * @package   Services_Capsule
+ *
  * @author    David Coallier <david@echolibre.com>
  * @copyright echolibre ltd. 2009-2010
  * @license   http://www.opensource.org/licenses/bsd-license.php The BSD License
+ *
  * @link      http://github.com/davidcoallier/Services_Capsule
+ *
  * @version   GIT: $Id$
  */
 
 /**
- * Services_Capsule
+ * Services_Capsule.
  *
  * @category Services
- * @package  Services_Capsule
+ *
  * @author   David Coallier <david@echolibre.com>
  * @license  http://www.opensource.org/licenses/bsd-license.php The BSD License
+ *
  * @link     http://github.com/davidcoallier/Services_Capsule
  * @link     http://capsulecrm.com/help/page/javelin_api_party
  * @link     http://capsulecrm.com/help/page/javelin_api_party_custom_fields
+ *
  * @version  Release: @package_version@
  */
 class Services_Capsule_Party_Customfield extends Services_Capsule_Common
 {
-    
     /**
-     * Get a list of custom fields
+     * Get a list of custom fields.
      *
      * List custom fields for a party. Note that boolean custom fields 
      * that have been set to false will not be returned. 
      *
      * @link    /api/party/{id}/customField
+     *
      * @throws Services_Capsule_RuntimeException
      *
-     * @param  double       $partyId       The party to retrieve 
-     *                                     the custom field from.
-     * @param  string       $fieldName     The custom field to retrieve.
+     * @param float  $partyId   The party to retrieve 
+     *                          the custom field from.
+     * @param string $fieldName The custom field to retrieve.
      *
-     * @return stdClass     A stdClass object containing the information from
-     *                      the json-decoded response from the server.
-     */    
+     * @return stdClass A stdClass object containing the information from
+     *                  the json-decoded response from the server.
+     */
     public function get($partyId, $fieldName)
     {
-        $url      = '/' . (double)$partyId . '/' . $fieldName;
+        $url = '/'.(double) $partyId.'/'.$fieldName;
         $response = $this->sendRequest($url);
-        
+
         return $this->parseResponse($response);
     }
-    
+
     /**
-     * Get a list of available custom fields
+     * Get a list of available custom fields.
      *
      * List of available custom field configurations for parties. 
      *
      * @link    /api/party/customfield/definitions
+     *
      * @throws Services_Capsule_RuntimeException
      * 
-     * @return stdClass     A stdClass object containing the information from
-     *                      the json-decoded response from the server.
+     * @return stdClass A stdClass object containing the information from
+     *                  the json-decoded response from the server.
      */
     public function getDefinitions()
     {
         $response = $this->sendRequest('/customfield/definitions');
+
         return $this->parseResponse($response);
     }
-    
+
     /**
-     * Add a new Custom field to a party
+     * Add a new Custom field to a party.
      *
      * This method is used to create a new custom field for a party.
      *
      * @link /api/party/{party-id}/customfield
+     *
      * @throws Services_Capsule_RuntimeException
      *
-     * @param  double       $partyId       The party id to create the new field on.
-     * @param  array        $fields        An assoc array of fields to add in the new
-     *                                     customField
+     * @param float $partyId The party id to create the new field on.
+     * @param array $fields  An assoc array of fields to add in the new
+     *                       customField
      *
      * @return mixed bool|stdClass         A stdClass object containing the information from
-     *                                     the json-decoded response from the server.
+     *               the json-decoded response from the server.
      */
     public function add($partyId, array $fields)
     {
         if (!isset($fields['boolean'])) {
             throw new Services_Capsule_RuntimeException(
-                '"boolean" parameter of second parameter required ' . 
+                '"boolean" parameter of second parameter required '.
                 'Ex: ("boolean" => "true")'
             );
         }
-        
-        $url         = '/' . (double)$partyId . '/customfield';
+
+        $url = '/'.(double) $partyId.'/customfield';
         $customField = array('customField' => $fields);
 
         $response = $this->sendRequest(
             $url, HTTP_Request2::METHOD_POST, json_encode($customField)
         );
-        
+
         return $this->parseResponse($response);
     }
-    
+
     /**
-     * Update a custom fieldof a party
+     * Update a custom fieldof a party.
      *
      * This method is used to update custom field of a party.
      *
@@ -144,50 +151,52 @@ class Services_Capsule_Party_Customfield extends Services_Capsule_Common
      * not be displayed on the next get. 
      *
      * @link   /api/party/{party-id}customfield/{customfield-id} 
+     *
      * @throws Services_Capsule_RuntimeException
      *
-     * @param  double       $partyId       The party id to update.
-     * @param  double       $fieldId       The field id to update.
-     * @param  array        $fields        An assoc array of fields to update in the new
-     *                                     customField
+     * @param float $partyId The party id to update.
+     * @param float $fieldId The field id to update.
+     * @param array $fields  An assoc array of fields to update in the new
+     *                       customField
      *
      * @return mixed bool|stdClass         A stdClass object containing the information from
-     *                                     the json-decoded response from the server.
+     *               the json-decoded response from the server.
      */
     public function update($partyId, $fieldId, $fields)
     {
-        $url         = '/' . (double)$partyId . '/customfield/ ' . (double)$fieldId;
+        $url = '/'.(double) $partyId.'/customfield/ '.(double) $fieldId;
         $customField = array('customField' => $fields);
 
         $response = $this->sendRequest(
             $url, HTTP_Request2::METHOD_PUT, json_encode($customField)
         );
-        
+
         return $this->parseResponse($response);
     }
-    
+
     /**
-     * Delete a custom field of a party
+     * Delete a custom field of a party.
      *
      * This method is used to update an history note of a
      * party.
      *
      * @link   /api/party/{party-id}/customfield/{customfield-id} 
+     *
      * @throws Services_Capsule_RuntimeException
      *
-     * @param  double       $partyId       The party id to create the new field on.
-     * @param  double       $fieldId
-     * @param  array        $fields        An assoc array of fields to add in the new
-     *                                     customField
+     * @param float $partyId The party id to create the new field on.
+     * @param float $fieldId
+     * @param array $fields  An assoc array of fields to add in the new
+     *                       customField
      *
      * @return mixed bool|stdClass         A stdClass object containing the information from
-     *                                     the json-decoded response from the server.
+     *               the json-decoded response from the server.
      */
     public function delete($partyId, $fieldId)
     {
-        $url      = '/' . (double)$partyId . '/customfield/ ' . (double)$fieldId;
+        $url = '/'.(double) $partyId.'/customfield/ '.(double) $fieldId;
         $response = $this->sendRequest($url, HTTP_Request2::METHOD_DELETE);
-        
+
         return $this->parseResponse($response);
     }
 }

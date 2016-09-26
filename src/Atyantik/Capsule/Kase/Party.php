@@ -31,95 +31,102 @@
  * |                                                                       |
  * +-----------------------------------------------------------------------+
  * | Author: David Coallier <david@echolibre.com>                          |
- * +-----------------------------------------------------------------------+
+ * +-----------------------------------------------------------------------+.
  *
  * PHP version 5
  *
  * @category  Services
- * @package   Services_Capsule
+ *
  * @author    David Coallier <david@echolibre.com>
  * @copyright echolibre ltd. 2009-2010
  * @license   http://www.opensource.org/licenses/bsd-license.php The BSD License
+ *
  * @link      http://github.com/davidcoallier/Services_Capsule
+ *
  * @version   GIT: $Id$
  */
 
 /**
- * Services_Capsule
+ * Services_Capsule.
  *
  * @category Services
- * @package  Services_Capsule
+ *
  * @author   David Coallier <david@echolibre.com>
  * @license  http://www.opensource.org/licenses/bsd-license.php The BSD License
+ *
  * @link     http://github.com/davidcoallier/Services_Capsule
  * @link     http://capsulecrm.com/help/page/javelin_api_case
+ *
  * @version  Release: @package_version@
  */
 class Services_Capsule_Kase_Party extends Services_Capsule_Common
 {
-    
     /**
-     * Get a list of additional parties
+     * Get a list of additional parties.
      *
      * View additional people & organisations related to this case. 
      *
      * @link    /api/case/{id}/party
+     *
      * @throws Services_Capsule_RuntimeException
      *
-     * @param  double       $caseId The case to retrieve the parties from.
-     * @return stdClass     A stdClass object containing the information from
-     *                      the json-decoded response from the server.
+     * @param float $caseId The case to retrieve the parties from.
+     *
+     * @return stdClass A stdClass object containing the information from
+     *                  the json-decoded response from the server.
      */
     public function getAll($caseId)
     {
-        $url      = '/' . (double)$caseId . '/party';
+        $url = '/'.(double) $caseId.'/party';
         $response = $this->sendRequest($url);
-        
+
         return $this->parseResponse($response);
     }
-    
+
     /**
-     * Add a party to a case
+     * Add a party to a case.
      *
      * This method is used to Add the Person or Organisation 
      * to the case supplied in the $partyId parameter 
      *
      * @link   /api/case/{id}/party/{party-id}
+     *
      * @throws Services_Capsule_RuntimeException
      *
-     * @param  double       $caseId The case to add the party on.
-     * @param  string       $partyId       The party/org to add to the case.
+     * @param float  $caseId  The case to add the party on.
+     * @param string $partyId The party/org to add to the case.
      *
      * @return mixed bool|stdClass         A stdClass object containing the information from
-     *                                     the json-decoded response from the server.
+     *               the json-decoded response from the server.
      */
     public function add($caseId, $partyId)
     {
-        $url = '/' . (double)$caseId . '/party/' . (double)$partyId;
+        $url = '/'.(double) $caseId.'/party/'.(double) $partyId;
         $response = $this->sendRequest($url, HTTP_Request2::METHOD_POST);
-        
+
         return $this->parseResponse($response);
     }
     /**
-     * Delete a party from a case
+     * Delete a party from a case.
      *
      * This method is used to delete a Person or Organisation 
      * to the case supplied in the $partyId parameter 
      *
      * @link   /api/case/{id}/party/{party-id}
+     *
      * @throws Services_Capsule_RuntimeException
      *
-     * @param  double       $caseId The case to delete the party from.
-     * @param  string       $partyId       The party/org to delete from the case.
+     * @param float  $caseId  The case to delete the party from.
+     * @param string $partyId The party/org to delete from the case.
      *
      * @return mixed bool|stdClass         A stdClass object containing the information from
-     *                                     the json-decoded response from the server.
+     *               the json-decoded response from the server.
      */
     public function delete($caseId, $partyId)
     {
-        $url = '/' . (double)$caseId . '/party/' . (double)$partyId;
+        $url = '/'.(double) $caseId.'/party/'.(double) $partyId;
         $response = $this->sendRequest($url, HTTP_Request2::METHOD_DELETE);
-        
+
         return $this->parseResponse($response);
     }
 }

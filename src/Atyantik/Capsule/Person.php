@@ -31,34 +31,38 @@
  * |                                                                       |
  * +-----------------------------------------------------------------------+
  * | Author: David Coallier <david@echolibre.com>                          |
- * +-----------------------------------------------------------------------+
+ * +-----------------------------------------------------------------------+.
  *
  * PHP version 5
  *
  * @category  Services
- * @package   Services_Capsule
+ *
  * @author    David Coallier <david@echolibre.com>
  * @copyright echolibre ltd. 2009-2010
  * @license   http://www.opensource.org/licenses/bsd-license.php The BSD License
+ *
  * @link      http://github.com/davidcoallier/Services_Capsule
+ *
  * @version   GIT: $Id$
  */
 
 /**
- * Services_Capsule
+ * Services_Capsule.
  *
  * @category Services
- * @package  Services_Capsule
+ *
  * @author   David Coallier <david@echolibre.com>
  * @license  http://www.opensource.org/licenses/bsd-license.php The BSD License
+ *
  * @link     http://github.com/davidcoallier/Services_Capsule
  * @link     http://capsulecrm.com/help/page/javelin_api_party
+ *
  * @version  Release: @package_version@
  */
 class Services_Capsule_Person extends Services_Capsule_Common
 {
     /**
-     * Add a new Person to an organization
+     * Add a new Person to an organization.
      *
      * Create a new person and optionally attach to an organisation. 
      * You can specify an organisation id or organisation name. 
@@ -74,28 +78,29 @@ class Services_Capsule_Person extends Services_Capsule_Common
      * 
      * @link http://capsulecrm.com/help/page/javelin_api_party
      * @link /api/person
+     *
      * @throws Services_Capsule_RuntimeException
      *
-     * @param  array        $fields        An assoc array of fields to add in the new
-     *                                     person
+     * @param array $fields An assoc array of fields to add in the new
+     *                      person
      *
      * @return mixed bool|stdClass         A stdClass object containing the information from
-     *                                     the json-decoded response from the server.
+     *               the json-decoded response from the server.
      */
     public function add(array $fields)
-    {        
-        $url         = '';
+    {
+        $url = '';
         $person = array('person' => $fields);
 
         $response = $this->sendRequest(
             $url, HTTP_Request2::METHOD_POST, json_encode($person)
         );
-        
+
         return $this->parseResponse($response);
     }
-    
+
     /**
-     * Update a person
+     * Update a person.
      *
      * Update an existing person record, only attributes that 
      * are to be changed need to be supplied in the XML document. 
@@ -110,24 +115,25 @@ class Services_Capsule_Person extends Services_Capsule_Common
      *
      * @link http://capsulecrm.com/help/page/javelin_api_party
      * @link /api/organization
+     *
      * @throws Services_Capsule_RuntimeException
      *
-     * @param  double       $personId      The id of the person to update.
-     * @param  array        $fields        An assoc array of fields to add in the new
-     *                                     person
+     * @param float $personId The id of the person to update.
+     * @param array $fields   An assoc array of fields to add in the new
+     *                        person
      *
      * @return mixed bool|stdClass         A stdClass object containing the information from
-     *                                     the json-decoded response from the server.
+     *               the json-decoded response from the server.
      */
     public function update($personId, array $fields)
     {
-        $url         = '/' . (double)$personId;
-        $person      = array('person' => $fields);
+        $url = '/'.(double) $personId;
+        $person = array('person' => $fields);
 
         $response = $this->sendRequest(
             $url, HTTP_Request2::METHOD_PUT, json_encode($person)
         );
-        
+
         return $this->parseResponse($response);
     }
 }

@@ -31,68 +31,76 @@
  * |                                                                       |
  * +-----------------------------------------------------------------------+
  * | Author: David Coallier <david@echolibre.com>                          |
- * +-----------------------------------------------------------------------+
+ * +-----------------------------------------------------------------------+.
  *
  * PHP version 5
  *
  * @category  Services
- * @package   Services_Capsule
+ *
  * @author    David Coallier <david@echolibre.com>
  * @copyright echolibre ltd. 2009-2010
  * @license   http://www.opensource.org/licenses/bsd-license.php The BSD License
+ *
  * @link      http://github.com/davidcoallier/Services_Capsule
+ *
  * @version   GIT: $Id$
  */
 
 /**
- * Services_Capsule
+ * Services_Capsule.
  *
  * @category Services
- * @package  Services_Capsule
+ *
  * @author   David Coallier <david@echolibre.com>
  * @license  http://www.opensource.org/licenses/bsd-license.php The BSD License
+ *
  * @link     http://github.com/davidcoallier/Services_Capsule
  * @link     http://capsulecrm.com/help/page/javelin_api_opportunity
  * @link     http://capsulecrm.com/help/page/javelin_api_party
  * @link     http://capsulecrm.com/help/page/javelin_api_case
+ *
  * @version  Release: @package_version@
  */
 class Services_Capsule_Resource extends Services_Capsule_Common
-{   
+{
     /**
-     * Get a list of resource countries
+     * Get a list of resource countries.
      *
      * List of country names that can be supplied in the <country /> 
      * element of addresses. Alternatively ISO 3166-1 alpha-2 or 
      * alpha-3 codes can be used. 
      *
      * @link   /api/resource/country
+     *
      * @throws Services_Capsule_RuntimeException
      *
-     * @return stdClass     A stdClass object containing the information from
-     *                      the json-decoded response from the server.
+     * @return stdClass A stdClass object containing the information from
+     *                  the json-decoded response from the server.
      */
     public function getCountries()
     {
         $response = $this->sendRequest('/country');
+
         return $this->parseResponse($response);
     }
-    
+
     /**
-     * Get a list of resource currencies
+     * Get a list of resource currencies.
      *
      * List of ISO currencies currently supported by Capsule. 
      * These are the options available when creating new opportunities.
      *
      * @link   /api/resource/currency
+     *
      * @throws Services_Capsule_RuntimeException
      *
-     * @return stdClass     A stdClass object containing the information from
-     *                      the json-decoded response from the server.
+     * @return stdClass A stdClass object containing the information from
+     *                  the json-decoded response from the server.
      */
     public function getCurrencies()
     {
         $response = $this->sendRequest('/currency');
+
         return $this->parseResponse($response);
     }
 }

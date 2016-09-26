@@ -31,118 +31,125 @@
  * |                                                                       |
  * +-----------------------------------------------------------------------+
  * | Author: David Coallier <david@echolibre.com>                          |
- * +-----------------------------------------------------------------------+
+ * +-----------------------------------------------------------------------+.
  *
  * PHP version 5
  *
  * @category  Services
- * @package   Services_Capsule
+ *
  * @author    David Coallier <david@echolibre.com>
  * @copyright echolibre ltd. 2009-2010
  * @license   http://www.opensource.org/licenses/bsd-license.php The BSD License
+ *
  * @link      http://github.com/davidcoallier/Services_Capsule
+ *
  * @version   GIT: $Id$
  */
 
 /**
- * Services_Capsule
+ * Services_Capsule.
  *
  * @category Services
- * @package  Services_Capsule
+ *
  * @author   David Coallier <david@echolibre.com>
  * @license  http://www.opensource.org/licenses/bsd-license.php The BSD License
+ *
  * @link     http://github.com/davidcoallier/Services_Capsule
  * @link     http://capsulecrm.com/help/page/javelin_api_case
  * @link     http://capsulecrm.com/help/page/javelin_api_case_custom_fields
+ *
  * @version  Release: @package_version@
  */
 class Services_Capsule_Kase_Customfield extends Services_Capsule_Common
 {
-    
     /**
-     * Get a list of custom fields
+     * Get a list of custom fields.
      *
      * List custom fields for a case. Note that boolean custom fields 
      * that have been set to false will not be returned. 
      *
      * @link    /api/kase/{id}/customfield
+     *
      * @throws Services_Capsule_RuntimeException
      *
-     * @param  double       $caseId The case to retrieve 
-     *                                     the custom field from.
+     * @param float $caseId The case to retrieve 
+     *                      the custom field from.
      *
-     * @return stdClass     A stdClass object containing the information from
-     *                      the json-decoded response from the server.
-     */    
+     * @return stdClass A stdClass object containing the information from
+     *                  the json-decoded response from the server.
+     */
     public function getAll($caseId)
     {
-        $url      = '/' . (double)$caseId . '/customfields';
+        $url = '/'.(double) $caseId.'/customfields';
         $response = $this->sendRequest($url);
-        
+
         return $this->parseResponse($response);
     }
-    
+
     /**
-     * Get a list of available custom fields
+     * Get a list of available custom fields.
      *
      * List of available custom field configurations for opportunities. 
      *
      * @link    /api/kase/customfield/definitions
+     *
      * @throws Services_Capsule_RuntimeException
      * 
-     * @return stdClass     A stdClass object containing the information from
-     *                      the json-decoded response from the server.
+     * @return stdClass A stdClass object containing the information from
+     *                  the json-decoded response from the server.
      */
     public function getDefinitions()
     {
         $response = $this->sendRequest('/customfield/definitions');
+
         return $this->parseResponse($response);
     }
-    
+
     /**
-     * Add a new Custom field to a case (BY CASE ID)
+     * Add a new Custom field to a case (BY CASE ID).
      *
      * This method is used to create a new custom field to a
      * case that is associated in a case.
      *
      * @link /api/kase/{kase-id}/customfield
+     *
      * @throws Services_Capsule_RuntimeException
      *
-     * @param  double       $caseId        The case id to create the new field on.
-     * @param  array        $fields        An assoc array of fields to add in the new
-     *                                     customField
+     * @param float $caseId The case id to create the new field on.
+     * @param array $fields An assoc array of fields to add in the new
+     *                      customField
      *
      * @return mixed bool|stdClass         A stdClass object containing the information from
-     *                                     the json-decoded response from the server.
+     *               the json-decoded response from the server.
      */
     public function add($caseId, array $fields)
     {
         /* Temporarily commented out: 
-		 * Not sure why the code below is required,
-		 * it was preventing this method from working
-		 * as expected - J. Nolan (04/03/2013)
-		
-		if (!isset($fields['boolean'])) {
+         * Not sure why the code below is required,
+         * it was preventing this method from working
+         * as expected - J. Nolan (04/03/2013)
+        
+        if (!isset($fields['boolean'])) {
             throw new Services_Capsule_RuntimeException(
                 '"boolean" parameter of second parameter required ' . 
                 'Ex: ("boolean" => "true")'
             );
         } 
-		
-		 ***/
         
-        $url         = '/' . (double)$caseId . '/customfields';
+         ***/
+
+        $url = '/'.(double) $caseId.'/customfields';
         $customFields = array('customFields' => array('customField' => $fields));
 
         $response = $this->sendRequest(
             $url, HTTP_Request2::METHOD_POST, json_encode($customFields)
         );
-        
+
         return $this->parseResponse($response);
     }
-    
+
     /**
-     * Update the custom field of a case
+     * Update the custom field of a case.
      *
      * This method is used to update an history note to an
      * case.
@@ -152,30 +159,31 @@ class Services_Capsule_Kase_Customfield extends Services_Capsule_Common
      * not be displayed on the next get. 
      *
      * @link   /api/kase/{kase-id}/customfield/{customfield-id} 
+     *
      * @throws Services_Capsule_RuntimeException
      *
-     * @param  double       $caseId        The case id to create the new field on.
-     * @param  double       $fieldId
-     * @param  array        $fields        An assoc array of fields to add in the new
-     *                                     customField
+     * @param float $caseId  The case id to create the new field on.
+     * @param float $fieldId
+     * @param array $fields  An assoc array of fields to add in the new
+     *                       customField
      *
      * @return mixed bool|stdClass         A stdClass object containing the information from
-     *                                     the json-decoded response from the server.
+     *               the json-decoded response from the server.
      */
     public function update($caseId, $fieldId, $fields)
     {
-        $url         = '/' . (double)$caseId . '/customfield/ ' . (double)$fieldId;
+        $url = '/'.(double) $caseId.'/customfield/ '.(double) $fieldId;
         $customField = array('customField' => $fields);
 
         $response = $this->sendRequest(
             $url, HTTP_Request2::METHOD_PUT, json_encode($customField)
         );
-        
+
         return $this->parseResponse($response);
     }
-    
+
     /**
-     * Delete the custom field of a case
+     * Delete the custom field of a case.
      *
      * This method is used to delete the custom field
      * of a case.
@@ -185,21 +193,22 @@ class Services_Capsule_Kase_Customfield extends Services_Capsule_Common
      * not be displayed on the next get. 
      *
      * @link   /api/kase/{kase-id}/customfield/{customfield-id} 
+     *
      * @throws Services_Capsule_RuntimeException
      *
-     * @param  double       $caseId        The case id to create the new field on.
-     * @param  double       $fieldId
-     * @param  array        $fields        An assoc array of fields to add in the new
-     *                                     customField
+     * @param float $caseId  The case id to create the new field on.
+     * @param float $fieldId
+     * @param array $fields  An assoc array of fields to add in the new
+     *                       customField
      *
      * @return mixed bool|stdClass         A stdClass object containing the information from
-     *                                     the json-decoded response from the server.
+     *               the json-decoded response from the server.
      */
     public function delete($caseId, $fieldId)
     {
-        $url      = '/' . (double)$caseId . '/customfield/ ' . (double)$fieldId;
+        $url = '/'.(double) $caseId.'/customfield/ '.(double) $fieldId;
         $response = $this->sendRequest($url, HTTP_Request2::METHOD_DELETE);
-        
+
         return $this->parseResponse($response);
     }
 }

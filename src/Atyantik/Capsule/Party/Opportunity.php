@@ -31,56 +31,61 @@
  * |                                                                       |
  * +-----------------------------------------------------------------------+
  * | Author: David Coallier <david@echolibre.com>                          |
- * +-----------------------------------------------------------------------+
+ * +-----------------------------------------------------------------------+.
  *
  * PHP version 5
  *
  * @category  Services
- * @package   Services_Capsule
+ *
  * @author    David Coallier <david@echolibre.com>
  * @copyright echolibre ltd. 2009-2010
  * @license   http://www.opensource.org/licenses/bsd-license.php The BSD License
+ *
  * @link      http://github.com/davidcoallier/Services_Capsule
+ *
  * @version   GIT: $Id$
  */
 
 /**
- * Services_Capsule
+ * Services_Capsule.
  *
  * @category Services
- * @package  Services_Capsule
+ *
  * @author   David Coallier <david@echolibre.com>
  * @license  http://www.opensource.org/licenses/bsd-license.php The BSD License
+ *
  * @link     http://github.com/davidcoallier/Services_Capsule
  * @link     http://capsulecrm.com/help/page/javelin_api_party
+ *
  * @version  Release: @package_version@
  */
 class Services_Capsule_Party_Opportunity extends Services_Capsule_Common
 {
-
     /**
-     * Get a list of party opportunities
+     * Get a list of party opportunities.
      *
      * This method returns a list of opportunities associated
      * to a particular party.
      *
      * @link    /api/party/{id}/opportunity
+     *
      * @throws Services_Capsule_RuntimeException
      *
-     * @param  double       $partyId  The party to retrieve the opportunities from.
-     * @return stdClass     A stdClass object containing the information from
-     *                      the json-decoded response from the server.
+     * @param float $partyId The party to retrieve the opportunities from.
+     *
+     * @return stdClass A stdClass object containing the information from
+     *                  the json-decoded response from the server.
      */
     public function getAll($partyId)
     {
-        $url      = '/' . (double)$partyId . '/opportunity';
+        $url = '/'.(double) $partyId.'/opportunity';
         $response = $this->sendRequest($url);
 
         return $this->parseResponse($response);
     }
 
     /**
-     * Add a opportunity to a party
+     * Add a opportunity to a party.
      *
      * Create a new opportunity attached to this person or organisation, when 
      * creating an opportunity for a person attached to an organisation the person 
@@ -99,28 +104,29 @@ class Services_Capsule_Party_Opportunity extends Services_Capsule_Common
      * ?>
      *
      * @link   /api/party/{party-id}/opportunity
+     *
      * @throws Services_Capsule_RuntimeException
      *
-     * @param  double       $partyId       The party/org to add to the opportunity.
-     * @param  array        $fields        An array of fields to create the opp with.
+     * @param float $partyId The party/org to add to the opportunity.
+     * @param array $fields  An array of fields to create the opp with.
      *
      * @return mixed bool|stdClass         A stdClass object containing the information from
-     *                                     the json-decoded response from the server.
+     *               the json-decoded response from the server.
      */
     public function add($partyId, $fields)
     {
-        $url         = '/' . (double)$partyId . '/opportunity';
+        $url = '/'.(double) $partyId.'/opportunity';
         $opportunity = array('opportunity' => $fields);
-        
+
         $response = $this->sendRequest(
             $url, HTTP_Request2::METHOD_POST, json_encode($opportunity)
         );
-        
+
         return $this->parseResponse($response);
     }
-    
+
     /**
-     * Update an opportunity of a party
+     * Update an opportunity of a party.
      *
      * Update said opportunity for a party.
      *
@@ -132,23 +138,24 @@ class Services_Capsule_Party_Opportunity extends Services_Capsule_Common
      * ?>
      *
      * @link   /api/party/{party-id}/opportunity
+     *
      * @throws Services_Capsule_RuntimeException
      *
-     * @param  double       $partyId       The party/org to update the opportunity.
-     * @param  array        $fields        An array of fields to update the opp with.
+     * @param float $partyId The party/org to update the opportunity.
+     * @param array $fields  An array of fields to update the opp with.
      *
      * @return mixed bool|stdClass         A stdClass object containing the information from
-     *                                     the json-decoded response from the server.
+     *               the json-decoded response from the server.
      */
     public function update($partyId, $fields)
     {
-        $url         = '/' . (double)$partyId . '/opportunity';
+        $url = '/'.(double) $partyId.'/opportunity';
         $opportunity = array('opportunity' => $fields);
-        
+
         $response = $this->sendRequest(
             $url, HTTP_Request2::METHOD_PUT, json_encode($opportunity)
         );
-        
+
         return $this->parseResponse($response);
     }
 }

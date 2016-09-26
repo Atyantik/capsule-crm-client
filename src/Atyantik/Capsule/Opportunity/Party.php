@@ -31,95 +31,102 @@
  * |                                                                       |
  * +-----------------------------------------------------------------------+
  * | Author: David Coallier <david@echolibre.com>                          |
- * +-----------------------------------------------------------------------+
+ * +-----------------------------------------------------------------------+.
  *
  * PHP version 5
  *
  * @category  Services
- * @package   Services_Capsule
+ *
  * @author    David Coallier <david@echolibre.com>
  * @copyright echolibre ltd. 2009-2010
  * @license   http://www.opensource.org/licenses/bsd-license.php The BSD License
+ *
  * @link      http://github.com/davidcoallier/Services_Capsule
+ *
  * @version   GIT: $Id$
  */
 
 /**
- * Services_Capsule
+ * Services_Capsule.
  *
  * @category Services
- * @package  Services_Capsule
+ *
  * @author   David Coallier <david@echolibre.com>
  * @license  http://www.opensource.org/licenses/bsd-license.php The BSD License
+ *
  * @link     http://github.com/davidcoallier/Services_Capsule
  * @link     http://capsulecrm.com/help/page/javelin_api_opportunity
+ *
  * @version  Release: @package_version@
  */
 class Services_Capsule_Opportunity_Party extends Services_Capsule_Common
 {
-    
     /**
-     * Get a list of additional parties
+     * Get a list of additional parties.
      *
      * View additional people & organisations related to this opportunity. 
      *
      * @link    /api/opportunity/{id}/party
+     *
      * @throws Services_Capsule_RuntimeException
      *
-     * @param  double       $opportunityId The opportunity to retrieve the parties from.
-     * @return stdClass     A stdClass object containing the information from
-     *                      the json-decoded response from the server.
+     * @param float $opportunityId The opportunity to retrieve the parties from.
+     *
+     * @return stdClass A stdClass object containing the information from
+     *                  the json-decoded response from the server.
      */
     public function getAll($opportunityId)
     {
-        $url      = '/' . (double)$opportunityId . '/party';
+        $url = '/'.(double) $opportunityId.'/party';
         $response = $this->sendRequest($url);
-        
+
         return $this->parseResponse($response);
     }
-    
+
     /**
-     * Add a party to an opportunity
+     * Add a party to an opportunity.
      *
      * This method is used to Add the Person or Organisation 
      * to the opportunity supplied in the $partyId parameter 
      *
      * @link   /api/opportunity/{id}/party/{party-id}
+     *
      * @throws Services_Capsule_RuntimeException
      *
-     * @param  double       $opportunityId The opportunity to add the party on.
-     * @param  string       $partyId       The party/org to add to the opportunity.
+     * @param float  $opportunityId The opportunity to add the party on.
+     * @param string $partyId       The party/org to add to the opportunity.
      *
      * @return mixed bool|stdClass         A stdClass object containing the information from
-     *                                     the json-decoded response from the server.
+     *               the json-decoded response from the server.
      */
     public function add($opportunityId, $partyId)
     {
-        $url = '/' . (double)$opportunityId . '/party/' . (double)$partyId;
+        $url = '/'.(double) $opportunityId.'/party/'.(double) $partyId;
         $response = $this->sendRequest($url, HTTP_Request2::METHOD_POST);
-        
+
         return $this->parseResponse($response);
     }
     /**
-     * Delete a party from an opportunity
+     * Delete a party from an opportunity.
      *
      * This method is used to delete a Person or Organisation 
      * to the opportunity supplied in the $partyId parameter 
      *
      * @link   /api/opportunity/{id}/party/{party-id}
+     *
      * @throws Services_Capsule_RuntimeException
      *
-     * @param  double       $opportunityId The opportunity to delete the party from.
-     * @param  string       $partyId       The party/org to delete from the opportunity.
+     * @param float  $opportunityId The opportunity to delete the party from.
+     * @param string $partyId       The party/org to delete from the opportunity.
      *
      * @return mixed bool|stdClass         A stdClass object containing the information from
-     *                                     the json-decoded response from the server.
+     *               the json-decoded response from the server.
      */
     public function delete($opportunityId, $partyId)
     {
-        $url = '/' . (double)$opportunityId . '/party/' . (double)$partyId;
+        $url = '/'.(double) $opportunityId.'/party/'.(double) $partyId;
         $response = $this->sendRequest($url, HTTP_Request2::METHOD_DELETE);
-        
+
         return $this->parseResponse($response);
     }
 }

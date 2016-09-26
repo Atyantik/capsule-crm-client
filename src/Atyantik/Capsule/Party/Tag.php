@@ -31,95 +31,103 @@
  * |                                                                       |
  * +-----------------------------------------------------------------------+
  * | Author: David Coallier <david@echolibre.com>                          |
- * +-----------------------------------------------------------------------+
+ * +-----------------------------------------------------------------------+.
  *
  * PHP version 5
  *
  * @category  Services
- * @package   Services_Capsule
+ *
  * @author    David Coallier <david@echolibre.com>
  * @copyright echolibre ltd. 2009-2010
  * @license   http://www.opensource.org/licenses/bsd-license.php The BSD License
+ *
  * @link      http://github.com/davidcoallier/Services_Capsule
+ *
  * @version   GIT: $Id$
  */
 
 /**
- * Services_Capsule
+ * Services_Capsule.
  *
  * @category Services
- * @package  Services_Capsule
+ *
  * @author   David Coallier <david@echolibre.com>
  * @license  http://www.opensource.org/licenses/bsd-license.php The BSD License
+ *
  * @link     http://github.com/davidcoallier/Services_Capsule
  * @link     http://capsulecrm.com/help/page/javelin_api_party
+ *
  * @version  Release: @package_version@
  */
 class Services_Capsule_Party_Tag extends Services_Capsule_Common
 {
     /**
-     * Get party tags
+     * Get party tags.
      *
      * A list of tags for a party.
      *
      * @link    /api/party/{id}/tag
+     *
      * @throws Services_Capsule_RuntimeException
      *
-     * @param  double       $partyId The party to retrieve the tags from.
-     * @return stdClass     A stdClass object containing the information from.
-     *                      the json-decoded response from the server.
+     * @param float $partyId The party to retrieve the tags from.
+     *
+     * @return stdClass A stdClass object containing the information from.
+     *                  the json-decoded response from the server.
      */
     public function getAll($partyId)
     {
-        $url      = '/' . (double)$partyId . '/tag';
+        $url = '/'.(double) $partyId.'/tag';
         $response = $this->sendRequest($url);
-        
+
         return $this->parseResponse($response);
     }
-    
+
     /**
-     * Add a tag to a party
+     * Add a tag to a party.
      *
      * The tag name will need to be URL encoded. If the tag is already present on 
      * the party status in the response will be 200 OK, when the tag is added
      * the response will be 201 Created. 
      *
      * @link /api/party/{party-id}/tag/{tag-name}
+     *
      * @throws Services_Capsule_RuntimeException
      *
-     * @param  double       $partyId The party to create the tags on.
-     * @param  string       $tagName       The name of the new tag to create.
+     * @param float  $partyId The party to create the tags on.
+     * @param string $tagName The name of the new tag to create.
      *
      * @return mixed bool|stdClass         A stdClass object containing the information from
-     *                                     the json-decoded response from the server.
+     *               the json-decoded response from the server.
      */
     public function add($partyId, $tagName)
     {
-        $url = '/' . (double)$partyId . '/tag/' . urlencode($tagName);
+        $url = '/'.(double) $partyId.'/tag/'.urlencode($tagName);
         $response = $this->sendRequest($url, HTTP_Request2::METHOD_POST);
-        
+
         return $this->parseResponse($response);
     }
-    
+
     /**
-     * Delete a tag from a party
+     * Delete a tag from a party.
      *
      * The tag name will need to be URL encoded.
      *
      * @link /api/party/{party-id}/tag/{tag-name}
+     *
      * @throws Services_Capsule_RuntimeException
      *
-     * @param  double       $partyId The party to delete the tags from.
-     * @param  string       $tagName       The name of the new tag to delete.
+     * @param float  $partyId The party to delete the tags from.
+     * @param string $tagName The name of the new tag to delete.
      *
      * @return mixed bool|stdClass         A stdClass object containing the information from
-     *                                     the json-decoded response from the server.
+     *               the json-decoded response from the server.
      */
     public function delete($partyId, $tagName)
     {
-        $url = '/' . (double)$partyId . '/tag/' . urlencode($tagName);
+        $url = '/'.(double) $partyId.'/tag/'.urlencode($tagName);
         $response = $this->sendRequest($url, HTTP_Request2::METHOD_DELETE);
-        
+
         return $this->parseResponse($response);
     }
 }

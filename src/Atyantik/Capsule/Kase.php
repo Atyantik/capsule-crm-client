@@ -31,28 +31,32 @@
  * |                                                                       |
  * +-----------------------------------------------------------------------+
  * | Author: David Coallier <david@echolibre.com>                          |
- * +-----------------------------------------------------------------------+
+ * +-----------------------------------------------------------------------+.
  *
  * PHP version 5
  *
  * @category  Services
- * @package   Services_Capsule
+ *
  * @author    David Coallier <david@echolibre.com>
  * @copyright echolibre ltd. 2009-2010
  * @license   http://www.opensource.org/licenses/bsd-license.php The BSD License
+ *
  * @link      http://github.com/davidcoallier/Services_Capsule
+ *
  * @version   GIT: $Id$
  */
 
 /**
- * Services_Capsule
+ * Services_Capsule.
  *
  * @category Services
- * @package  Services_Capsule
+ *
  * @author   David Coallier <david@echolibre.com>
  * @license  http://www.opensource.org/licenses/bsd-license.php The BSD License
+ *
  * @link     http://github.com/davidcoallier/Services_Capsule
  * @link     http://capsulecrm.com/help/page/javelin_api_case
+ *
  * @version  Release: @package_version@
  */
 /**
@@ -61,58 +65,63 @@
 class Services_Capsule_Kase extends Services_Capsule_Common
 {
     /**
-     * Get an case
+     * Get an case.
      *
      * This method is used to fetch a particular case by
      * it's identification id.
      *
      * @link   /api/kase/{id}
+     *
      * @throws Services_Capsule_RuntimeException
      *
-     * @param  double       $id The case ID to retrieve from the service.
-     * @return stdClass     A stdClass object containing the information from
-     *                      the json-decoded response from the server.
+     * @param float $id The case ID to retrieve from the service.
+     *
+     * @return stdClass A stdClass object containing the information from
+     *                  the json-decoded response from the server.
      */
-    public function get($id) 
-    {        
-        $response = $this->sendRequest('/' . (double)$id);
+    public function get($id)
+    {
+        $response = $this->sendRequest('/'.(double) $id);
+
         return $this->parseResponse($response);
     }
-    
+
     /**
-     * List all the opportunities
+     * List all the opportunities.
      *
      * List opportunities. Optionally the results can be 
      * limited or paged using the parameters $limit and $start. 
      *
      * @link  /api/kase[?start={start}][&limit={limit}] 
+     *
      * @throws Services_Capsule_RuntimeException
      *
-     * @param  int $start  The start page (Optional).
-     * @param  int $limit  The limit per page (Optional).
+     * @param int $start The start page (Optional).
+     * @param int $limit The limit per page (Optional).
      *
-     * @return stdClass     A stdClass object containing the information from
-     *                      the json-decoded response from the server.
+     * @return stdClass A stdClass object containing the information from
+     *                  the json-decoded response from the server.
      */
     public function getList($start = null, $limit = null)
     {
         $request = array();
-        
+
         if (!is_null($start)) {
             $request['start'] = $start;
         }
-        
+
         if (!is_null($limit)) {
             $request['limit'] = $limit;
         }
-        
+
         $request = http_build_query($request);
-        $response = $this->sendRequest('?' . $request);
+        $response = $this->sendRequest('?'.$request);
+
         return $this->parseResponse($response);
     }
-    
+
     /**
-     * Get any cases
+     * Get any cases.
      *
      * This method fetches a list of cases for a company (appName)
      * by tag, or lastmodified field with the usual
@@ -143,36 +152,38 @@ class Services_Capsule_Kase extends Services_Capsule_Common
      *
      * @throws Services_Capsule_RuntimeException
      *
-     * @param  array        $params An array of parameters to search for.
-     * @return stdClass     A stdClass object containing the information from
-     *                      the json-decoded response from the server.
+     * @param array $params An array of parameters to search for.
+     *
+     * @return stdClass A stdClass object containing the information from
+     *                  the json-decoded response from the server.
      */
     public function getAny(array $params)
-    {        
-        $request  = http_build_query($params);
-        $response = $this->sendRequest('?' . $request);
+    {
+        $request = http_build_query($params);
+        $response = $this->sendRequest('?'.$request);
 
         return $this->parseResponse($response);
     }
 
     /**
-     * Delete a case
+     * Delete a case.
      *
      * Delete a case.
      *
      * @link   /api/kase/{kase-id}
+     *
      * @throws Services_Capsule_RuntimeException
      *
-     * @param  double       $caseId        The case id to delete.
+     * @param float $caseId The case id to delete.
      *
      * @return mixed bool|stdClass         A stdClass object containing the information from
-     *                                     the json-decoded response from the server.
+     *               the json-decoded response from the server.
      */
     public function delete($caseId)
     {
-        $url      = '/' . (double)$caseId;
+        $url = '/'.(double) $caseId;
         $response = $this->sendRequest($url, HTTP_Request2::METHOD_DELETE);
-        
+
         return $this->parseResponse($response);
     }
 }

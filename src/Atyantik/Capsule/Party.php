@@ -31,86 +31,95 @@
  * |                                                                       |
  * +-----------------------------------------------------------------------+
  * | Author: David Coallier <david@echolibre.com>                          |
- * +-----------------------------------------------------------------------+
+ * +-----------------------------------------------------------------------+.
  *
  * PHP version 5
  *
  * @category  Services
- * @package   Services_Capsule
+ *
  * @author    David Coallier <david@echolibre.com>
  * @copyright echolibre ltd. 2009-2010
  * @license   http://www.opensource.org/licenses/bsd-license.php The BSD License
+ *
  * @link      http://github.com/davidcoallier/Services_Capsule
+ *
  * @version   GIT: $Id$
  */
 
 /**
- * Services_Capsule
+ * Services_Capsule.
  *
  * @category Services
- * @package  Services_Capsule
+ *
  * @author   David Coallier <david@echolibre.com>
  * @license  http://www.opensource.org/licenses/bsd-license.php The BSD License
+ *
  * @link     http://github.com/davidcoallier/Services_Capsule
  * @link     http://capsulecrm.com/help/page/javelin_api_party
+ *
  * @version  Release: @package_version@
  */
 class Services_Capsule_Party extends Services_Capsule_Common
 {
     /**
-     * Get a party
+     * Get a party.
      *
      * This method is used to fetch a particular party by
      * it's identification id.
      *
      * @link   /api/party/{id}
+     *
      * @throws Services_Capsule_RuntimeException
      *
-     * @param  double       $id The party ID to retrieve from the service.
-     * @return stdClass     A stdClass object containing the information from
-     *                      the json-decoded response from the server.
+     * @param float $id The party ID to retrieve from the service.
+     *
+     * @return stdClass A stdClass object containing the information from
+     *                  the json-decoded response from the server.
      */
-    public function get($id) 
-    {        
-        $response = $this->sendRequest('/' . (double)$id);
+    public function get($id)
+    {
+        $response = $this->sendRequest('/'.(double) $id);
+
         return $this->parseResponse($response);
     }
-    
+
     /**
-     * List all the party information
+     * List all the party information.
      *
      * Return all people & organisations visible to the 
      * authenticated user. Optionally the results can be 
      * limited or paged using the parameters $start and $limit
      *
      * @link  /api/party[?start={start}][&limit={limit}] 
+     *
      * @throws Services_Capsule_RuntimeException
      *
-     * @param  int $start  The start page (Optional).
-     * @param  int $limit  The limit per page (Optional).
+     * @param int $start The start page (Optional).
+     * @param int $limit The limit per page (Optional).
      *
-     * @return stdClass     A stdClass object containing the information from
-     *                      the json-decoded response from the server.
+     * @return stdClass A stdClass object containing the information from
+     *                  the json-decoded response from the server.
      */
     public function getList($start = null, $limit = null)
     {
         $request = array();
-        
+
         if (!is_null($start)) {
             $request['start'] = $start;
         }
-        
+
         if (!is_null($limit)) {
             $request['limit'] = $limit;
         }
-        
+
         $request = http_build_query($request);
-        $response = $this->sendRequest('?' . $request);
+        $response = $this->sendRequest('?'.$request);
+
         return $this->parseResponse($response);
     }
-    
+
     /**
-     * Search in all organization and parties
+     * Search in all organization and parties.
      *
      * Return all people & organisations which match the search term. 
      * The search term will be matched against name, telephone number 
@@ -118,36 +127,38 @@ class Services_Capsule_Party extends Services_Capsule_Common
      * can be limited or paged using the parameters limit and start. 
      *
      * @link  /api/party?q={term}[&start={start}][&limit={limit}] 
+     *
      * @throws Services_Capsule_RuntimeException
      *
-     * @param  string $term  The term to search for in the parties/orgs.
-     * @param  int $start  The start page (Optional).
-     * @param  int $limit  The limit per page (Optional).
+     * @param string $term  The term to search for in the parties/orgs.
+     * @param int    $start The start page (Optional).
+     * @param int    $limit The limit per page (Optional).
      *
-     * @return stdClass     A stdClass object containing the information from
-     *                      the json-decoded response from the server.
+     * @return stdClass A stdClass object containing the information from
+     *                  the json-decoded response from the server.
      */
     public function search($term, $start = null, $limit = null)
     {
         $request = array();
-        
+
         $request['q'] = $term;
-        
+
         if (!is_null($start)) {
             $request['start'] = $start;
         }
-        
+
         if (!is_null($limit)) {
             $request['limit'] = $limit;
         }
-        
+
         $request = http_build_query($request);
-        $response = $this->sendRequest('?' . $request);
+        $response = $this->sendRequest('?'.$request);
+
         return $this->parseResponse($response);
     }
-    
+
     /**
-     * Get any organizations/parties
+     * Get any organizations/parties.
      *
      * This method is used to fetch by tag, email address, lastModified
      * with the usual start and limit parameters to limit the output.
@@ -178,34 +189,36 @@ class Services_Capsule_Party extends Services_Capsule_Common
      *
      * @throws Services_Capsule_RuntimeException
      *
-     * @param  array        $params An array of parameters to search for.
-     * @return stdClass     A stdClass object containing the information from
-     *                      the json-decoded response from the server.
+     * @param array $params An array of parameters to search for.
+     *
+     * @return stdClass A stdClass object containing the information from
+     *                  the json-decoded response from the server.
      */
     public function getAny(array $params)
-    {        
-        $request  = http_build_query($params);
-        $response = $this->sendRequest('?' . $request);
+    {
+        $request = http_build_query($params);
+        $response = $this->sendRequest('?'.$request);
 
         return $this->parseResponse($response);
     }
-    
-    /**
-     * Delete a party
-     *
-     * Delete the party passed to the method.
-     *
-     * @link /api/party/{party-id}
-     * @throws Services_Capsule_RuntimeException
-     *
-     * @param  double       $partyId       The party to delete.
-     *
-     * @return mixed bool|stdClass         A stdClass object containing the information from
-     *                                     the json-decoded response from the server.
-     */
+
+     /**
+      * Delete a party.
+      *
+      * Delete the party passed to the method.
+      *
+      * @link /api/party/{party-id}
+      *
+      * @throws Services_Capsule_RuntimeException
+      *
+      * @param  float       $partyId       The party to delete.
+      *
+      * @return mixed bool|stdClass         A stdClass object containing the information from
+      *                                     the json-decoded response from the server.
+      */
      public function delete($partyId)
      {
-         $url = '/' . (double)$partyId;
+         $url = '/'.(double) $partyId;
          $response = $this->sendRequest($url, HTTP_Request2::METHOD_DELETE);
 
          return $this->parseResponse($response);

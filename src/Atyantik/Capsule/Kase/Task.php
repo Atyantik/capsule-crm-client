@@ -31,54 +31,60 @@
  * |                                                                       |
  * +-----------------------------------------------------------------------+
  * | Author: David Coallier <david@echolibre.com>                          |
- * +-----------------------------------------------------------------------+
+ * +-----------------------------------------------------------------------+.
  *
  * PHP version 5
  *
  * @category  Services
- * @package   Services_Capsule
+ *
  * @author    David Coallier <david@echolibre.com>
  * @copyright echolibre ltd. 2009-2010
  * @license   http://www.opensource.org/licenses/bsd-license.php The BSD License
+ *
  * @link      http://github.com/davidcoallier/Services_Capsule
+ *
  * @version   GIT: $Id$
  */
 
 /**
- * Services_Capsule
+ * Services_Capsule.
  *
  * @category Services
- * @package  Services_Capsule
+ *
  * @author   David Coallier <david@echolibre.com>
  * @license  http://www.opensource.org/licenses/bsd-license.php The BSD License
+ *
  * @link     http://github.com/davidcoallier/Services_Capsule
  * @link     http://capsulecrm.com/help/page/javelin_api_opportunity
+ *
  * @version  Release: @package_version@
  */
 class Services_Capsule_Kase_Task extends Services_Capsule_Common
 {
     /**
-     * Get case Tasks
+     * Get case Tasks.
      *
      * Retrieve a list of tasks for a case. 
      *
      * @link    /api/kase/{id}/tasks
+     *
      * @throws Services_Capsule_RuntimeException
      *
-     * @param  double       $kaseId The kase to retrieve the tasks from.
-     * @return stdClass     A stdClass object containing the information from
-     *                      the json-decoded response from the server.
+     * @param float $kaseId The kase to retrieve the tasks from.
+     *
+     * @return stdClass A stdClass object containing the information from
+     *                  the json-decoded response from the server.
      */
     public function getAll($kaseId)
     {
-        $url      = '/' . (double)$kaseId . '/tasks';
+        $url = '/'.(double) $kaseId.'/tasks';
         $response = $this->sendRequest($url);
-        
+
         return $this->parseResponse($response);
     }
-    
+
     /**
-     * Add a task to a case
+     * Add a task to a case.
      *
      * Create a new task attached to a case
      *
@@ -93,23 +99,24 @@ class Services_Capsule_Kase_Task extends Services_Capsule_Common
      * ?>
      *
      * @link   /api/kase/{kase-id}/task
+     *
      * @throws Services_Capsule_RuntimeException
      *
-     * @param  double       $kaseId       The case to add the task to.
-     * @param  array        $fields       An array of fields to create the task with.
+     * @param float $kaseId The case to add the task to.
+     * @param array $fields An array of fields to create the task with.
      *
      * @return mixed bool|stdClass        A stdClass object containing the information from
-     *                                    the json-decoded response from the server.
+     *               the json-decoded response from the server.
      */
     public function add($kaseId, $fields)
     {
-        $url         = '/' . (double)$kaseId . '/task';
+        $url = '/'.(double) $kaseId.'/task';
         $task = array('task' => $fields);
-        
+
         $response = $this->sendRequest(
             $url, HTTP_Request2::METHOD_POST, json_encode($task)
         );
-        
+
         return $this->parseResponse($response);
     }
 }

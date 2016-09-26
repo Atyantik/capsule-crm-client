@@ -31,21 +31,29 @@
  * |                                                                       |
  * +-----------------------------------------------------------------------+
  * | Author: David Coallier <david@echolibre.com>                          |
- * +-----------------------------------------------------------------------+
+ * +-----------------------------------------------------------------------+.
  *
  * PHP version 5
  *
  * @category  Services
- * @package   Services_Capsule
+ *
  * @author    David Coallier <david@echolibre.com>
  * @copyright echolibre ltd. 2009-2010
  * @license   http://www.opensource.org/licenses/bsd-license.php The BSD License
+ *
  * @link      http://github.com/davidcoallier/Services_Capsule
+ *
  * @version   GIT: $Id$
  */
-interface Services_Capsule_Exception {}
+interface Services_Capsule_Exception
+{
+}
 
-class Services_Capsule_RuntimeException extends RuntimeException implements Services_Capsule_Exception {}
+class Services_Capsule_RuntimeException extends RuntimeException implements Services_Capsule_Exception
+{
+}
 
-class Services_Capsule_UnexpectedValueException extends UnexpectedValueException 
-    implements Services_Capsule_Exception {}
+class Services_Capsule_UnexpectedValueException extends UnexpectedValueException
+    implements Services_Capsule_Exception
+{
+}
