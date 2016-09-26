@@ -41,25 +41,25 @@
  * @copyright echolibre ltd. 2009-2010
  * @license   http://www.opensource.org/licenses/bsd-license.php The BSD License
  *
- * @link      http://github.com/davidcoallier/Services_Capsule
+ * @link      http://github.com/davidcoallier/Atyantik\Capsule
  *
  * @version   GIT: $Id$
  */
 
 /**
- * Services_Capsule.
+ * Atyantik\Capsule.
  *
  * @category Services
  *
  * @author   David Coallier <david@echolibre.com>
  * @license  http://www.opensource.org/licenses/bsd-license.php The BSD License
  *
- * @link     http://github.com/davidcoallier/Services_Capsule
+ * @link     http://github.com/davidcoallier/Atyantik\Capsule
  * @link     http://capsulecrm.com/help/page/javelin_api_opportunity
  *
  * @version  Release: @package_version@
  */
-class Services_Capsule_Opportunity extends Services_Capsule_Common
+class Atyantik\Capsule\Opportunity extends Atyantik\Capsule\Common
 {
     /**
      * Get an opportunity.
@@ -69,7 +69,7 @@ class Services_Capsule_Opportunity extends Services_Capsule_Common
      *
      * @link   /api/opportunity/{id}
      *
-     * @throws Services_Capsule_RuntimeException
+     * @throws Atyantik\Capsule\RuntimeException
      *
      * @param float $id The opportunity ID to retrieve from the service.
      *
@@ -91,7 +91,7 @@ class Services_Capsule_Opportunity extends Services_Capsule_Common
      *
      * @link  /api/opportunity[?start={start}][&limit={limit}] 
      *
-     * @throws Services_Capsule_RuntimeException
+     * @throws Atyantik\Capsule\RuntimeException
      *
      * @param int $start The start page (Optional).
      * @param int $limit The limit per page (Optional).
@@ -131,13 +131,13 @@ class Services_Capsule_Opportunity extends Services_Capsule_Common
      * Example:
      * <?php
      *      try {
-     *          $capsule = new Services_Capsule($appName, $token);
+     *          $capsule = new Atyantik\Capsule($appName, $token);
      *          $results = $capsule->opportunity->getAny(array(
      *              'lastmodified' => '20090631T000000',
      *              'start'        => '100',
      *              'limit'        => '25'
      *          ));
-     *      } catch (Services_Capsule_RuntimeException $re) {
+     *      } catch (Atyantik\Capsule\RuntimeException $re) {
      *          print_r($re); die();
      *      }
      *
@@ -147,7 +147,7 @@ class Services_Capsule_Opportunity extends Services_Capsule_Common
      * @link   /api/opportunity?lastmodified={YYYYMMDDTHHMMSS}[&start={start}][&limit={limit}]
      * @link   /api/opportunity?tag={tag}[&start={start}][&limit={limit}]
      *
-     * @throws Services_Capsule_RuntimeException
+     * @throws Atyantik\Capsule\RuntimeException
      *
      * @param array $params An array of parameters to search for.
      *
@@ -169,7 +169,7 @@ class Services_Capsule_Opportunity extends Services_Capsule_Common
       *
       * @link /api/opportunity/{opportunity-id}
       *
-      * @throws Services_Capsule_RuntimeException
+      * @throws Atyantik\Capsule\RuntimeException
       *
       * @param  float       $opportunityId The opportunity to delete.
       *

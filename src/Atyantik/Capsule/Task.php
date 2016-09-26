@@ -44,25 +44,25 @@
  * @copyright 	echolibre ltd. 2009-2010
  * @license   	http://www.opensource.org/licenses/bsd-license.php The BSD License
  *
- * @link      	http://github.com/davidcoallier/Services_Capsule
+ * @link      	http://github.com/davidcoallier/Atyantik\Capsule
  *
  * @version   	GIT: $Id$
  */
 
 /**
- * Services_Capsule.
+ * Atyantik\Capsule.
  *
  * @category Services
  *
  * @author   David Coallier <david@echolibre.com>
  * @license  http://www.opensource.org/licenses/bsd-license.php The BSD License
  *
- * @link     http://github.com/davidcoallier/Services_Capsule
+ * @link     http://github.com/davidcoallier/Atyantik\Capsule
  * @link     http://capsulecrm.com/help/page/javelin_api_party
  *
  * @version  Release: @package_version@
  */
-class Services_Capsule_Task extends Services_Capsule_Common
+class Atyantik\Capsule\Task extends Atyantik\Capsule\Common
 {
     /**
      * Get a Task.
@@ -72,7 +72,7 @@ class Services_Capsule_Task extends Services_Capsule_Common
      *
      * @link   /api/task/{task-id}
      *
-     * @throws Services_Capsule_RuntimeException
+     * @throws Atyantik\Capsule\RuntimeException
      *
      * @param float $id The task ID to retrieve from the service.
      *
@@ -96,7 +96,7 @@ class Services_Capsule_Task extends Services_Capsule_Common
      *
      * @link  /api/tasks[?start={start}][&limit={limit}][&category={category}][&user={user}]
      *
-     * @throws Services_Capsule_RuntimeException
+     * @throws Atyantik\Capsule\RuntimeException
      *
      * @param int $start    The start page (Optional).
      * @param int $limit    The limit per page (Optional).
@@ -140,7 +140,7 @@ class Services_Capsule_Task extends Services_Capsule_Common
      *
      * @link   /api/task/{task-id}/complete
      *
-     * @throws Services_Capsule_RuntimeException
+     * @throws Atyantik\Capsule\RuntimeException
      *
      * @param float $taskId The task to be marked complete
      *
@@ -163,7 +163,7 @@ class Services_Capsule_Task extends Services_Capsule_Common
      *
      * @link   /api/task/{task-id}/reopen
      *
-     * @throws Services_Capsule_RuntimeException
+     * @throws Atyantik\Capsule\RuntimeException
      *
      * @param float $taskId The task to be re-opened
      *
@@ -195,7 +195,7 @@ class Services_Capsule_Task extends Services_Capsule_Common
      *
      * @link   /api/task
      *
-     * @throws Services_Capsule_RuntimeException
+     * @throws Atyantik\Capsule\RuntimeException
      *
      * @param array $fields An array of fields to create the task with.
      *
@@ -227,7 +227,7 @@ class Services_Capsule_Task extends Services_Capsule_Common
      * @link http://capsulecrm.com/help/page/api_task
      * @link /api/task/{task-id}
      *
-     * @throws Services_Capsule_RuntimeException
+     * @throws Atyantik\Capsule\RuntimeException
      *
      * @param float $taskId The id of the task to update.
      * @param array $fields An assoc array of fields to add in the task
@@ -254,7 +254,7 @@ class Services_Capsule_Task extends Services_Capsule_Common
       *
       * @link /api/task/{task-id}
       *
-      * @throws Services_Capsule_RuntimeException
+      * @throws Atyantik\Capsule\RuntimeException
       *
       * @param  float       $taskId        The task to delete.
       *

@@ -41,25 +41,25 @@
  * @copyright echolibre ltd. 2009-2010
  * @license   http://www.opensource.org/licenses/bsd-license.php The BSD License
  *
- * @link      http://github.com/davidcoallier/Services_Capsule
+ * @link      http://github.com/davidcoallier/Atyantik\Capsule
  *
  * @version   GIT: $Id$
  */
 
 /**
- * Services_Capsule.
+ * Atyantik\Capsule.
  *
  * @category Services
  *
  * @author   David Coallier <david@echolibre.com>
  * @license  http://www.opensource.org/licenses/bsd-license.php The BSD License
  *
- * @link     http://github.com/davidcoallier/Services_Capsule
+ * @link     http://github.com/davidcoallier/Atyantik\Capsule
  * @link     http://capsulecrm.com/help/page/javelin_api_opportunity
  *
  * @version  Release: @package_version@
  */
-class Services_Capsule_Opportunity_History extends Services_Capsule_Common
+class Atyantik\Capsule\Opportunity_History extends Atyantik\Capsule\Common
 {
     /**
      * Get opportunity history.
@@ -68,7 +68,7 @@ class Services_Capsule_Opportunity_History extends Services_Capsule_Common
      *
      * @link    /api/opportunity/{id}/history
      *
-     * @throws Services_Capsule_RuntimeException
+     * @throws Atyantik\Capsule\RuntimeException
      *
      * @param float $opportunityId The opportunity to retrieve the history from.
      *
@@ -91,7 +91,7 @@ class Services_Capsule_Opportunity_History extends Services_Capsule_Common
      *
      * @link /api/opportunity/{opportunity-id}/history
      *
-     * @throws Services_Capsule_RuntimeException
+     * @throws Atyantik\Capsule\RuntimeException
      *
      * @param float  $opportunityId The opportunity to create the note on.
      * @param string $note          The note to add to history.
@@ -124,7 +124,7 @@ class Services_Capsule_Opportunity_History extends Services_Capsule_Common
      *
      * @link /api/opportunity/{opportunity-id}/history/{history-id}
      *
-     * @throws Services_Capsule_RuntimeException
+     * @throws Atyantik\Capsule\RuntimeException
      *
      * @param float  $opportunityId The opportunity to create the tags on.
      * @param float  $historyId     The note id to update.
@@ -156,7 +156,7 @@ class Services_Capsule_Opportunity_History extends Services_Capsule_Common
      *
      * @link /api/opportunity/{opportunity-id}/history/{history-id}
      *
-     * @throws Services_Capsule_RuntimeException
+     * @throws Atyantik\Capsule\RuntimeException
      *
      * @param float $opportunityId The opportunity to delete the note from.
      * @param float $historyId     The note id to delete.

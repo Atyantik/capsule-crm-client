@@ -41,28 +41,28 @@
  * @copyright echolibre ltd. 2009-2010
  * @license   http://www.opensource.org/licenses/bsd-license.php The BSD License
  *
- * @link      http://github.com/davidcoallier/Services_Capsule
+ * @link      http://github.com/davidcoallier/Atyantik\Capsule
  *
  * @version   GIT: $Id$
  */
 
 /**
- * Services_Capsule.
+ * Atyantik\Capsule.
  *
  * @category Services
  *
  * @author   David Coallier <david@echolibre.com>
  * @license  http://www.opensource.org/licenses/bsd-license.php The BSD License
  *
- * @link     http://github.com/davidcoallier/Services_Capsule
+ * @link     http://github.com/davidcoallier/Atyantik\Capsule
  *
  * @version  Release: @package_version@
  */
-abstract class Services_Capsule_Common
+abstract class Atyantik\Capsule\Common
 {
     /**
      * Sub section. History of an Opportunity for example
-     * is Services_Capsule_Opportunity_History.
+     * is Atyantik\Capsule\Opportunity_History.
      *
      * @var string The sub section mame
      */
@@ -110,11 +110,11 @@ abstract class Services_Capsule_Common
     /**
      * Magical Getter.
      *
-     * @throws Services_Capsule_RuntimeException
+     * @throws Atyantik\Capsule\RuntimeException
      *
      * @param string $sub Items, Meetings, Notes, Projects or User.
      *
-     * @return mixed Services_Capsule_*
+     * @return mixed Atyantik\Capsule\*
      */
     public function __get($section)
     {
@@ -133,13 +133,13 @@ abstract class Services_Capsule_Common
             $currentModule = ucfirst(strtolower($this->moduleName));
 
             if (!isset($this->subSections[$section])) {
-                $classname = 'Services_Capsule_'.$currentModule.'_'.$section;
+                $classname = 'Atyantik\Capsule\'.$currentModule.'\'.$section;
 
                 if (!class_exists($classname)) {
                     $filename = str_replace('_', '/', $classname).'.php';
 
                     if (!(include $filename)) {
-                        throw new Services_Capsule_RuntimeException(
+                        throw new Atyantik\Capsule\RuntimeException(
                             'File '.$filename.' does not exist.'
                         );
                     }
@@ -157,9 +157,9 @@ abstract class Services_Capsule_Common
             break;
 
         default:
-            throw new Services_Capsule_RuntimeException(
+            throw new Atyantik\Capsule\RuntimeException(
                 'Section '.$section.' is not a valid API call. If you believe this '.
-                'is wrong please report a bug on http://pear.php.net/Services_Capsule'
+                'is wrong please report a bug on http://pear.php.net/Atyantik\Capsule'
             );
         }
     }
@@ -222,8 +222,8 @@ abstract class Services_Capsule_Common
      *
      * This method is used to send all the requests to the capsule web service.
      *
-     * @throws Services_Capsule_UnexpectedValueException
-     * @throws Services_Capsule_RuntimeException
+     * @throws Atyantik\Capsule\UnexpectedValueException
+     * @throws Atyantik\Capsule\RuntimeException
      *
      * @uses   HTTP_Request2
      * 
@@ -235,7 +235,7 @@ abstract class Services_Capsule_Common
     protected function sendRequest($url, $method = HTTP_Request2::METHOD_GET, $data = null)
     {
         if (!isset($this->appName)) {
-            throw new Services_Capsule_UnexpectedValueException(
+            throw new Atyantik\Capsule\UnexpectedValueException(
                 'Please set an app name.'
             );
         }
@@ -268,7 +268,7 @@ abstract class Services_Capsule_Common
         try {
             $response = $this->client->send();
         } catch (HTTP_Request2_Exception $e) {
-            throw new Services_Capsule_RuntimeException($e);
+            throw new Atyantik\Capsule\RuntimeException($e);
         }
 
         return $response;
@@ -280,7 +280,7 @@ abstract class Services_Capsule_Common
      * This method is used to parse the response that is returned from
      * the request that was made in $this->sendRequest().
      *
-     * @throws Services_Capsule_RuntimeException
+     * @throws Atyantik\Capsule\RuntimeException
      *
      * @param HTTP_Request2_Response $response The response from the webservice.
      *
@@ -298,7 +298,7 @@ abstract class Services_Capsule_Common
                 return true;
             }
 
-            throw new Services_Capsule_RuntimeException(
+            throw new Atyantik\Capsule\RuntimeException(
                 'Invalid response with no valid json body'
             );
         }

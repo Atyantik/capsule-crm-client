@@ -1,4 +1,5 @@
 <?php
+namespace Atyantik;
 /**
  * +-----------------------------------------------------------------------+
  * | Copyright (c) 2010, David Coallier                                    |
@@ -41,7 +42,7 @@
  * @copyright echolibre ltd. 2009-2010
  * @license   http://www.opensource.org/licenses/bsd-license.php The BSD License
  *
- * @link      http://github.com/davidcoallier/Services_Capsule
+ * @link      http://github.com/davidcoallier/Atyantik\Capsule
  *
  * @version   GIT: $Id$
  */
@@ -51,18 +52,18 @@ require_once 'Services/Capsule/Exception.php';
 require_once 'Services/Capsule/Common.php';
 
 /**
- * Services_Capsule.
+ * Atyantik\Capsule.
  *
  * @category Services
  *
  * @author   David Coallier <david@echolibre.com>
  * @license  http://www.opensource.org/licenses/bsd-license.php The BSD License
  *
- * @link     http://github.com/davidcoallier/Services_Capsule
+ * @link     http://github.com/davidcoallier/Atyantik\Capsule
  *
  * @version  Release: @package_version@
  */
-class CapsuleClient extends Services_Capsule_Common
+class CapsuleClient extends Atyantik\Capsule\Common
 {
     /**
      * Sections available to the API.
@@ -87,11 +88,11 @@ class CapsuleClient extends Services_Capsule_Common
     /**
      * Magical Getter.
      *
-     * @throws Services_Capsule_RuntimeException
+     * @throws Atyantik\Capsule\RuntimeException
      *
      * @param string $sub Items, Meetings, Notes, Projects or User.
      *
-     * @return mixed Services_Capsule_*
+     * @return mixed Atyantik\Capsule\*
      */
     public function __get($section)
     {
@@ -106,13 +107,13 @@ class CapsuleClient extends Services_Capsule_Common
             case 'Task':
 
             if (!isset($this->sections[$section])) {
-                $classname = 'Services_Capsule_'.$section;
+                $classname = "Atyantik\\Capsule\\".$section;
 
                 if (!class_exists($classname)) {
                     $filename = str_replace('_', '/', $classname).'.php';
 
                     if (!(include $filename)) {
-                        throw new Services_Capsule_RuntimeException(
+                        throw new Atyantik\Capsule\RuntimeException(
                             'File '.$filename.' does not exist.'
                         );
                     }
@@ -130,9 +131,9 @@ class CapsuleClient extends Services_Capsule_Common
             break;
 
         default:
-            throw new Services_Capsule_RuntimeException(
+            throw new Atyantik\Capsule\RuntimeException(
                 'Section '.$section.' is not a valid API call. If you believe this '.
-                'is wrong please report a bug on http://pear.php.net/Services_Capsule'
+                'is wrong please report a bug on http://pear.php.net/Atyantik\Capsule'
             );
         }
     }

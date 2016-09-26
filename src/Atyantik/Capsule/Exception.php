@@ -1,4 +1,7 @@
 <?php
+namespace Atyantik\Capsule;
+
+use RuntimeException as BaseRuntimeException;
 /**
  * +-----------------------------------------------------------------------+
  * | Copyright (c) 2010, David Coallier                                    |
@@ -41,19 +44,10 @@
  * @copyright echolibre ltd. 2009-2010
  * @license   http://www.opensource.org/licenses/bsd-license.php The BSD License
  *
- * @link      http://github.com/davidcoallier/Services_Capsule
+ * @link      http://github.com/davidcoallier/Atyantik\Capsule
  *
  * @version   GIT: $Id$
  */
-interface Services_Capsule_Exception
-{
-}
-
-class Services_Capsule_RuntimeException extends RuntimeException implements Services_Capsule_Exception
-{
-}
-
-class Services_Capsule_UnexpectedValueException extends UnexpectedValueException
-    implements Services_Capsule_Exception
+class RuntimeException extends BaseRuntimeException implements ExceptionInterface
 {
 }

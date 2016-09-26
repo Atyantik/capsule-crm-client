@@ -41,25 +41,25 @@
  * @copyright echolibre ltd. 2009-2010
  * @license   http://www.opensource.org/licenses/bsd-license.php The BSD License
  *
- * @link      http://github.com/davidcoallier/Services_Capsule
+ * @link      http://github.com/davidcoallier/Atyantik\Capsule
  *
  * @version   GIT: $Id$
  */
 
 /**
- * Services_Capsule.
+ * Atyantik\Capsule.
  *
  * @category Services
  *
  * @author   David Coallier <david@echolibre.com>
  * @license  http://www.opensource.org/licenses/bsd-license.php The BSD License
  *
- * @link     http://github.com/davidcoallier/Services_Capsule
+ * @link     http://github.com/davidcoallier/Atyantik\Capsule
  * @link     http://capsulecrm.com/help/page/javelin_api_opportunity
  *
  * @version  Release: @package_version@
  */
-class Services_Capsule_Opportunity_Tag extends Services_Capsule_Common
+class Atyantik\Capsule\Opportunity_Tag extends Atyantik\Capsule\Common
 {
     /**
      * Get opportunity tags.
@@ -68,7 +68,7 @@ class Services_Capsule_Opportunity_Tag extends Services_Capsule_Common
      *
      * @link    /api/opportunity/{id}/tag
      *
-     * @throws Services_Capsule_RuntimeException
+     * @throws Atyantik\Capsule\RuntimeException
      *
      * @param float $opportunityId The opportunity to retrieve the tags from.
      *
@@ -92,7 +92,7 @@ class Services_Capsule_Opportunity_Tag extends Services_Capsule_Common
      *
      * @link /api/opportunity/{opportunity-id}/tag/{tag-name}
      *
-     * @throws Services_Capsule_RuntimeException
+     * @throws Atyantik\Capsule\RuntimeException
      *
      * @param float  $opportunityId The opportunity to create the tags on.
      * @param string $tagName       The name of the new tag to create.
@@ -115,7 +115,7 @@ class Services_Capsule_Opportunity_Tag extends Services_Capsule_Common
      *
      * @link /api/opportunity/{opportunity-id}/tag/{tag-name}
      *
-     * @throws Services_Capsule_RuntimeException
+     * @throws Atyantik\Capsule\RuntimeException
      *
      * @param float  $opportunityId The opportunity to delete the tags from.
      * @param string $tagName       The name of the new tag to delete.

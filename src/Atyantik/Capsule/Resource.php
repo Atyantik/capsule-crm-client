@@ -41,27 +41,27 @@
  * @copyright echolibre ltd. 2009-2010
  * @license   http://www.opensource.org/licenses/bsd-license.php The BSD License
  *
- * @link      http://github.com/davidcoallier/Services_Capsule
+ * @link      http://github.com/davidcoallier/Atyantik\Capsule
  *
  * @version   GIT: $Id$
  */
 
 /**
- * Services_Capsule.
+ * Atyantik\Capsule.
  *
  * @category Services
  *
  * @author   David Coallier <david@echolibre.com>
  * @license  http://www.opensource.org/licenses/bsd-license.php The BSD License
  *
- * @link     http://github.com/davidcoallier/Services_Capsule
+ * @link     http://github.com/davidcoallier/Atyantik\Capsule
  * @link     http://capsulecrm.com/help/page/javelin_api_opportunity
  * @link     http://capsulecrm.com/help/page/javelin_api_party
  * @link     http://capsulecrm.com/help/page/javelin_api_case
  *
  * @version  Release: @package_version@
  */
-class Services_Capsule_Resource extends Services_Capsule_Common
+class Atyantik\Capsule\Resource extends Atyantik\Capsule\Common
 {
     /**
      * Get a list of resource countries.
@@ -72,7 +72,7 @@ class Services_Capsule_Resource extends Services_Capsule_Common
      *
      * @link   /api/resource/country
      *
-     * @throws Services_Capsule_RuntimeException
+     * @throws Atyantik\Capsule\RuntimeException
      *
      * @return stdClass A stdClass object containing the information from
      *                  the json-decoded response from the server.
@@ -92,7 +92,7 @@ class Services_Capsule_Resource extends Services_Capsule_Common
      *
      * @link   /api/resource/currency
      *
-     * @throws Services_Capsule_RuntimeException
+     * @throws Atyantik\Capsule\RuntimeException
      *
      * @return stdClass A stdClass object containing the information from
      *                  the json-decoded response from the server.

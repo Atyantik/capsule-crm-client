@@ -41,25 +41,25 @@
  * @copyright echolibre ltd. 2009-2010
  * @license   http://www.opensource.org/licenses/bsd-license.php The BSD License
  *
- * @link      http://github.com/davidcoallier/Services_Capsule
+ * @link      http://github.com/davidcoallier/Atyantik\Capsule
  *
  * @version   GIT: $Id$
  */
 
 /**
- * Services_Capsule.
+ * Atyantik\Capsule.
  *
  * @category Services
  *
  * @author   David Coallier <david@echolibre.com>
  * @license  http://www.opensource.org/licenses/bsd-license.php The BSD License
  *
- * @link     http://github.com/davidcoallier/Services_Capsule
+ * @link     http://github.com/davidcoallier/Atyantik\Capsule
  * @link     http://capsulecrm.com/help/page/javelin_api_opportunity
  *
  * @version  Release: @package_version@
  */
-class Services_Capsule_Opportunity_Milestone extends Services_Capsule_Common
+class Atyantik\Capsule\Opportunity_Milestone extends Atyantik\Capsule\Common
 {
     /**
      * Get a list of opportunity milestones.
@@ -69,7 +69,7 @@ class Services_Capsule_Opportunity_Milestone extends Services_Capsule_Common
      *
      * @link    /api/opportunity/milestones
      *
-     * @throws Services_Capsule_RuntimeException
+     * @throws Atyantik\Capsule\RuntimeException
      *
      * @param float $partyId The party to retrieve the people from.
      *

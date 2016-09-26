@@ -41,20 +41,20 @@
  * @copyright echolibre ltd. 2009-2010
  * @license   http://www.opensource.org/licenses/bsd-license.php The BSD License
  *
- * @link      http://github.com/davidcoallier/Services_Capsule
+ * @link      http://github.com/davidcoallier/Atyantik\Capsule
  *
  * @version   GIT: $Id$
  */
 
 /**
- * Services_Capsule.
+ * Atyantik\Capsule.
  *
  * @category Services
  *
  * @author   David Coallier <david@echolibre.com>
  * @license  http://www.opensource.org/licenses/bsd-license.php The BSD License
  *
- * @link     http://github.com/davidcoallier/Services_Capsule
+ * @link     http://github.com/davidcoallier/Atyantik\Capsule
  * @link     http://capsulecrm.com/help/page/javelin_api_case
  *
  * @version  Release: @package_version@
@@ -62,7 +62,7 @@
 /**
  * "Kase is not a typo. This is how the modules are invoked in the API /api/kase".
  */
-class Services_Capsule_Kase extends Services_Capsule_Common
+class Atyantik\Capsule\Kase extends Atyantik\Capsule\Common
 {
     /**
      * Get an case.
@@ -72,7 +72,7 @@ class Services_Capsule_Kase extends Services_Capsule_Common
      *
      * @link   /api/kase/{id}
      *
-     * @throws Services_Capsule_RuntimeException
+     * @throws Atyantik\Capsule\RuntimeException
      *
      * @param float $id The case ID to retrieve from the service.
      *
@@ -94,7 +94,7 @@ class Services_Capsule_Kase extends Services_Capsule_Common
      *
      * @link  /api/kase[?start={start}][&limit={limit}] 
      *
-     * @throws Services_Capsule_RuntimeException
+     * @throws Atyantik\Capsule\RuntimeException
      *
      * @param int $start The start page (Optional).
      * @param int $limit The limit per page (Optional).
@@ -134,13 +134,13 @@ class Services_Capsule_Kase extends Services_Capsule_Common
      * Example:
      * <?php
      *      try {
-     *          $capsule = new Services_Capsule($appName, $token);
+     *          $capsule = new Atyantik\Capsule($appName, $token);
      *          $results = $capsule->case->getAny(array(
      *              'lastmodified' => '20090631T000000',
      *              'start'        => '100',
      *              'limit'        => '25'
      *          ));
-     *      } catch (Services_Capsule_RuntimeException $re) {
+     *      } catch (Atyantik\Capsule\RuntimeException $re) {
      *          print_r($re); die();
      *      }
      *
@@ -150,7 +150,7 @@ class Services_Capsule_Kase extends Services_Capsule_Common
      * @link   /api/kase?lastmodified={YYYYMMDDTHHMMSS}[&start={start}][&limit={limit}]
      * @link   /api/kase?tag={tag}[&start={start}][&limit={limit}]
      *
-     * @throws Services_Capsule_RuntimeException
+     * @throws Atyantik\Capsule\RuntimeException
      *
      * @param array $params An array of parameters to search for.
      *
@@ -172,7 +172,7 @@ class Services_Capsule_Kase extends Services_Capsule_Common
      *
      * @link   /api/kase/{kase-id}
      *
-     * @throws Services_Capsule_RuntimeException
+     * @throws Atyantik\Capsule\RuntimeException
      *
      * @param float $caseId The case id to delete.
      *

@@ -41,25 +41,25 @@
  * @copyright echolibre ltd. 2009-2010
  * @license   http://www.opensource.org/licenses/bsd-license.php The BSD License
  *
- * @link      http://github.com/davidcoallier/Services_Capsule
+ * @link      http://github.com/davidcoallier/Atyantik\Capsule
  *
  * @version   GIT: $Id$
  */
 
 /**
- * Services_Capsule.
+ * Atyantik\Capsule.
  *
  * @category Services
  *
  * @author   David Coallier <david@echolibre.com>
  * @license  http://www.opensource.org/licenses/bsd-license.php The BSD License
  *
- * @link     http://github.com/davidcoallier/Services_Capsule
+ * @link     http://github.com/davidcoallier/Atyantik\Capsule
  * @link     http://capsulecrm.com/help/page/javelin_api_opportunity
  *
  * @version  Release: @package_version@
  */
-class Services_Capsule_Opportunity_Customfield extends Services_Capsule_Common
+class Atyantik\Capsule\Opportunity_Customfield extends Atyantik\Capsule\Common
 {
     /**
      * Get a list of custom fields.
@@ -69,7 +69,7 @@ class Services_Capsule_Opportunity_Customfield extends Services_Capsule_Common
      *
      * @link    /api/opportunity/{id}/customfield
      *
-     * @throws Services_Capsule_RuntimeException
+     * @throws Atyantik\Capsule\RuntimeException
      *
      * @param float $opportunityId The opportunity to retrieve 
      *                             the custom field from.
@@ -92,7 +92,7 @@ class Services_Capsule_Opportunity_Customfield extends Services_Capsule_Common
      *
      * @link    /api/opportunity/customfield/definitions
      *
-     * @throws Services_Capsule_RuntimeException
+     * @throws Atyantik\Capsule\RuntimeException
      * 
      * @return stdClass A stdClass object containing the information from
      *                  the json-decoded response from the server.
@@ -112,7 +112,7 @@ class Services_Capsule_Opportunity_Customfield extends Services_Capsule_Common
      *
      * @link /api/opportunity/{kase-id}/customfield
      *
-     * @throws Services_Capsule_RuntimeException
+     * @throws Atyantik\Capsule\RuntimeException
      *
      * @param float $caseId The case id to create the new field on.
      * @param array $fields An assoc array of fields to add in the new
@@ -124,7 +124,7 @@ class Services_Capsule_Opportunity_Customfield extends Services_Capsule_Common
     public function add($caseId, array $fields)
     {
         if (!isset($fields['boolean'])) {
-            throw new Services_Capsule_RuntimeException(
+            throw new Atyantik\Capsule\RuntimeException(
                 '"boolean" parameter of second parameter required '.
                 'Ex: ("boolean" => "true")'
             );
@@ -152,7 +152,7 @@ class Services_Capsule_Opportunity_Customfield extends Services_Capsule_Common
      *
      * @link   /api/opportunity/{kase-id}/customfield/{customfield-id} 
      *
-     * @throws Services_Capsule_RuntimeException
+     * @throws Atyantik\Capsule\RuntimeException
      *
      * @param float $caseId  The case id to create the new field on.
      * @param float $fieldId
@@ -186,7 +186,7 @@ class Services_Capsule_Opportunity_Customfield extends Services_Capsule_Common
      *
      * @link   /api/opportunity/{kase-id}/customfield/{customfield-id} 
      *
-     * @throws Services_Capsule_RuntimeException
+     * @throws Atyantik\Capsule\RuntimeException
      *
      * @param float $caseId  The case id to create the new field on.
      * @param float $fieldId

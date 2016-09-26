@@ -35,7 +35,7 @@
  * +-----------------------------------------------------------------------+.
  *
  * PHP version 5
- * Services_Capsule
+ * Atyantik\Capsule
  *
  * @category  	Services
  *
@@ -45,25 +45,25 @@
  * @copyright 	echolibre ltd. 2009-2010
  * @license   	http://www.opensource.org/licenses/bsd-license.php The BSD License
  *
- * @link      	http://github.com/davidcoallier/Services_Capsule
+ * @link      	http://github.com/davidcoallier/Atyantik\Capsule
  *
  * @version   	GIT: $Id$
  */
 
 /**
- * Services_Capsule.
+ * Atyantik\Capsule.
  *
  * @category Services
  *
  * @author   David Coallier <david@echolibre.com>
  * @license  http://www.opensource.org/licenses/bsd-license.php The BSD License
  *
- * @link     http://github.com/davidcoallier/Services_Capsule
+ * @link     http://github.com/davidcoallier/Atyantik\Capsule
  * @link     http://capsulecrm.com/help/page/javelin_api_party
  *
  * @version  Release: @package_version@
  */
-class Services_Capsule_Party_Cases extends Services_Capsule_Common
+class Atyantik\Capsule\Party_Cases extends Atyantik\Capsule\Common
 {
     /**
      * Get a list of party cases.
@@ -73,7 +73,7 @@ class Services_Capsule_Party_Cases extends Services_Capsule_Common
      *
      * @link    /api/party/{id}/kase
      *
-     * @throws Services_Capsule_RuntimeException
+     * @throws Atyantik\Capsule\RuntimeException
      *
      * @param float $partyId The party to retrieve the opportunities from.
      *
@@ -95,7 +95,7 @@ class Services_Capsule_Party_Cases extends Services_Capsule_Common
      *
      * @link /api/party/{party-id}/kase
      *
-     * @throws Services_Capsule_RuntimeException
+     * @throws Atyantik\Capsule\RuntimeException
      *
      * @param float $partyId  The party id to create the new case in.
      * @param array $fields   An assoc array of fields to add in the new case
@@ -133,7 +133,7 @@ class Services_Capsule_Party_Cases extends Services_Capsule_Common
      *
      * @link   /api/party/{party-id}/kase/{id}
      *
-     * @throws Services_Capsule_RuntimeException
+     * @throws Atyantik\Capsule\RuntimeException
      *
      * @param float $partyId The party id to create the update the case.
      * @param float $caseId  The case id to update.

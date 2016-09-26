@@ -41,25 +41,25 @@
  * @copyright echolibre ltd. 2009-2010
  * @license   http://www.opensource.org/licenses/bsd-license.php The BSD License
  *
- * @link      http://github.com/davidcoallier/Services_Capsule
+ * @link      http://github.com/davidcoallier/Atyantik\Capsule
  *
  * @version   GIT: $Id$
  */
 
 /**
- * Services_Capsule.
+ * Atyantik\Capsule.
  *
  * @category Services
  *
  * @author   David Coallier <david@echolibre.com>
  * @license  http://www.opensource.org/licenses/bsd-license.php The BSD License
  *
- * @link     http://github.com/davidcoallier/Services_Capsule
+ * @link     http://github.com/davidcoallier/Atyantik\Capsule
  * @link     http://capsulecrm.com/help/page/javelin_api_party
  *
  * @version  Release: @package_version@
  */
-class Services_Capsule_Person extends Services_Capsule_Common
+class Atyantik\Capsule\Person extends Atyantik\Capsule\Common
 {
     /**
      * Add a new Person to an organization.
@@ -79,7 +79,7 @@ class Services_Capsule_Person extends Services_Capsule_Common
      * @link http://capsulecrm.com/help/page/javelin_api_party
      * @link /api/person
      *
-     * @throws Services_Capsule_RuntimeException
+     * @throws Atyantik\Capsule\RuntimeException
      *
      * @param array $fields An assoc array of fields to add in the new
      *                      person
@@ -116,7 +116,7 @@ class Services_Capsule_Person extends Services_Capsule_Common
      * @link http://capsulecrm.com/help/page/javelin_api_party
      * @link /api/organization
      *
-     * @throws Services_Capsule_RuntimeException
+     * @throws Atyantik\Capsule\RuntimeException
      *
      * @param float $personId The id of the person to update.
      * @param array $fields   An assoc array of fields to add in the new
