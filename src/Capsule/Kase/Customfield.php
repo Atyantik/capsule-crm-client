@@ -144,7 +144,7 @@ class Customfield extends Common
         $customFields = array('customFields' => array('customField' => $fields));
 
         $response = $this->sendRequest(
-            $url, HTTP_Request2::METHOD_POST, json_encode($customFields)
+            $url, \HTTP_Request2::METHOD_POST, json_encode($customFields)
         );
 
         return $this->parseResponse($response);
@@ -178,7 +178,7 @@ class Customfield extends Common
         $customField = array('customField' => $fields);
 
         $response = $this->sendRequest(
-            $url, HTTP_Request2::METHOD_PUT, json_encode($customField)
+            $url, \HTTP_Request2::METHOD_PUT, json_encode($customField)
         );
 
         return $this->parseResponse($response);
@@ -209,7 +209,7 @@ class Customfield extends Common
     public function delete($caseId, $fieldId)
     {
         $url = '/'.(double) $caseId.'/customfield/ '.(double) $fieldId;
-        $response = $this->sendRequest($url, HTTP_Request2::METHOD_DELETE);
+        $response = $this->sendRequest($url, \HTTP_Request2::METHOD_DELETE);
 
         return $this->parseResponse($response);
     }

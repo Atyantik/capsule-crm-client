@@ -120,7 +120,7 @@ class Opportunity extends Atyantik\Capsule\Common
         $opportunity = array('opportunity' => $fields);
 
         $response = $this->sendRequest(
-            $url, HTTP_Request2::METHOD_POST, json_encode($opportunity)
+            $url, \HTTP_Request2::METHOD_POST, json_encode($opportunity)
         );
 
         return $this->parseResponse($response);
@@ -154,7 +154,7 @@ class Opportunity extends Atyantik\Capsule\Common
         $opportunity = array('opportunity' => $fields);
 
         $response = $this->sendRequest(
-            $url, HTTP_Request2::METHOD_PUT, json_encode($opportunity)
+            $url, \HTTP_Request2::METHOD_PUT, json_encode($opportunity)
         );
 
         return $this->parseResponse($response);

@@ -85,7 +85,7 @@ class Organization extends Atyantik\Capsule\Common
         $org = array('organization' => $fields);
 
         $response = $this->sendRequest(
-            $url, HTTP_Request2::METHOD_POST, json_encode($org)
+            $url, \HTTP_Request2::METHOD_POST, json_encode($org)
         );
 
         return $this->parseResponse($response);
@@ -123,7 +123,7 @@ class Organization extends Atyantik\Capsule\Common
         $organization = array('organization' => $fields);
 
         $response = $this->sendRequest(
-            $url, HTTP_Request2::METHOD_PUT, json_encode($organization)
+            $url, \HTTP_Request2::METHOD_PUT, json_encode($organization)
         );
 
         return $this->parseResponse($response);

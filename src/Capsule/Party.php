@@ -220,7 +220,7 @@ class Party extends Atyantik\Capsule\Common
      public function delete($partyId)
      {
          $url = '/'.(double) $partyId;
-         $response = $this->sendRequest($url, HTTP_Request2::METHOD_DELETE);
+         $response = $this->sendRequest($url, \HTTP_Request2::METHOD_DELETE);
 
          return $this->parseResponse($response);
      }

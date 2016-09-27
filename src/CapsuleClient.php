@@ -49,8 +49,6 @@ namespace Atyantik;
  */
 use Atyantik\Capsule\RuntimeException;
 
-require_once 'HTTP/Request2.php';
-
 /**
  * Atyantik\Capsule.
  *

@@ -94,9 +94,9 @@ abstract class Common
     protected $appName;
 
     /**
-     * An object of the HTTP_Request2 Client.
+     * An object of the \HTTP_Request2 Client.
      *
-     * @var HTTP_Request2 An HTTP_Request2 instance.
+     * @var \HTTP_Request2 An \HTTP_Request2 instance.
      */
     protected $client;
 
@@ -223,14 +223,14 @@ abstract class Common
      * @throws Atyantik\Capsule\UnexpectedValueException
      * @throws Atyantik\Capsule\RuntimeException
      *
-     * @uses   HTTP_Request2
+     * @uses   \HTTP_Request2
      *
      * @param string $url The URL to request.
-     * @param string $method The HTTP Method (Use HTTP_Request2::METHOD_*)
-     *                       Default is HTTP_Request2::METHOD_GET (GET).
+     * @param string $method The HTTP Method (Use \HTTP_Request2::METHOD_*)
+     *                       Default is \HTTP_Request2::METHOD_GET (GET).
      * @param string $data The data to pass to the body. Null by default.
      */
-    protected function sendRequest($url, $method = HTTP_Request2::METHOD_GET, $data = null)
+    protected function sendRequest($url, $method = \HTTP_Request2::METHOD_GET, $data = null)
     {
         if (!isset($this->appName)) {
             throw new UnexpectedValueException(
@@ -238,8 +238,8 @@ abstract class Common
             );
         }
 
-        if (!isset($this->client) || !($this->client instanceof HTTP_Request2)) {
-            $this->client = new HTTP_Request2();
+        if (!isset($this->client) || !($this->client instanceof \HTTP_Request2)) {
+            $this->client = new \HTTP_Request2();
             $this->client->setAdapter('curl');
             // Modify the security parameters for this connection because for some odd reason
             // it did not function in the previous case.
@@ -265,7 +265,7 @@ abstract class Common
 
         try {
             $response = $this->client->send();
-        } catch (HTTP_Request2_Exception $e) {
+        } catch (\HTTP_Request2_Exception $e) {
             throw new Atyantik\Capsule\RuntimeException($e);
         }
 
@@ -280,13 +280,13 @@ abstract class Common
      *
      * @throws Atyantik\Capsule\RuntimeException
      *
-     * @param HTTP_Request2_Response $response The response from the webservice.
+     * @param \HTTP_Request2_Response $response The response from the webservice.
      *
      * @return mixed stdClass|bool A stdClass object of the
      *               json-decode'ed body or true if
      *               the code is 201 (created)
      */
-    protected function parseResponse(HTTP_Request2_Response $response)
+    protected function parseResponse(\HTTP_Request2_Response $response)
     {
         $body = $response->getBody();
         $return = json_decode($body);

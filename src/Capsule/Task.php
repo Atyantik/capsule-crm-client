@@ -151,7 +151,7 @@ class Task extends Atyantik\Capsule\Common
     public function complete($taskId)
     {
         $url = '/'.(double) $taskId.'/complete';
-        $response = $this->sendRequest($url, HTTP_Request2::METHOD_POST);
+        $response = $this->sendRequest($url, \HTTP_Request2::METHOD_POST);
 
         return $this->parseResponse($response);
     }
@@ -174,7 +174,7 @@ class Task extends Atyantik\Capsule\Common
     public function reopen($taskId)
     {
         $url = '/'.(double) $taskId.'/repoen';
-        $response = $this->sendRequest($url, HTTP_Request2::METHOD_POST);
+        $response = $this->sendRequest($url, \HTTP_Request2::METHOD_POST);
 
         return $this->parseResponse($response);
     }
@@ -209,7 +209,7 @@ class Task extends Atyantik\Capsule\Common
         $task = array('task' => $fields);
 
         $response = $this->sendRequest(
-            $url, HTTP_Request2::METHOD_POST, json_encode($task)
+            $url, \HTTP_Request2::METHOD_POST, json_encode($task)
         );
 
         return $this->parseResponse($response);
@@ -242,7 +242,7 @@ class Task extends Atyantik\Capsule\Common
         $task = array('task' => $fields);
 
         $response = $this->sendRequest(
-            $url, HTTP_Request2::METHOD_PUT, json_encode($task)
+            $url, \HTTP_Request2::METHOD_PUT, json_encode($task)
         );
 
         return $this->parseResponse($response);
@@ -265,7 +265,7 @@ class Task extends Atyantik\Capsule\Common
      public function delete($taskId)
      {
          $url = '/'.(double) $taskId;
-         $response = $this->sendRequest($url, HTTP_Request2::METHOD_DELETE);
+         $response = $this->sendRequest($url, \HTTP_Request2::METHOD_DELETE);
 
          return $this->parseResponse($response);
      }

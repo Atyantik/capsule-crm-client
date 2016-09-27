@@ -105,7 +105,7 @@ class Tag extends Atyantik\Capsule\Common
     public function add($caseId, $tagName)
     {
         $url = '/'.(double) $caseId.'/tag/'.urlencode($tagName);
-        $response = $this->sendRequest($url, HTTP_Request2::METHOD_POST);
+        $response = $this->sendRequest($url, \HTTP_Request2::METHOD_POST);
 
         return $this->parseResponse($response);
     }
@@ -128,7 +128,7 @@ class Tag extends Atyantik\Capsule\Common
     public function delete($caseId, $tagName)
     {
         $url = '/'.(double) $caseId.'/tag/'.urlencode($tagName);
-        $response = $this->sendRequest($url, HTTP_Request2::METHOD_DELETE);
+        $response = $this->sendRequest($url, \HTTP_Request2::METHOD_DELETE);
 
         return $this->parseResponse($response);
     }

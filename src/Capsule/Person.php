@@ -94,7 +94,7 @@ class Person extends Atyantik\Capsule\Common
         $person = array('person' => $fields);
 
         $response = $this->sendRequest(
-            $url, HTTP_Request2::METHOD_POST, json_encode($person)
+            $url, \HTTP_Request2::METHOD_POST, json_encode($person)
         );
 
         return $this->parseResponse($response);
@@ -132,7 +132,7 @@ class Person extends Atyantik\Capsule\Common
         $person = array('person' => $fields);
 
         $response = $this->sendRequest(
-            $url, HTTP_Request2::METHOD_PUT, json_encode($person)
+            $url, \HTTP_Request2::METHOD_PUT, json_encode($person)
         );
 
         return $this->parseResponse($response);

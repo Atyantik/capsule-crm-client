@@ -183,7 +183,7 @@ class Kase extends Atyantik\Capsule\Common
     public function delete($caseId)
     {
         $url = '/'.(double) $caseId;
-        $response = $this->sendRequest($url, HTTP_Request2::METHOD_DELETE);
+        $response = $this->sendRequest($url, \HTTP_Request2::METHOD_DELETE);
 
         return $this->parseResponse($response);
     }

@@ -103,7 +103,7 @@ class Party extends Atyantik\Capsule\Common
     public function add($opportunityId, $partyId)
     {
         $url = '/'.(double) $opportunityId.'/party/'.(double) $partyId;
-        $response = $this->sendRequest($url, HTTP_Request2::METHOD_POST);
+        $response = $this->sendRequest($url, \HTTP_Request2::METHOD_POST);
 
         return $this->parseResponse($response);
     }
@@ -126,7 +126,7 @@ class Party extends Atyantik\Capsule\Common
     public function delete($opportunityId, $partyId)
     {
         $url = '/'.(double) $opportunityId.'/party/'.(double) $partyId;
-        $response = $this->sendRequest($url, HTTP_Request2::METHOD_DELETE);
+        $response = $this->sendRequest($url, \HTTP_Request2::METHOD_DELETE);
 
         return $this->parseResponse($response);
     }

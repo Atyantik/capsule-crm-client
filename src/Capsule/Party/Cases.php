@@ -113,7 +113,7 @@ class Cases extends Atyantik\Capsule\Common
         $case = array('kase' => $fields);
 
         $response = $this->sendRequest(
-            $url, HTTP_Request2::METHOD_POST, json_encode($case)
+            $url, \HTTP_Request2::METHOD_POST, json_encode($case)
         );
 
         if ($returnid) {
@@ -150,7 +150,7 @@ class Cases extends Atyantik\Capsule\Common
         $case = array('kase' => $fields);
 
         $response = $this->sendRequest(
-            $url, HTTP_Request2::METHOD_PUT, json_encode($case)
+            $url, \HTTP_Request2::METHOD_PUT, json_encode($case)
         );
 
         return $this->parseResponse($response);

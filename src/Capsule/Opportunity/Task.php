@@ -115,7 +115,7 @@ class Task extends Atyantik\Capsule\Common
         $task = array('task' => $fields);
 
         $response = $this->sendRequest(
-            $url, HTTP_Request2::METHOD_POST, json_encode($task)
+            $url, \HTTP_Request2::METHOD_POST, json_encode($task)
         );
 
         return $this->parseResponse($response);

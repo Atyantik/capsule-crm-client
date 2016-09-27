@@ -109,7 +109,7 @@ class History extends Atyantik\Capsule\Common
             ),
         );
 
-        $response = $this->sendRequest($url, HTTP_Request2::METHOD_POST, json_encode($note));
+        $response = $this->sendRequest($url, \HTTP_Request2::METHOD_POST, json_encode($note));
 
         return $this->parseResponse($response);
     }
@@ -140,7 +140,7 @@ class History extends Atyantik\Capsule\Common
             ),
         );
 
-        $response = $this->sendRequest($url, HTTP_Request2::METHOD_PUT, json_encode($note));
+        $response = $this->sendRequest($url, \HTTP_Request2::METHOD_PUT, json_encode($note));
 
         return $this->parseResponse($response);
     }
@@ -164,7 +164,7 @@ class History extends Atyantik\Capsule\Common
     {
         $url = '/'.(double) $partyId.'/history/'.(double) $historyId;
 
-        $response = $this->sendRequest($url, HTTP_Request2::METHOD_DELETE);
+        $response = $this->sendRequest($url, \HTTP_Request2::METHOD_DELETE);
 
         return $this->parseResponse($response);
     }
