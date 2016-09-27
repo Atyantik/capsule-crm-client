@@ -60,7 +60,7 @@ namespace Atyantik\Capsule\Opportunity;
  *
  * @version  Release: @package_version@
  */
-class Tag extends Atyantik\Capsule\Common
+class Tag extends \Atyantik\Capsule\Common
 {
     /**
      * Get opportunity tags.

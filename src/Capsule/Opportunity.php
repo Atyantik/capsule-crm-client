@@ -60,7 +60,7 @@ namespace Atyantik\Capsule;
  *
  * @version  Release: @package_version@
  */
-class Opportunity extends Atyantik\Capsule\Common
+class Opportunity extends \Atyantik\Capsule\Common
 {
     /**
      * Get an opportunity.

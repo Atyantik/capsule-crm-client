@@ -64,7 +64,7 @@ namespace Atyantik\Capsule\Party;
  *
  * @version  Release: @package_version@
  */
-class Cases extends Atyantik\Capsule\Common
+class Cases extends \Atyantik\Capsule\Common
 {
     /**
      * Get a list of party cases.
