@@ -1,4 +1,5 @@
-<?php namespace Atyantik\Capsule;
+<?php
+namespace Atyantik\Capsule;
 
 /**
  * Created by PhpStorm.
@@ -6,7 +7,6 @@
  * Date: 26/9/16
  * Time: 4:40 PM
  */
-namespace Atyantik\Capsule;
 
 interface ExceptionInterface
 {

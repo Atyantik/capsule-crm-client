@@ -1,9 +1,8 @@
 <?php
-namespace Atyantik;
-
+namespace Atyantik\Capsule;
 /**
  * +-----------------------------------------------------------------------+
- * | Copyright (c) 2010, David Coallier                                    |
+ * | Copyright (c) 2010, David Coallier & echolibre ltd                    |
  * | All rights reserved.                                                  |
  * |                                                                       |
  * | Redistribution and use in source and binary forms, with or without    |
@@ -47,10 +46,6 @@ namespace Atyantik;
  *
  * @version   GIT: $Id$
  */
-require_once 'HTTP/Request2.php';
-
-require_once 'Services/Capsule/Exception.php';
-require_once 'Services/Capsule/Common.php';
 
 /**
  * Atyantik\Capsule.
@@ -61,81 +56,52 @@ require_once 'Services/Capsule/Common.php';
  * @license  http://www.opensource.org/licenses/bsd-license.php The BSD License
  *
  * @link     http://github.com/davidcoallier/Atyantik\Capsule
+ * @link     http://capsulecrm.com/help/page/javelin_api_opportunity
+ * @link     http://capsulecrm.com/help/page/javelin_api_party
+ * @link     http://capsulecrm.com/help/page/javelin_api_case
  *
  * @version  Release: @package_version@
  */
-class CapsuleClient extends Atyantik\Capsule\Common
+class Resource extends Atyantik\Capsule\Common
 {
     /**
-     * Sections available to the API.
+     * Get a list of resource countries.
      *
-     * @var array An array of sections available to the API
-     */
-    protected $sections = array();
-
-    /**
-     * Constructor.
+     * List of country names that can be supplied in the <country /> 
+     * element of addresses. Alternatively ISO 3166-1 alpha-2 or 
+     * alpha-3 codes can be used. 
      *
-     * Initialize the class with the API token.
-     *
-     * @param string $token The API Token you use for your API Calls
-     */
-    public function __construct($appName, $token)
-    {
-        $this->token = $token;
-        $this->appName = $appName;
-    }
-
-    /**
-     * Magical Getter.
+     * @link   /api/resource/country
      *
      * @throws Atyantik\Capsule\RuntimeException
      *
-     * @param string $sub Items, Meetings, Notes, Projects or User.
-     *
-     * @return mixed Atyantik\Capsule\*
+     * @return stdClass A stdClass object containing the information from
+     *                  the json-decoded response from the server.
      */
-    public function __get($section)
+    public function getCountries()
     {
-        $section = ucwords(strtolower($section));
-        switch ($section) {
-            case 'Party':
-            case 'Opportunity':
-            case 'Kase':
-            case 'Resource':
-            case 'Person':
-            case 'Organization':
-            case 'Task':
+        $response = $this->sendRequest('/country');
 
-            if (!isset($this->sections[$section])) {
-                $classname = "Atyantik\\Capsule\\".$section;
+        return $this->parseResponse($response);
+    }
 
-                if (!class_exists($classname)) {
-                    $filename = str_replace('_', '/', $classname).'.php';
+    /**
+     * Get a list of resource currencies.
+     *
+     * List of ISO currencies currently supported by Capsule. 
+     * These are the options available when creating new opportunities.
+     *
+     * @link   /api/resource/currency
+     *
+     * @throws Atyantik\Capsule\RuntimeException
+     *
+     * @return stdClass A stdClass object containing the information from
+     *                  the json-decoded response from the server.
+     */
+    public function getCurrencies()
+    {
+        $response = $this->sendRequest('/currency');
 
-                    if (!(include $filename)) {
-                        throw new Atyantik\Capsule\RuntimeException(
-                            'File '.$filename.' does not exist.'
-                        );
-                    }
-                }
-
-                $this->sections[$section] = new $classname();
-
-                $this->sections[$section]
-                    ->setToken($this->token)
-                    ->setAppName($this->appName)
-                    ->setModuleName(strtolower($section));
-            }
-
-            return $this->sections[$section];
-            break;
-
-        default:
-            throw new Atyantik\Capsule\RuntimeException(
-                'Section '.$section.' is not a valid API call. If you believe this '.
-                'is wrong please report a bug on http://pear.php.net/Atyantik\Capsule'
-            );
-        }
+        return $this->parseResponse($response);
     }
 }

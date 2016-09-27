@@ -1,4 +1,5 @@
-<?php namespace Atyantik\Capsule;
+<?php
+namespace Atyantik\Capsule;
 /**
  * +-----------------------------------------------------------------------+
  * | Copyright (c) 2010, David Coallier & echolibre ltd                    |
@@ -55,51 +56,134 @@
  * @license  http://www.opensource.org/licenses/bsd-license.php The BSD License
  *
  * @link     http://github.com/davidcoallier/Atyantik\Capsule
- * @link     http://capsulecrm.com/help/page/javelin_api_opportunity
- * @link     http://capsulecrm.com/help/page/javelin_api_party
  * @link     http://capsulecrm.com/help/page/javelin_api_case
  *
  * @version  Release: @package_version@
  */
-class Resource extends Atyantik\Capsule\Common
+/**
+ * "Kase is not a typo. This is how the modules are invoked in the API /api/kase".
+ */
+class Kase extends Atyantik\Capsule\Common
 {
     /**
-     * Get a list of resource countries.
+     * Get an case.
      *
-     * List of country names that can be supplied in the <country /> 
-     * element of addresses. Alternatively ISO 3166-1 alpha-2 or 
-     * alpha-3 codes can be used. 
+     * This method is used to fetch a particular case by
+     * it's identification id.
      *
-     * @link   /api/resource/country
+     * @link   /api/kase/{id}
      *
      * @throws Atyantik\Capsule\RuntimeException
+     *
+     * @param float $id The case ID to retrieve from the service.
      *
      * @return stdClass A stdClass object containing the information from
      *                  the json-decoded response from the server.
      */
-    public function getCountries()
+    public function get($id)
     {
-        $response = $this->sendRequest('/country');
+        $response = $this->sendRequest('/'.(double) $id);
 
         return $this->parseResponse($response);
     }
 
     /**
-     * Get a list of resource currencies.
+     * List all the opportunities.
      *
-     * List of ISO currencies currently supported by Capsule. 
-     * These are the options available when creating new opportunities.
+     * List opportunities. Optionally the results can be 
+     * limited or paged using the parameters $limit and $start. 
      *
-     * @link   /api/resource/currency
+     * @link  /api/kase[?start={start}][&limit={limit}] 
      *
      * @throws Atyantik\Capsule\RuntimeException
+     *
+     * @param int $start The start page (Optional).
+     * @param int $limit The limit per page (Optional).
      *
      * @return stdClass A stdClass object containing the information from
      *                  the json-decoded response from the server.
      */
-    public function getCurrencies()
+    public function getList($start = null, $limit = null)
     {
-        $response = $this->sendRequest('/currency');
+        $request = array();
+
+        if (!is_null($start)) {
+            $request['start'] = $start;
+        }
+
+        if (!is_null($limit)) {
+            $request['limit'] = $limit;
+        }
+
+        $request = http_build_query($request);
+        $response = $this->sendRequest('?'.$request);
+
+        return $this->parseResponse($response);
+    }
+
+    /**
+     * Get any cases.
+     *
+     * This method fetches a list of cases for a company (appName)
+     * by tag, or lastmodified field with the usual
+     * start and limit tag.
+     *
+     * If you are fetching by lastmodified, you must make sure that the input
+     * is formatted as ISO dates (IE: Midnight June 31, 2009 GMT would be 20090631T000000)
+     * or more explicitly YYYYMMDDTHHMMSS
+     * 
+     * Example:
+     * <?php namespace Atyantik\Capsule;
+     *      try {
+     *          $capsule = new Atyantik\Capsule($appName, $token);
+     *          $results = $capsule->case->getAny(array(
+     *              'lastmodified' => '20090631T000000',
+     *              'start'        => '100',
+     *              'limit'        => '25'
+     *          ));
+     *      } catch (Atyantik\Capsule\RuntimeException $re) {
+     *          print_r($re); die();
+     *      }
+     *
+     *      print_r($results); // An object
+     * ?>
+     *
+     * @link   /api/kase?lastmodified={YYYYMMDDTHHMMSS}[&start={start}][&limit={limit}]
+     * @link   /api/kase?tag={tag}[&start={start}][&limit={limit}]
+     *
+     * @throws Atyantik\Capsule\RuntimeException
+     *
+     * @param array $params An array of parameters to search for.
+     *
+     * @return stdClass A stdClass object containing the information from
+     *                  the json-decoded response from the server.
+     */
+    public function getAny(array $params)
+    {
+        $request = http_build_query($params);
+        $response = $this->sendRequest('?'.$request);
+
+        return $this->parseResponse($response);
+    }
+
+    /**
+     * Delete a case.
+     *
+     * Delete a case.
+     *
+     * @link   /api/kase/{kase-id}
+     *
+     * @throws Atyantik\Capsule\RuntimeException
+     *
+     * @param float $caseId The case id to delete.
+     *
+     * @return mixed bool|stdClass         A stdClass object containing the information from
+     *               the json-decoded response from the server.
+     */
+    public function delete($caseId)
+    {
+        $url = '/'.(double) $caseId;
+        $response = $this->sendRequest($url, HTTP_Request2::METHOD_DELETE);
 
         return $this->parseResponse($response);
     }

@@ -1,4 +1,5 @@
-<?php namespace Atyantik\Capsule;
+<?php
+namespace Atyantik\Capsule;
 /**
  * +-----------------------------------------------------------------------+
  * | Copyright (c) 2010, David Coallier & echolibre ltd                    |
@@ -157,7 +158,7 @@ abstract class Common
             break;
 
         default:
-            throw new Atyantik\Capsule\RuntimeException(
+            throw new RuntimeException(
                 'Section '.$section.' is not a valid API call. If you believe this '.
                 'is wrong please report a bug on http://pear.php.net/Atyantik\Capsule'
             );
@@ -298,7 +299,7 @@ abstract class Common
                 return true;
             }
 
-            throw new Atyantik\Capsule\RuntimeException(
+            throw new RuntimeException(
                 'Invalid response with no valid json body'
             );
         }

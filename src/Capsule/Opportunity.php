@@ -1,4 +1,5 @@
-<?php namespace Atyantik\Capsule;
+<?php
+namespace Atyantik\Capsule;
 /**
  * +-----------------------------------------------------------------------+
  * | Copyright (c) 2010, David Coallier & echolibre ltd                    |
@@ -55,23 +56,23 @@
  * @license  http://www.opensource.org/licenses/bsd-license.php The BSD License
  *
  * @link     http://github.com/davidcoallier/Atyantik\Capsule
- * @link     http://capsulecrm.com/help/page/javelin_api_party
+ * @link     http://capsulecrm.com/help/page/javelin_api_opportunity
  *
  * @version  Release: @package_version@
  */
-class Party extends Atyantik\Capsule\Common
+class Opportunity extends Atyantik\Capsule\Common
 {
     /**
-     * Get a party.
+     * Get an opportunity.
      *
-     * This method is used to fetch a particular party by
+     * This method is used to fetch a particular opportunity by
      * it's identification id.
      *
-     * @link   /api/party/{id}
+     * @link   /api/opportunity/{id}
      *
      * @throws Atyantik\Capsule\RuntimeException
      *
-     * @param float $id The party ID to retrieve from the service.
+     * @param float $id The opportunity ID to retrieve from the service.
      *
      * @return stdClass A stdClass object containing the information from
      *                  the json-decoded response from the server.
@@ -84,13 +85,12 @@ class Party extends Atyantik\Capsule\Common
     }
 
     /**
-     * List all the party information.
+     * List all the opportunities.
      *
-     * Return all people & organisations visible to the 
-     * authenticated user. Optionally the results can be 
-     * limited or paged using the parameters $start and $limit
+     * List opportunities. Optionally the results can be 
+     * limited or paged using the parameters $limit and $start. 
      *
-     * @link  /api/party[?start={start}][&limit={limit}] 
+     * @link  /api/opportunity[?start={start}][&limit={limit}] 
      *
      * @throws Atyantik\Capsule\RuntimeException
      *
@@ -119,49 +119,11 @@ class Party extends Atyantik\Capsule\Common
     }
 
     /**
-     * Search in all organization and parties.
+     * Get any opportunities.
      *
-     * Return all people & organisations which match the search term. 
-     * The search term will be matched against name, telephone number 
-     * and exact match on searchable custom fields. Optionally the results 
-     * can be limited or paged using the parameters limit and start. 
-     *
-     * @link  /api/party?q={term}[&start={start}][&limit={limit}] 
-     *
-     * @throws Atyantik\Capsule\RuntimeException
-     *
-     * @param string $term  The term to search for in the parties/orgs.
-     * @param int    $start The start page (Optional).
-     * @param int    $limit The limit per page (Optional).
-     *
-     * @return stdClass A stdClass object containing the information from
-     *                  the json-decoded response from the server.
-     */
-    public function search($term, $start = null, $limit = null)
-    {
-        $request = array();
-
-        $request['q'] = $term;
-
-        if (!is_null($start)) {
-            $request['start'] = $start;
-        }
-
-        if (!is_null($limit)) {
-            $request['limit'] = $limit;
-        }
-
-        $request = http_build_query($request);
-        $response = $this->sendRequest('?'.$request);
-
-        return $this->parseResponse($response);
-    }
-
-    /**
-     * Get any organizations/parties.
-     *
-     * This method is used to fetch by tag, email address, lastModified
-     * with the usual start and limit parameters to limit the output.
+     * This method fetches a list of opportunities for a company (appName)
+     * by tag, milestone (name), or lastmodified field with the usual
+     * start and limit tag.
      *
      * If you are fetching by lastmodified, you must make sure that the input
      * is formatted as ISO dates (IE: Midnight June 31, 2009 GMT would be 20090631T000000)
@@ -171,7 +133,7 @@ class Party extends Atyantik\Capsule\Common
      * <?php namespace Atyantik\Capsule;
      *      try {
      *          $capsule = new Atyantik\Capsule($appName, $token);
-     *          $results = $capsule->party->getAny(array(
+     *          $results = $capsule->opportunity->getAny(array(
      *              'lastmodified' => '20090631T000000',
      *              'start'        => '100',
      *              'limit'        => '25'
@@ -183,9 +145,8 @@ class Party extends Atyantik\Capsule\Common
      *      print_r($results); // An object
      * ?>
      *
-     * @link   /api/party?lastmodified={YYYYMMDDTHHMMSS}[&start={start}][&limit={limit}]
-     * @link   /api/party?email={email address}[&start={start}][&limit={limit}]
-     * @link   /api/party?tag={tag}[&start={start}][&limit={limit}]
+     * @link   /api/opportunity?lastmodified={YYYYMMDDTHHMMSS}[&start={start}][&limit={limit}]
+     * @link   /api/opportunity?tag={tag}[&start={start}][&limit={limit}]
      *
      * @throws Atyantik\Capsule\RuntimeException
      *
@@ -203,22 +164,22 @@ class Party extends Atyantik\Capsule\Common
     }
 
      /**
-      * Delete a party.
+      * Delete an opportunity.
       *
-      * Delete the party passed to the method.
+      * Delete the opportunity passed to the method.
       *
-      * @link /api/party/{party-id}
+      * @link /api/opportunity/{opportunity-id}
       *
       * @throws Atyantik\Capsule\RuntimeException
       *
-      * @param  float       $partyId       The party to delete.
+      * @param  float       $opportunityId The opportunity to delete.
       *
       * @return mixed bool|stdClass         A stdClass object containing the information from
       *                                     the json-decoded response from the server.
       */
-     public function delete($partyId)
+     public function delete($opportunityId)
      {
-         $url = '/'.(double) $partyId;
+         $url = '/'.(double) $opportunityId;
          $response = $this->sendRequest($url, HTTP_Request2::METHOD_DELETE);
 
          return $this->parseResponse($response);
