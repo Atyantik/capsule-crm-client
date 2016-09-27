@@ -1,51 +1,52 @@
 <?php
 namespace Atyantik\Capsule;
-/**
- * +-----------------------------------------------------------------------+
- * | Copyright (c) 2010, David Coallier & echolibre ltd                    |
- * | All rights reserved.                                                  |
- * |                                                                       |
- * | Redistribution and use in source and binary forms, with or without    |
- * | modification, are permitted provided that the following conditions    |
- * | are met:                                                              |
- * |                                                                       |
- * | o Redistributions of source code must retain the above copyright      |
- * |   notice, this list of conditions and the following disclaimer.       |
- * | o Redistributions in binary form must reproduce the above copyright   |
- * |   notice, this list of conditions and the following disclaimer in the |
- * |   documentation and/or other materials provided with the distribution.|
- * | o The names of the authors may not be used to endorse or promote      |
- * |   products derived from this software without specific prior written  |
- * |   permission.                                                         |
- * |                                                                       |
- * | THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS   |
- * | "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT     |
- * | LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR |
- * | A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT  |
- * | OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, |
- * | SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT      |
- * | LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, |
- * | DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY |
- * | THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT   |
- * | (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE |
- * | OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.  |
- * |                                                                       |
- * +-----------------------------------------------------------------------+
- * | Author: David Coallier <david@echolibre.com>                          |
- * +-----------------------------------------------------------------------+.
- *
- * PHP version 5
- *
- * @category  Services
- *
- * @author    David Coallier <david@echolibre.com>
- * @copyright echolibre ltd. 2009-2010
- * @license   http://www.opensource.org/licenses/bsd-license.php The BSD License
- *
- * @link      http://github.com/davidcoallier/Atyantik\Capsule
- *
- * @version   GIT: $Id$
- */
+
+    /**
+     * +-----------------------------------------------------------------------+
+     * | Copyright (c) 2010, David Coallier & echolibre ltd                    |
+     * | All rights reserved.                                                  |
+     * |                                                                       |
+     * | Redistribution and use in source and binary forms, with or without    |
+     * | modification, are permitted provided that the following conditions    |
+     * | are met:                                                              |
+     * |                                                                       |
+     * | o Redistributions of source code must retain the above copyright      |
+     * |   notice, this list of conditions and the following disclaimer.       |
+     * | o Redistributions in binary form must reproduce the above copyright   |
+     * |   notice, this list of conditions and the following disclaimer in the |
+     * |   documentation and/or other materials provided with the distribution.|
+     * | o The names of the authors may not be used to endorse or promote      |
+     * |   products derived from this software without specific prior written  |
+     * |   permission.                                                         |
+     * |                                                                       |
+     * | THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS   |
+     * | "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT     |
+     * | LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR |
+     * | A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT  |
+     * | OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, |
+     * | SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT      |
+     * | LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, |
+     * | DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY |
+     * | THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT   |
+     * | (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE |
+     * | OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.  |
+     * |                                                                       |
+     * +-----------------------------------------------------------------------+
+     * | Author: David Coallier <david@echolibre.com>                          |
+     * +-----------------------------------------------------------------------+.
+     *
+     * PHP version 5
+     *
+     * @category  Services
+     *
+     * @author    David Coallier <david@echolibre.com>
+     * @copyright echolibre ltd. 2009-2010
+     * @license   http://www.opensource.org/licenses/bsd-license.php The BSD License
+     *
+     * @link      http://github.com/davidcoallier/Atyantik\Capsule
+     *
+     * @version   GIT: $Id$
+     */
 
 /**
  * Atyantik\Capsule.
@@ -78,7 +79,7 @@ abstract class Common
 
     /**
      * The identification token.
-     * 
+     *
      * @link https://sample.capsulecrm.com/user/api
      *
      * @var string The web service identification token
@@ -100,9 +101,9 @@ abstract class Common
     protected $client;
 
     /**
-     * The capsule webservice endpoint in a sprintf configurable url. 
+     * The capsule webservice endpoint in a sprintf configurable url.
      *
-     * @see $this->appName 
+     * @see $this->appName
      *
      * @var string The web service endpoint.
      */
@@ -131,43 +132,39 @@ abstract class Common
             case 'Cases':
             case 'Task':
 
-            $currentModule = ucfirst(strtolower($this->moduleName));
+                $currentModule = ucfirst(strtolower($this->moduleName));
 
-            if (!isset($this->subSections[$section])) {
-                $classname = "Atyantik\\Capsule\\".$currentModule."\\".$section;
+                if (!isset($this->subSections[$section])) {
+                    $classname = "Atyantik\\Capsule\\" . $currentModule . "\\" . $section;
 
-                if (!class_exists($classname)) {
-                    $filename = str_replace('_', '/', $classname).'.php';
-
-                    if (!(include $filename)) {
+                    if (!class_exists($classname)) {
                         throw new Atyantik\Capsule\RuntimeException(
-                            'File '.$filename.' does not exist.'
+                            'File ' . $classname . ' does not exist.'
                         );
                     }
+
+                    $this->subSections[$section] = new $classname();
                 }
 
-                $this->subSections[$section] = new $classname();
-            }
+                $this->subSections[$section]
+                    ->setToken($this->token)
+                    ->setAppName($this->appName)
+                    ->setModuleName(strtolower($currentModule));
 
-            $this->subSections[$section]
-                ->setToken($this->token)
-                ->setAppName($this->appName)
-                ->setModuleName(strtolower($currentModule));
+                return $this->subSections[$section];
+                break;
 
-            return $this->subSections[$section];
-            break;
-
-        default:
-            throw new RuntimeException(
-                'Section '.$section.' is not a valid API call. If you believe this '.
-                'is wrong please report a bug on http://pear.php.net/Atyantik\Capsule'
-            );
+            default:
+                throw new RuntimeException(
+                    'Section ' . $section . ' is not a valid API call. If you believe this ' .
+                    'is wrong please report a bug on http://pear.php.net/Atyantik\Capsule'
+                );
         }
     }
 
     /**
      * Set the identification token.
-     * 
+     *
      * This method is used to set the identification token
      * that you can gather from the capsule website.
      *
@@ -188,7 +185,7 @@ abstract class Common
      * Set the application name.
      *
      * This method is used to set the first part of the
-     * $this->endpoint variable (%s). 
+     * $this->endpoint variable (%s).
      *
      * @param string $appName The name of your application (company name).
      *
@@ -203,7 +200,7 @@ abstract class Common
 
     /**
      * Set the module naem.
-     * 
+     *
      * This method is used to set the module name that the
      * child will be invoking.
      *
@@ -227,16 +224,16 @@ abstract class Common
      * @throws Atyantik\Capsule\RuntimeException
      *
      * @uses   HTTP_Request2
-     * 
-     * @param string $url    The URL to request.
+     *
+     * @param string $url The URL to request.
      * @param string $method The HTTP Method (Use HTTP_Request2::METHOD_*)
      *                       Default is HTTP_Request2::METHOD_GET (GET).
-     * @param string $data   The data to pass to the body. Null by default.
+     * @param string $data The data to pass to the body. Null by default.
      */
     protected function sendRequest($url, $method = HTTP_Request2::METHOD_GET, $data = null)
     {
         if (!isset($this->appName)) {
-            throw new Atyantik\Capsule\UnexpectedValueException(
+            throw new UnexpectedValueException(
                 'Please set an app name.'
             );
         }
@@ -253,14 +250,14 @@ abstract class Common
         }
 
         $finalUrl = sprintf($this->endpoint, $this->appName, $this->moduleName);
-        $finalUrl = $finalUrl.$url;
+        $finalUrl = $finalUrl . $url;
 
         $this->client
-             ->setHeader('Content-Type: application/json')
-             ->setHeader('Accept: application/json')
-             ->setAuth($this->token, 'x')
-             ->setMethod($method)
-             ->setUrl($finalUrl);
+            ->setHeader('Content-Type: application/json')
+            ->setHeader('Accept: application/json')
+            ->setAuth($this->token, 'x')
+            ->setMethod($method)
+            ->setUrl($finalUrl);
 
         if (!is_null($data)) {
             $this->client->setBody($data);
@@ -285,7 +282,7 @@ abstract class Common
      *
      * @param HTTP_Request2_Response $response The response from the webservice.
      *
-     * @return mixed stdClass|bool A stdClass object of the 
+     * @return mixed stdClass|bool A stdClass object of the
      *               json-decode'ed body or true if
      *               the code is 201 (created)
      */
