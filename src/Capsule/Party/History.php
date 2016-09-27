@@ -60,7 +60,7 @@ namespace Atyantik\Capsule\Party;
  *
  * @version  Release: @package_version@
  */
-class History extends Atyantik\Capsule\Common
+class History extends \Atyantik\Capsule\Common
 {
     /**
      * Get party history.

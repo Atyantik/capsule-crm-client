@@ -290,12 +290,10 @@ abstract class Common
     {
         $body = $response->getBody();
         $return = json_decode($body);
-
-        if (!($return instanceof stdClass)) {
+        if (get_class($return)!=="stdClass") {
             if ($response->getStatus() == 201 || $response->getStatus() == 200) {
                 return true;
             }
-
             throw new RuntimeException(
                 'Invalid response with no valid json body'
             );

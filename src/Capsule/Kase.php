@@ -63,7 +63,7 @@ namespace Atyantik\Capsule;
 /**
  * "Kase is not a typo. This is how the modules are invoked in the API /api/kase".
  */
-class Kase extends Atyantik\Capsule\Common
+class Kase extends \Atyantik\Capsule\Common
 {
     /**
      * Get an case.

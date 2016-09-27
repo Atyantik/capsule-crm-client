@@ -60,7 +60,7 @@ namespace Atyantik\Capsule\Party;
  *
  * @version  Release: @package_version@
  */
-class People extends Atyantik\Capsule\Common
+class People extends \Atyantik\Capsule\Common
 {
     /**
      * Get a list of people in party.

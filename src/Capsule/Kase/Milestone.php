@@ -60,7 +60,7 @@ namespace Atyantik\Capsule\Kase;
  *
  * @version  Release: @package_version@
  */
-class Milestone extends Atyantik\Capsule\Common
+class Milestone extends \Atyantik\Capsule\Common
 {
     /**
      * Get a list of opportunity milestones.

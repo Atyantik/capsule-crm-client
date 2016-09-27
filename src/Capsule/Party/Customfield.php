@@ -61,7 +61,7 @@ namespace Atyantik\Capsule\Party;
  *
  * @version  Release: @package_version@
  */
-class Customfield extends Atyantik\Capsule\Common
+class Customfield extends \Atyantik\Capsule\Common
 {
     /**
      * Get a list of custom fields.

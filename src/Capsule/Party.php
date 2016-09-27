@@ -1,5 +1,8 @@
 <?php
 namespace Atyantik\Capsule;
+
+use Atyantik\Capsule\Common;
+
 /**
  * +-----------------------------------------------------------------------+
  * | Copyright (c) 2010, David Coallier & echolibre ltd                    |
@@ -60,7 +63,7 @@ namespace Atyantik\Capsule;
  *
  * @version  Release: @package_version@
  */
-class Party extends Atyantik\Capsule\Common
+class Party extends \Atyantik\Capsule\Common
 {
     /**
      * Get a party.

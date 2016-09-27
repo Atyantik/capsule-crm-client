@@ -62,7 +62,7 @@ namespace Atyantik\Capsule;
  *
  * @version  Release: @package_version@
  */
-class Resource extends Atyantik\Capsule\Common
+class Resource extends \Atyantik\Capsule\Common
 {
     /**
      * Get a list of resource countries.

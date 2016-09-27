@@ -60,7 +60,7 @@ namespace Atyantik\Capsule\Party;
  *
  * @version  Release: @package_version@
  */
-class Task extends Atyantik\Capsule\Common
+class Task extends \Atyantik\Capsule\Common
 {
     /**
      * Get a list of party tasks.

@@ -60,7 +60,7 @@ namespace Atyantik\Capsule;
  *
  * @version  Release: @package_version@
  */
-class Organization extends Atyantik\Capsule\Common
+class Organization extends \Atyantik\Capsule\Common
 {
     /**
      * Add a new Organization.
