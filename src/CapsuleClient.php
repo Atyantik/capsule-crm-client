@@ -61,7 +61,7 @@ use Atyantik\Capsule\RuntimeException;
  *
  * @version  Release: @package_version@
  */
-class CapsuleClient extends Atyantik\Capsule\Common
+class CapsuleClient extends \Atyantik\Capsule\Common
 {
     /**
      * Sections available to the API.
